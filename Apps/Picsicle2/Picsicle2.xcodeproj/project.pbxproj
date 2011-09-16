@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A9C50CA14197C2E0034AF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50C914197C2E0034AF13 /* UIKit.framework */; };
+		7A9C50CC14197C2E0034AF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50CB14197C2E0034AF13 /* Foundation.framework */; };
+		7A9C50CE14197C2E0034AF13 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50CD14197C2E0034AF13 /* CoreGraphics.framework */; };
+		7A9C50D414197C2E0034AF13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C50D214197C2E0034AF13 /* InfoPlist.strings */; };
+		7A9C50D614197C2E0034AF13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C50D514197C2E0034AF13 /* main.m */; };
+		7A9C50DA14197C2E0034AF13 /* Picsicle2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C50D914197C2E0034AF13 /* Picsicle2AppDelegate.m */; };
+		7A9C50DD14197C2E0034AF13 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C50DB14197C2E0034AF13 /* MainWindow.xib */; };
+		7A9C50E014197C2E0034AF13 /* Picsicle2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C50DF14197C2E0034AF13 /* Picsicle2ViewController.m */; };
+		7A9C50E314197C2E0034AF13 /* Picsicle2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C50E114197C2E0034AF13 /* Picsicle2ViewController.xib */; };
+		7A9C50EB14197C2E0034AF13 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50EA14197C2E0034AF13 /* SenTestingKit.framework */; };
+		7A9C50EC14197C2E0034AF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50C914197C2E0034AF13 /* UIKit.framework */; };
+		7A9C50ED14197C2E0034AF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50CB14197C2E0034AF13 /* Foundation.framework */; };
+		7A9C50EE14197C2E0034AF13 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C50CD14197C2E0034AF13 /* CoreGraphics.framework */; };
+		7A9C50F614197C2E0034AF13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C50F414197C2E0034AF13 /* InfoPlist.strings */; };
+		7A9C50F814197C2E0034AF13 /* Picsicle2Tests.h in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C50F714197C2E0034AF13 /* Picsicle2Tests.h */; };
+		7A9C50FA14197C2E0034AF13 /* Picsicle2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C50F914197C2E0034AF13 /* Picsicle2Tests.m */; };
+		7A9C510414197D310034AF13 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9C510314197D310034AF13 /* MobileCoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A9C50EF14197C2E0034AF13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A9C50BC14197C2D0034AF13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9C50C414197C2E0034AF13;
+			remoteInfo = Picsicle2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7A9C50C514197C2E0034AF13 /* Picsicle2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsicle2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9C50C914197C2E0034AF13 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7A9C50CB14197C2E0034AF13 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A9C50CD14197C2E0034AF13 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A9C50D114197C2E0034AF13 /* Picsicle2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Picsicle2-Info.plist"; sourceTree = "<group>"; };
+		7A9C50D314197C2E0034AF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A9C50D514197C2E0034AF13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A9C50D714197C2E0034AF13 /* Picsicle2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Picsicle2-Prefix.pch"; sourceTree = "<group>"; };
+		7A9C50D814197C2E0034AF13 /* Picsicle2AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Picsicle2AppDelegate.h; sourceTree = "<group>"; };
+		7A9C50D914197C2E0034AF13 /* Picsicle2AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Picsicle2AppDelegate.m; sourceTree = "<group>"; };
+		7A9C50DC14197C2E0034AF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		7A9C50DE14197C2E0034AF13 /* Picsicle2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Picsicle2ViewController.h; sourceTree = "<group>"; };
+		7A9C50DF14197C2E0034AF13 /* Picsicle2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Picsicle2ViewController.m; sourceTree = "<group>"; };
+		7A9C50E214197C2E0034AF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Picsicle2ViewController.xib; sourceTree = "<group>"; };
+		7A9C50E914197C2E0034AF13 /* Picsicle2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Picsicle2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9C50EA14197C2E0034AF13 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7A9C50F314197C2E0034AF13 /* Picsicle2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Picsicle2Tests-Info.plist"; sourceTree = "<group>"; };
+		7A9C50F514197C2E0034AF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A9C50F714197C2E0034AF13 /* Picsicle2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Picsicle2Tests.h; sourceTree = "<group>"; };
+		7A9C50F914197C2E0034AF13 /* Picsicle2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Picsicle2Tests.m; sourceTree = "<group>"; };
+		7A9C510314197D310034AF13 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A9C50C214197C2E0034AF13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C510414197D310034AF13 /* MobileCoreServices.framework in Frameworks */,
+				7A9C50CA14197C2E0034AF13 /* UIKit.framework in Frameworks */,
+				7A9C50CC14197C2E0034AF13 /* Foundation.framework in Frameworks */,
+				7A9C50CE14197C2E0034AF13 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9C50E514197C2E0034AF13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C50EB14197C2E0034AF13 /* SenTestingKit.framework in Frameworks */,
+				7A9C50EC14197C2E0034AF13 /* UIKit.framework in Frameworks */,
+				7A9C50ED14197C2E0034AF13 /* Foundation.framework in Frameworks */,
+				7A9C50EE14197C2E0034AF13 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A9C50BA14197C2D0034AF13 = {
+			isa = PBXGroup;
+			children = (
+				7A9C510314197D310034AF13 /* MobileCoreServices.framework */,
+				7A9C50CF14197C2E0034AF13 /* Picsicle2 */,
+				7A9C50F114197C2E0034AF13 /* Picsicle2Tests */,
+				7A9C50C814197C2E0034AF13 /* Frameworks */,
+				7A9C50C614197C2E0034AF13 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A9C50C614197C2E0034AF13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50C514197C2E0034AF13 /* Picsicle2.app */,
+				7A9C50E914197C2E0034AF13 /* Picsicle2Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A9C50C814197C2E0034AF13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50C914197C2E0034AF13 /* UIKit.framework */,
+				7A9C50CB14197C2E0034AF13 /* Foundation.framework */,
+				7A9C50CD14197C2E0034AF13 /* CoreGraphics.framework */,
+				7A9C50EA14197C2E0034AF13 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A9C50CF14197C2E0034AF13 /* Picsicle2 */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50D814197C2E0034AF13 /* Picsicle2AppDelegate.h */,
+				7A9C50D914197C2E0034AF13 /* Picsicle2AppDelegate.m */,
+				7A9C50DB14197C2E0034AF13 /* MainWindow.xib */,
+				7A9C50DE14197C2E0034AF13 /* Picsicle2ViewController.h */,
+				7A9C50DF14197C2E0034AF13 /* Picsicle2ViewController.m */,
+				7A9C50E114197C2E0034AF13 /* Picsicle2ViewController.xib */,
+				7A9C50D014197C2E0034AF13 /* Supporting Files */,
+			);
+			path = Picsicle2;
+			sourceTree = "<group>";
+		};
+		7A9C50D014197C2E0034AF13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50D114197C2E0034AF13 /* Picsicle2-Info.plist */,
+				7A9C50D214197C2E0034AF13 /* InfoPlist.strings */,
+				7A9C50D514197C2E0034AF13 /* main.m */,
+				7A9C50D714197C2E0034AF13 /* Picsicle2-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A9C50F114197C2E0034AF13 /* Picsicle2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50F714197C2E0034AF13 /* Picsicle2Tests.h */,
+				7A9C50F914197C2E0034AF13 /* Picsicle2Tests.m */,
+				7A9C50F214197C2E0034AF13 /* Supporting Files */,
+			);
+			path = Picsicle2Tests;
+			sourceTree = "<group>";
+		};
+		7A9C50F214197C2E0034AF13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C50F314197C2E0034AF13 /* Picsicle2Tests-Info.plist */,
+				7A9C50F414197C2E0034AF13 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A9C50C414197C2E0034AF13 /* Picsicle2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9C50FD14197C2E0034AF13 /* Build configuration list for PBXNativeTarget "Picsicle2" */;
+			buildPhases = (
+				7A9C50C114197C2E0034AF13 /* Sources */,
+				7A9C50C214197C2E0034AF13 /* Frameworks */,
+				7A9C50C314197C2E0034AF13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Picsicle2;
+			productName = Picsicle2;
+			productReference = 7A9C50C514197C2E0034AF13 /* Picsicle2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A9C50E814197C2E0034AF13 /* Picsicle2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9C510014197C2E0034AF13 /* Build configuration list for PBXNativeTarget "Picsicle2Tests" */;
+			buildPhases = (
+				7A9C50E414197C2E0034AF13 /* Sources */,
+				7A9C50E514197C2E0034AF13 /* Frameworks */,
+				7A9C50E614197C2E0034AF13 /* Resources */,
+				7A9C50E714197C2E0034AF13 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A9C50F014197C2E0034AF13 /* PBXTargetDependency */,
+			);
+			name = Picsicle2Tests;
+			productName = Picsicle2Tests;
+			productReference = 7A9C50E914197C2E0034AF13 /* Picsicle2Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A9C50BC14197C2D0034AF13 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 7A9C50BF14197C2D0034AF13 /* Build configuration list for PBXProject "Picsicle2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A9C50BA14197C2D0034AF13;
+			productRefGroup = 7A9C50C614197C2E0034AF13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A9C50C414197C2E0034AF13 /* Picsicle2 */,
+				7A9C50E814197C2E0034AF13 /* Picsicle2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A9C50C314197C2E0034AF13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C50D414197C2E0034AF13 /* InfoPlist.strings in Resources */,
+				7A9C50DD14197C2E0034AF13 /* MainWindow.xib in Resources */,
+				7A9C50E314197C2E0034AF13 /* Picsicle2ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9C50E614197C2E0034AF13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C50F614197C2E0034AF13 /* InfoPlist.strings in Resources */,
+				7A9C50F814197C2E0034AF13 /* Picsicle2Tests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A9C50E714197C2E0034AF13 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A9C50C114197C2E0034AF13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C50D614197C2E0034AF13 /* main.m in Sources */,
+				7A9C50DA14197C2E0034AF13 /* Picsicle2AppDelegate.m in Sources */,
+				7A9C50E014197C2E0034AF13 /* Picsicle2ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9C50E414197C2E0034AF13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9C50FA14197C2E0034AF13 /* Picsicle2Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A9C50F014197C2E0034AF13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9C50C414197C2E0034AF13 /* Picsicle2 */;
+			targetProxy = 7A9C50EF14197C2E0034AF13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A9C50D214197C2E0034AF13 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9C50D314197C2E0034AF13 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7A9C50DB14197C2E0034AF13 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9C50DC14197C2E0034AF13 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		7A9C50E114197C2E0034AF13 /* Picsicle2ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9C50E214197C2E0034AF13 /* en */,
+			);
+			name = Picsicle2ViewController.xib;
+			sourceTree = "<group>";
+		};
+		7A9C50F414197C2E0034AF13 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9C50F514197C2E0034AF13 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A9C50FB14197C2E0034AF13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7A9C50FC14197C2E0034AF13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A9C50FE14197C2E0034AF13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Picsicle2/Picsicle2-Prefix.pch";
+				INFOPLIST_FILE = "Picsicle2/Picsicle2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7A9C50FF14197C2E0034AF13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Picsicle2/Picsicle2-Prefix.pch";
+				INFOPLIST_FILE = "Picsicle2/Picsicle2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7A9C510114197C2E0034AF13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Picsicle2.app/Picsicle2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Picsicle2/Picsicle2-Prefix.pch";
+				INFOPLIST_FILE = "Picsicle2Tests/Picsicle2Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7A9C510214197C2E0034AF13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Picsicle2.app/Picsicle2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Picsicle2/Picsicle2-Prefix.pch";
+				INFOPLIST_FILE = "Picsicle2Tests/Picsicle2Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A9C50BF14197C2D0034AF13 /* Build configuration list for PBXProject "Picsicle2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9C50FB14197C2E0034AF13 /* Debug */,
+				7A9C50FC14197C2E0034AF13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9C50FD14197C2E0034AF13 /* Build configuration list for PBXNativeTarget "Picsicle2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9C50FE14197C2E0034AF13 /* Debug */,
+				7A9C50FF14197C2E0034AF13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A9C510014197C2E0034AF13 /* Build configuration list for PBXNativeTarget "Picsicle2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9C510114197C2E0034AF13 /* Debug */,
+				7A9C510214197C2E0034AF13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A9C50BC14197C2D0034AF13 /* Project object */;
+}

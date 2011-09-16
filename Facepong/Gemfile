@@ -1,5 +1,2 @@
 source :rubygems
-gem 'sinatra', '1.0'
-gem 'twiliolib'
-gem 'json'
-gem 'rest-client'
+gem 'sinatra', '1.1.2'
