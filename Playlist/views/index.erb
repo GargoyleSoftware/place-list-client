@@ -1,0 +1,26 @@
+<script>
+$(document).ready(function(){
+	
+	$('.submit').click(function(){
+		
+		var time = $('#time').val()
+		
+		$.each($("input[class='ab']:checked"), function() {
+			console.log($(this).val());
+		});
+		
+	});
+	
+	
+});
+</script>
+
+Time : <input type="text" class="input-xlarge"  id="time"/>
+Genres : <label>HipHop</label><input class="ab" type="checkbox" id="hiphop" />
+<label>House</label><input class="ab" type="checkbox" id="house" />
+
+Start : Danceability <input type="text" id="start_dance" />
+Middle : Danceability <input type="text" id="middle_dance" />
+End : Danceability <input type="text" id="end_dance" />
+
+<button class="submit" type="submit" name="submit-button" id="submit-button" >Make Playlist</button>
