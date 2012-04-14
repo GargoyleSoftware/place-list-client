@@ -93,6 +93,7 @@
   //cell.textLabel.text = [self.songs objectAtIndex: row];
   
   cell.songLabel.text = [self.songs objectAtIndex: row];
+  cell.songImageView.image = [UIImage imageNamed: @"music-note"];
 
   return cell;
 }
