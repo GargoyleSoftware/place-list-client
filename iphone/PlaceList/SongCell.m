@@ -15,6 +15,8 @@
 @synthesize upButton = _upButton;
 @synthesize downButton = _downButton;
 
+@synthesize delegate = _delegate;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -30,5 +32,29 @@
 
     // Configure the view for the selected state
 }
+
+#pragma mark - Private Methods
+
+- (void)voteWasPressed:(BOOL)upVote
+{
+  NSLog(@"voteWasPressed");
+  if (self.delegate) {
+    [self.delegate cellDidVote: self.tag
+			upVote: upVote];
+  }
+}
+
+#pragma mark - UI Callbacks
+
+- (IBAction)downVoteWasPressed:(id)sender
+{
+  [self voteWasPressed: NO];
+}
+
+- (IBAction)upVoteWasPressed:(id)sender
+{
+  [self voteWasPressed: YES];
+}
+
 
 @end

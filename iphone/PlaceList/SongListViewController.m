@@ -95,6 +95,9 @@
   cell.songLabel.text = [self.songs objectAtIndex: row];
   cell.songImageView.image = [UIImage imageNamed: @"music-note"];
 
+  cell.tag = row;
+  cell.delegate = self;
+
   return cell;
 }
 
@@ -149,6 +152,20 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark - SongCellDelegate
+
+- (void)cellDidVote:(NSInteger)cellTag upVote:(BOOL)upVote
+{
+  id song = [self.songs objectAtIndex: cellTag];
+
+  if (upVote) {
+    NSLog(@"Song was UPVoted: %@", [song description]);
+  } else {
+    NSLog(@"Song was DOWNvoted: %@", [song description]);
+  }
+
 }
 
 @end

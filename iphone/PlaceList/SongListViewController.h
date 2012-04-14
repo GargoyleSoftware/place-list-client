@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongListViewController : UITableViewController
+#import "SongCell.h"
+
+@interface SongListViewController : UITableViewController <SongCellDelegate>
 
 @property (nonatomic, retain) NSMutableArray *songs;
 
