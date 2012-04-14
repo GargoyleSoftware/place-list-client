@@ -13,25 +13,93 @@
         <script src="sp://coca/js/jquery.min.js"></script>
         <script src="sp://coca/js/rainbow-custom.min.js"></script>
         <script>
+         
+                /* Instantiate the global sp object; include models & views */
+                var sp = getSpotifyApi(1);
+                var auth = sp.require('sp://import/scripts/api/auth');
+
+               
+            
+        </script>
+        <script>
+		function set_score(item, vote){
+			var score = $("#"+ item + "_score");
+			score.text(parseInt(vote)); // set score
+			reorder_list(item); // check order
+		}
+		
+		function reorder_list(item){
+			var items = $('.song span').get();
+			
+			//sort list
+			items.sort(function(a,b){ 
+			  var keyA = parseInt($(a).text());
+			  var keyB = parseInt($(b).text());
+
+			  if (keyA > keyB) return -1;
+			  if (keyA < keyB) return 1;
+			  return 0;
+			});
+			
+			// insert at the correct location
+			
+			var ul = $('.song_list');
+			var previous = 0;
+
+			// loop through ordered items to find insert index
+			$.each(items, function(i, li){
+
+				var id = li.id.split("_");
+				if(id[0] == item){//found location to insert
+					// remove item from list
+					var element = $("#"+item);
+					$("#"+item).remove();
+					
+					if(i==0){
+						$('.song_list').prepend(element);
+					}
+					else{
+						$('.song_list li:nth-child('+i+')').after(element);
+					}					
+					return false;
+				}
+
+			});
+		}
+		
             $(document).ready(function() {
                 sp = getSpotifyApi(1);
                 var models = sp.require('sp://import/scripts/api/models');
                 var gtrack = sp.require("sp://import/scripts/googletracker");
                 var tracker = new gtrack.GoogleTracker('UA–xxxxxxx–1');
 				var args = sp.core.getArguments();
-				console.log(args[1]);
+				//console.log(args[1]);
                 tabs();
                 models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
-
+				
                 function tabs() {
                     var args = models.application.arguments;
-
-                    console.log("Stuff:" + args[1]);
-
-                    $('.section').hide();
+                	//console.log("Argument: " + args[0]);
+				    $('.section').hide();
                     $('#'+args[0]).show();
                 }
-            });
+            
+				
+			/*	if (window["WebSocket"]) {
+				        conn = new WebSocket("ws://{{$}}/ws");
+				        conn.onclose = function(evt) {
+				            appendLog($("<div><b>Connection closed.</b></div>"))
+				        }
+				        conn.onmessage = function(evt) {
+				            appendLog($("<div/>").text(evt.data))
+				        }
+				    } else {
+				      appendLog($("<div><b>Your browser does not support WebSockets.</b></div>"))
+				    }
+				    });*/
+				
+
+		});
         </script>
     </head>
     <body>
@@ -39,251 +107,24 @@
 
         <div id="index" class="section">
 
-            <h1>Spotify Apps API Tutorials</h1>
+            <h1>My Events</h1>
+			<ul class="song_list">
+				<li class="song" id="t1">Track 1: Score:<span id="t1_score">4</span></li>
+				<li class="song" id="t2">Track 2- Score:<span id="t2_score">3</span></li>
+				<li class="song" id="t3">Track 3- Score:<span id="t3_score">2</span></li>
+			</ul>
             <img src="sp://coca/img/spotify-char.png" class="right" />
-            <h4>Getting started</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/manifest.html">Creating your manifest file</a></li>
-                <li><a href="spotify:app:coca:tabs">Handling arguments and creating navigational tabs</a></li>
-                <li>Using the pager element (coming soon)</li>
-                <li>Dragging and dropping content into an app (coming soon)</li>
-                <li><a href="sp://coca/tutorials/share.html">Show "Share" popup</a></li>
-            </ul>
-            <h4>Playing music</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/Player.html">Play a single song</a></li>
-                <li><a href="sp://coca/tutorials/Player+List.html">Play a list of songs</a></li>
-                <li><a href="sp://coca/tutorials/current_track.html">Get the currently-playing track</a></li>
-                <li><a href="sp://coca/tutorials/click_to_play.html">Create a play/pause button with an HTML element</a></li>
-                <li><a href="sp://coca/tutorials/skip_track.html">Skip to the next or previous track</a></li>
-                <li><a href="sp://coca/tutorials/Toplist_for_user.html">Get a user's top tracks</a></li>
-            </ul>
-
-            <h4>Searching</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/search.html">Returning all tracks with a given search query</a></li>
-                <li><a href="sp://coca/tutorials/artist_top_tracks.html">Get the top 5 most popular tracks from 5 artists</a></li>
-            </ul>
-
-
-            <h4>Playlists</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/get_songs_from_playlist.html">Get songs from a playlist URL</a></li>
-                <li><a href="sp://coca/tutorials/subscribe.html">Subscribe to a playlist</a></li>
-                <li><a href="sp://coca/tutorials/playlist_mosaic.html">Showing a playlist mosiac image</a></li>
-            </ul>
-
-            <h4>Interacting with Facebook</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/Facebook_auth.html">Authenticate a user with Facebook</a></li>
-                <li><a href="sp://coca/tutorials/Facebook_get_listening_history.html">Get a user's listening history from Facebook</a></li>
-            </ul>
-
-            <h4>Experimental</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/twitter.html">Talking to Twitter</a></li>
-                <li><a href="sp://coca/tutorials/last_fm_realtime.html">Last.fm Realtime API</a></li>
-                <li><a href="sp://coca/tutorials/polymaps.html">Display a Polymaps object</a></li>
-                <li><a href="sp://coca/tutorials/storage.html">Use HTML5's local storage</a></li>
-                <li><a href="sp://coca/tutorials/template.html">Template</a></li>
-            </ul>
-
+            
         </div><!-- /index -->
 
-        <div id="tabs" class="section">
+        <div id="vote" class="section">
             <ul class="breadcrumb">
                 <li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>
             </ul>
-
-            <h1>Handling arguments and creating navigational tabs</h1>
-            <p class="description">In the manifest.json file, you can update the <code>DefaultTabs</code> property with arguments that corespond to nagivational tab names. In the <code>Application</code> class, when tabs are clicked, the arguments property is updated. In this example, we are simply showing and hiding a &lt;div /&gt; element each time the arguments are updated.</p>
-
-            <h3>The manifest.json snippet</h3>
-            <div id="the-json">
-<pre><code data-language="javascript">{
-    ...
-    "DefaultTabs": [
-        {
-            "arguments": "index",
-            "title": {
-                "en": "Home"
-            }
-        },
-        {
-            "arguments": "tabs",
-            "title": {
-                "en": "How to use tabs"
-            }
-        }
-    ],
-    ...
-}</code></pre>
-            </div>
-
-            <h3>The Javascript</h3>
-            <div id="the-js">
-<pre><code data-language="javascript">sp = getSpotifyApi(1);   
-var models = sp.require('sp://import/scripts/api/models');
-
-tabs(); // See function definition below
-
-/* When a user clicks a tab, the "arguments" property on the 
- * Application object changes, and the tabs() function fires */               
-models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);  
-
-function tabs() {
-    var args = models.application.arguments;
-    $('.section').hide(); // Hide all sections
-    $('#'+args[0]).show(); // Show the current section
-}</code></pre>
-            </div>
-
-            <h3>The HTML</h3>
-            <div id="the-html">
-<pre><code data-language="html">&lt;div id="index"&gt;
-<!-- This content will show up in the "Home" tab -->
-&lt;/div&gt;
-
-&lt;div id="tabs"&gt;
-<!-- This content will show up in the "How to use tabs" tab -->
-&lt;/div&gt;</code></pre>
-            </div>
-
-        </div><!-- /tabs -->
-
-
-        </div><!-- /wrapper -->
-    </body>
-</html>
-                tabs();
-                models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
-
-                function tabs() {
-                    var args = models.application.arguments;
-                    console.log(args[0]);
-                    $('.section').hide();
-                    $('#'+args[0]).show();
-                }
-            });
-        </script>
-    </head>
-    <body>
-        <div id="wrapper">
-
-        <div id="index" class="section">
-
-            <h1>Spotify Apps API Tutorials</h1>
-            <img src="sp://coca/img/spotify-char.png" class="right" />
-            <h4>Getting started</h4>
-            <ul>
-				<li><a href="sp://coca/tutorials/events.html">Coca - Events</a></li>
-                <li><a href="sp://coca/tutorials/manifest.html">Creating your manifest file</a></li>
-                <li><a href="spotify:app:coca:tabs">Handling arguments and creating navigational tabs</a></li>
-                <li>Using the pager element (coming soon)</li>
-                <li>Dragging and dropping content into an app (coming soon)</li>
-                <li><a href="sp://coca/tutorials/share.html">Show "Share" popup</a></li>
-            </ul>
-            <h4>Playing music</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/Player.html">Play a single song</a></li>
-                <li><a href="sp://coca/tutorials/Player+List.html">Play a list of songs</a></li>
-                <li><a href="sp://coca/tutorials/current_track.html">Get the currently-playing track</a></li>
-                <li><a href="sp://coca/tutorials/click_to_play.html">Create a play/pause button with an HTML element</a></li>
-                <li><a href="sp://coca/tutorials/skip_track.html">Skip to the next or previous track</a></li>
-                <li><a href="sp://coca/tutorials/Toplist_for_user.html">Get a user's top tracks</a></li>
-            </ul>
-
-            <h4>Searching</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/search.html">Returning all tracks with a given search query</a></li>
-                <li><a href="sp://coca/tutorials/artist_top_tracks.html">Get the top 5 most popular tracks from 5 artists</a></li>
-            </ul>
-
-
-            <h4>Playlists</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/get_songs_from_playlist.html">Get songs from a playlist URL</a></li>
-                <li><a href="sp://coca/tutorials/subscribe.html">Subscribe to a playlist</a></li>
-                <li><a href="sp://coca/tutorials/playlist_mosaic.html">Showing a playlist mosiac image</a></li>
-            </ul>
-
-            <h4>Interacting with Facebook</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/Facebook_auth.html">Authenticate a user with Facebook</a></li>
-                <li><a href="sp://coca/tutorials/Facebook_get_listening_history.html">Get a user's listening history from Facebook</a></li>
-            </ul>
-
-            <h4>Experimental</h4>
-            <ul>
-                <li><a href="sp://coca/tutorials/twitter.html">Talking to Twitter</a></li>
-                <li><a href="sp://coca/tutorials/last_fm_realtime.html">Last.fm Realtime API</a></li>
-                <li><a href="sp://coca/tutorials/polymaps.html">Display a Polymaps object</a></li>
-                <li><a href="sp://coca/tutorials/storage.html">Use HTML5's local storage</a></li>
-                <li><a href="sp://coca/tutorials/template.html">Template</a></li>
-            </ul>
-
-        </div><!-- /index -->
-
-        <div id="tabs" class="section">
-            <ul class="breadcrumb">
-                <li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>
-            </ul>
-
-       <h1>Handling arguments and creating navigational tabs</h1>
-            <p class="description">In the manifest.json file, you can update the <code>DefaultTabs</code> property with arguments that corespond to nagivational tab names. In the <code>Application</code> class, when tabs are clicked, the arguments property is updated. In this example, we are simply showing and hiding a &lt;div /&gt; element each time the arguments are updated.</p>
-
-            <h3>The manifest.json snippet</h3>
-            <div id="the-json">
-<pre><code data-language="javascript">{
-    ...
-    "DefaultTabs": [
-        {
-            "arguments": "index",
-            "title": {
-                "en": "Home"
-            }
-        },
-        {
-            "arguments": "tabs",
-            "title": {
-                "en": "How to use tabs"
-            }
-        }
-    ],
-    ...
-}</code></pre>
-            </div>
-
-            <h3>The Javascript</h3>
-            <div id="the-js">
-<pre><code data-language="javascript">sp = getSpotifyApi(1);   
-var models = sp.require('sp://import/scripts/api/models');
-
-tabs(); // See function definition below
-
-/* When a user clicks a tab, the "arguments" property on the 
- * Application object changes, and the tabs() function fires */               
-models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);  
-
-function tabs() {
-    var args = models.application.arguments;
-    $('.section').hide(); // Hide all sections
-    $('#'+args[0]).show(); // Show the current section
-}</code></pre>
-            </div>
-
-            <h3>The HTML</h3>
-            <div id="the-html">
-<pre><code data-language="html">&lt;div id="index"&gt;
-<!-- This content will show up in the "Home" tab -->
-&lt;/div&gt;
-
-&lt;div id="tabs"&gt;
-<!-- This content will show up in the "How to use tabs" tab -->
-&lt;/div&gt;</code></pre>
-            </div>
-
-        </div><!-- /tabs -->
+			
+			<h2>Voting Stuff </h2>
+			
+        </div><!-- /voting -->
 
 
         </div><!-- /wrapper -->
