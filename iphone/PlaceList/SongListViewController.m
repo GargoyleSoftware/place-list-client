@@ -86,6 +86,8 @@
     cell = (SongCell *)[nib objectAtIndex:0];
   }
   
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
   // Configure the cell...
 
   NSUInteger row = indexPath.row;
