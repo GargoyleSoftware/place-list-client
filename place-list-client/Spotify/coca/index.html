@@ -1,132 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            @import url('sp://import/css/eve.css');
-            @import url('sp://import/css/player.css');
-            @import url('sp://import/css/ui.css');
-            @import url('sp://coca/css/main.css');
-            @import url('sp://coca/css/github.css');
-            h1, ul {margin:0 0 30px;}
-            a:hover {color:#83be20;}
-        </style>
-        <script src="sp://coca/js/jquery.min.js"></script>
-        <script src="sp://coca/js/rainbow-custom.min.js"></script>
-        <script>
-         
-                /* Instantiate the global sp object; include models & views */
-                var sp = getSpotifyApi(1);
-                var auth = sp.require('sp://import/scripts/api/auth');
+  <head>
+    <style>
+      @import url('sp://import/css/eve.css');
+      @import url('sp://import/css/player.css');
+      @import url('sp://import/css/ui.css');
+      @import url('sp://coca/css/main.css');
+      @import url('sp://coca/css/github.css');
+      h1, ul {margin:0 0 30px;}
+      a:hover {color:#83be20;}
+    </style>
+    <script src="sp://coca/js/jquery.min.js"></script>
+    <script src="sp://coca/js/rainbow-custom.min.js"></script>
+    <script src="sp://coca/js/mustache.js"></script>
+    <script src="sp://coca/js/client.js"></script>
+    <script id="track-template" type="text/plain">
+      <li class="track">
+      <input id="upvote-track-{{id}}" name="+" value="+" type="submit"></input>
+      <input id="downvote-track-{{id}}" name="-" value="-" type="submit"></input>
+      <img src="{{track.album.cover}}" width=100 height=100 /> 
+      <span class="track-name">{{track.name}}</span>
+      <span class="album-name">{{track.album.name}}</span>
+      <ul class="artists">
+        {{#track.artists}}
+        <li>{{name}}</li>
+        {{/track.artists}}
+      </ul>
+      </li>
+    </script>
+  </head>
+  <body>
+    <input type="text" id="add-track" />
+    <input type="submit" id="add-track-btn" value="add track" name="add track" />
+    <ul id="tracks"> </ul>
+    <div id="wrapper">
+      <div id="index" class="section">
 
-               
-            
-        </script>
-        <script>
-		function set_score(item, vote){
-			var score = $("#"+ item + "_score");
-			score.text(parseInt(vote)); // set score
-			reorder_list(item); // check order
-		}
-		
-		function reorder_list(item){
-			var items = $('.song span').get();
-			
-			//sort list
-			items.sort(function(a,b){ 
-			  var keyA = parseInt($(a).text());
-			  var keyB = parseInt($(b).text());
-
-			  if (keyA > keyB) return -1;
-			  if (keyA < keyB) return 1;
-			  return 0;
-			});
-			
-			// insert at the correct location
-			
-			var ul = $('.song_list');
-			var previous = 0;
-
-			// loop through ordered items to find insert index
-			$.each(items, function(i, li){
-
-				var id = li.id.split("_");
-				if(id[0] == item){//found location to insert
-					// remove item from list
-					var element = $("#"+item);
-					$("#"+item).remove();
-					
-					if(i==0){
-						$('.song_list').prepend(element);
-					}
-					else{
-						$('.song_list li:nth-child('+i+')').after(element);
-					}					
-					return false;
-				}
-
-			});
-		}
-		
-            $(document).ready(function() {
-                sp = getSpotifyApi(1);
-                var models = sp.require('sp://import/scripts/api/models');
-                var gtrack = sp.require("sp://import/scripts/googletracker");
-                var tracker = new gtrack.GoogleTracker('UA–xxxxxxx–1');
-				var args = sp.core.getArguments();
-				//console.log(args[1]);
-                tabs();
-                models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
-				
-                function tabs() {
-                    var args = models.application.arguments;
-                	//console.log("Argument: " + args[0]);
-				    $('.section').hide();
-                    $('#'+args[0]).show();
-                }
-            
-				
-			/*	if (window["WebSocket"]) {
-				        conn = new WebSocket("ws://{{$}}/ws");
-				        conn.onclose = function(evt) {
-				            appendLog($("<div><b>Connection closed.</b></div>"))
-				        }
-				        conn.onmessage = function(evt) {
-				            appendLog($("<div/>").text(evt.data))
-				        }
-				    } else {
-				      appendLog($("<div><b>Your browser does not support WebSockets.</b></div>"))
-				    }
-				    });*/
-				
-
-		});
-        </script>
-    </head>
-    <body>
-        <div id="wrapper">
-
-        <div id="index" class="section">
-
-            <h1>My Events</h1>
-			<ul class="song_list">
-				<li class="song" id="t1">Track 1: Score:<span id="t1_score">4</span></li>
-				<li class="song" id="t2">Track 2- Score:<span id="t2_score">3</span></li>
-				<li class="song" id="t3">Track 3- Score:<span id="t3_score">2</span></li>
-			</ul>
-            <img src="sp://coca/img/spotify-char.png" class="right" />
-            
-        </div><!-- /index -->
-
-        <div id="vote" class="section">
-            <ul class="breadcrumb">
-                <li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>
-            </ul>
-			
-			<h2>Voting Stuff </h2>
-			
-        </div><!-- /voting -->
-
-
-        </div><!-- /wrapper -->
-    </body>
+        <!--<img src="sp://coca/img/spotify-char.png" class="right" />-->
+      </div><!-- /index -->
+      <div id="vote" class="section">
+        <ul class="breadcrumb">
+          <!--<li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>-->
+        </ul>
+      </div><!-- /voting -->
+    </div><!-- /wrapper -->
+  </body>
 </html>
