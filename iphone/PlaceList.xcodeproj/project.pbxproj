@@ -25,6 +25,13 @@
 		42D93EFC153A01BA00E44664 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED5153A01B900E44664 /* CoreData.framework */; };
 		42D93F04153A01BA00E44664 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F02153A01BA00E44664 /* InfoPlist.strings */; };
 		42D93F07153A01BA00E44664 /* PlaceListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F06153A01BA00E44664 /* PlaceListTests.m */; };
+		42D93F2A153A046200E44664 /* NTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F29153A046200E44664 /* NTWebSocket.m */; };
+		42D93F2C153A066500E44664 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F2B153A066500E44664 /* CFNetwork.framework */; };
+		42D93F2E153A066B00E44664 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F2D153A066B00E44664 /* Security.framework */; };
+		42D93F43153A097800E44664 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F42153A097800E44664 /* libicucore.dylib */; };
+		42D93F50153A0AEC00E44664 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F49153A0AEC00E44664 /* base64.c */; };
+		42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */; };
+		42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4F153A0AEC00E44664 /* SRWebSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +69,18 @@
 		42D93F03153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		42D93F05153A01BA00E44664 /* PlaceListTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceListTests.h; sourceTree = "<group>"; };
 		42D93F06153A01BA00E44664 /* PlaceListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceListTests.m; sourceTree = "<group>"; };
+		42D93F28153A046200E44664 /* NTWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTWebSocket.h; sourceTree = "<group>"; };
+		42D93F29153A046200E44664 /* NTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTWebSocket.m; sourceTree = "<group>"; };
+		42D93F2B153A066500E44664 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		42D93F2D153A066B00E44664 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		42D93F42153A097800E44664 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		42D93F49153A0AEC00E44664 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		42D93F4A153A0AEC00E44664 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		42D93F4B153A0AEC00E44664 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		42D93F4D153A0AEC00E44664 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		42D93F4E153A0AEC00E44664 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		42D93F4F153A0AEC00E44664 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42D93ED0153A01B900E44664 /* UIKit.framework in Frameworks */,
+				42D93F43153A097800E44664 /* libicucore.dylib in Frameworks */,
 				42D93ED2153A01B900E44664 /* Foundation.framework in Frameworks */,
+				42D93F2E153A066B00E44664 /* Security.framework in Frameworks */,
+				42D93F2C153A066500E44664 /* CFNetwork.framework in Frameworks */,
+				42D93ED0153A01B900E44664 /* UIKit.framework in Frameworks */,
 				42D93ED4153A01B900E44664 /* CoreGraphics.framework in Frameworks */,
 				42D93ED6153A01B900E44664 /* CoreData.framework in Frameworks */,
 			);
@@ -93,6 +115,7 @@
 		42D93EC0153A01B900E44664 = {
 			isa = PBXGroup;
 			children = (
+				42D93F18153A036A00E44664 /* Libraries */,
 				42D93ED7153A01B900E44664 /* PlaceList */,
 				42D93EFF153A01BA00E44664 /* PlaceListTests */,
 				42D93ECE153A01B900E44664 /* Frameworks */,
@@ -112,6 +135,9 @@
 		42D93ECE153A01B900E44664 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42D93F42153A097800E44664 /* libicucore.dylib */,
+				42D93F2D153A066B00E44664 /* Security.framework */,
+				42D93F2B153A066500E44664 /* CFNetwork.framework */,
 				42D93ECF153A01B900E44664 /* UIKit.framework */,
 				42D93ED1153A01B900E44664 /* Foundation.framework */,
 				42D93ED3153A01B900E44664 /* CoreGraphics.framework */,
@@ -124,14 +150,10 @@
 		42D93ED7153A01B900E44664 /* PlaceList */ = {
 			isa = PBXGroup;
 			children = (
+				42D93F27153A044800E44664 /* WebSockets */,
 				42D93EE0153A01BA00E44664 /* NTAppDelegate.h */,
 				42D93EE1153A01BA00E44664 /* NTAppDelegate.m */,
-				42D93EE6153A01BA00E44664 /* NTMasterViewController.h */,
-				42D93EE7153A01BA00E44664 /* NTMasterViewController.m */,
-				42D93EE9153A01BA00E44664 /* NTDetailViewController.h */,
-				42D93EEA153A01BA00E44664 /* NTDetailViewController.m */,
-				42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */,
-				42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */,
+				42D93F26153A044200E44664 /* ViewControllers */,
 				42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */,
 				42D93ED8153A01B900E44664 /* Supporting Files */,
 			);
@@ -166,6 +188,51 @@
 				42D93F02153A01BA00E44664 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42D93F18153A036A00E44664 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F48153A0AEC00E44664 /* SocketRocket */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		42D93F26153A044200E44664 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				42D93EE6153A01BA00E44664 /* NTMasterViewController.h */,
+				42D93EE7153A01BA00E44664 /* NTMasterViewController.m */,
+				42D93EE9153A01BA00E44664 /* NTDetailViewController.h */,
+				42D93EEA153A01BA00E44664 /* NTDetailViewController.m */,
+				42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */,
+				42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		42D93F27153A044800E44664 /* WebSockets */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F28153A046200E44664 /* NTWebSocket.h */,
+				42D93F29153A046200E44664 /* NTWebSocket.m */,
+			);
+			name = WebSockets;
+			sourceTree = "<group>";
+		};
+		42D93F48153A0AEC00E44664 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F49153A0AEC00E44664 /* base64.c */,
+				42D93F4A153A0AEC00E44664 /* base64.h */,
+				42D93F4B153A0AEC00E44664 /* NSData+SRB64Additions.h */,
+				42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */,
+				42D93F4D153A0AEC00E44664 /* SocketRocket-Prefix.pch */,
+				42D93F4E153A0AEC00E44664 /* SRWebSocket.h */,
+				42D93F4F153A0AEC00E44664 /* SRWebSocket.m */,
+			);
+			name = SocketRocket;
+			path = Libraries/SocketRocket/SocketRocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +349,10 @@
 				42D93EE5153A01BA00E44664 /* PlaceList.xcdatamodeld in Sources */,
 				42D93EE8153A01BA00E44664 /* NTMasterViewController.m in Sources */,
 				42D93EEB153A01BA00E44664 /* NTDetailViewController.m in Sources */,
+				42D93F2A153A046200E44664 /* NTWebSocket.m in Sources */,
+				42D93F50153A0AEC00E44664 /* base64.c in Sources */,
+				42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */,
+				42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +459,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
 				INFOPLIST_FILE = "PlaceList/PlaceList-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,6 +475,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
 				INFOPLIST_FILE = "PlaceList/PlaceList-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +538,7 @@
 				42D93F0C153A01BA00E44664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42D93F0D153A01BA00E44664 /* Build configuration list for PBXNativeTarget "PlaceListTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +547,7 @@
 				42D93F0F153A01BA00E44664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
