@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42D93ED0153A01B900E44664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ECF153A01B900E44664 /* UIKit.framework */; };
+		42D93ED2153A01B900E44664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED1153A01B900E44664 /* Foundation.framework */; };
+		42D93ED4153A01B900E44664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED3153A01B900E44664 /* CoreGraphics.framework */; };
+		42D93ED6153A01B900E44664 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED5153A01B900E44664 /* CoreData.framework */; };
+		42D93EDC153A01B900E44664 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EDA153A01B900E44664 /* InfoPlist.strings */; };
+		42D93EDE153A01B900E44664 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EDD153A01B900E44664 /* main.m */; };
+		42D93EE2153A01BA00E44664 /* NTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE1153A01BA00E44664 /* NTAppDelegate.m */; };
+		42D93EE5153A01BA00E44664 /* PlaceList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */; };
+		42D93EE8153A01BA00E44664 /* NTMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE7153A01BA00E44664 /* NTMasterViewController.m */; };
+		42D93EEB153A01BA00E44664 /* NTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EEA153A01BA00E44664 /* NTDetailViewController.m */; };
+		42D93EEE153A01BA00E44664 /* NTMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */; };
+		42D93EF1153A01BA00E44664 /* NTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */; };
+		42D93EF9153A01BA00E44664 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93EF8153A01BA00E44664 /* SenTestingKit.framework */; };
+		42D93EFA153A01BA00E44664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ECF153A01B900E44664 /* UIKit.framework */; };
+		42D93EFB153A01BA00E44664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED1153A01B900E44664 /* Foundation.framework */; };
+		42D93EFC153A01BA00E44664 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED5153A01B900E44664 /* CoreData.framework */; };
+		42D93F04153A01BA00E44664 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F02153A01BA00E44664 /* InfoPlist.strings */; };
+		42D93F07153A01BA00E44664 /* PlaceListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F06153A01BA00E44664 /* PlaceListTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42D93EFD153A01BA00E44664 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42D93EC2153A01B900E44664 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42D93ECA153A01B900E44664;
+			remoteInfo = PlaceList;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		42D93ECB153A01B900E44664 /* PlaceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42D93ECF153A01B900E44664 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		42D93ED1153A01B900E44664 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		42D93ED3153A01B900E44664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		42D93ED5153A01B900E44664 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		42D93ED9153A01B900E44664 /* PlaceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaceList-Info.plist"; sourceTree = "<group>"; };
+		42D93EDB153A01B900E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		42D93EDD153A01B900E44664 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		42D93EDF153A01B900E44664 /* PlaceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlaceList-Prefix.pch"; sourceTree = "<group>"; };
+		42D93EE0153A01BA00E44664 /* NTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTAppDelegate.h; sourceTree = "<group>"; };
+		42D93EE1153A01BA00E44664 /* NTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTAppDelegate.m; sourceTree = "<group>"; };
+		42D93EE4153A01BA00E44664 /* PlaceList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaceList.xcdatamodel; sourceTree = "<group>"; };
+		42D93EE6153A01BA00E44664 /* NTMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTMasterViewController.h; sourceTree = "<group>"; };
+		42D93EE7153A01BA00E44664 /* NTMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTMasterViewController.m; sourceTree = "<group>"; };
+		42D93EE9153A01BA00E44664 /* NTDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTDetailViewController.h; sourceTree = "<group>"; };
+		42D93EEA153A01BA00E44664 /* NTDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTDetailViewController.m; sourceTree = "<group>"; };
+		42D93EED153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NTMasterViewController.xib; sourceTree = "<group>"; };
+		42D93EF0153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NTDetailViewController.xib; sourceTree = "<group>"; };
+		42D93EF7153A01BA00E44664 /* PlaceListTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaceListTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42D93EF8153A01BA00E44664 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		42D93F01153A01BA00E44664 /* PlaceListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaceListTests-Info.plist"; sourceTree = "<group>"; };
+		42D93F03153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		42D93F05153A01BA00E44664 /* PlaceListTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceListTests.h; sourceTree = "<group>"; };
+		42D93F06153A01BA00E44664 /* PlaceListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceListTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42D93EC8153A01B900E44664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93ED0153A01B900E44664 /* UIKit.framework in Frameworks */,
+				42D93ED2153A01B900E44664 /* Foundation.framework in Frameworks */,
+				42D93ED4153A01B900E44664 /* CoreGraphics.framework in Frameworks */,
+				42D93ED6153A01B900E44664 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42D93EF3153A01BA00E44664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93EF9153A01BA00E44664 /* SenTestingKit.framework in Frameworks */,
+				42D93EFA153A01BA00E44664 /* UIKit.framework in Frameworks */,
+				42D93EFB153A01BA00E44664 /* Foundation.framework in Frameworks */,
+				42D93EFC153A01BA00E44664 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42D93EC0153A01B900E44664 = {
+			isa = PBXGroup;
+			children = (
+				42D93ED7153A01B900E44664 /* PlaceList */,
+				42D93EFF153A01BA00E44664 /* PlaceListTests */,
+				42D93ECE153A01B900E44664 /* Frameworks */,
+				42D93ECC153A01B900E44664 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42D93ECC153A01B900E44664 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42D93ECB153A01B900E44664 /* PlaceList.app */,
+				42D93EF7153A01BA00E44664 /* PlaceListTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42D93ECE153A01B900E44664 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42D93ECF153A01B900E44664 /* UIKit.framework */,
+				42D93ED1153A01B900E44664 /* Foundation.framework */,
+				42D93ED3153A01B900E44664 /* CoreGraphics.framework */,
+				42D93ED5153A01B900E44664 /* CoreData.framework */,
+				42D93EF8153A01BA00E44664 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42D93ED7153A01B900E44664 /* PlaceList */ = {
+			isa = PBXGroup;
+			children = (
+				42D93EE0153A01BA00E44664 /* NTAppDelegate.h */,
+				42D93EE1153A01BA00E44664 /* NTAppDelegate.m */,
+				42D93EE6153A01BA00E44664 /* NTMasterViewController.h */,
+				42D93EE7153A01BA00E44664 /* NTMasterViewController.m */,
+				42D93EE9153A01BA00E44664 /* NTDetailViewController.h */,
+				42D93EEA153A01BA00E44664 /* NTDetailViewController.m */,
+				42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */,
+				42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */,
+				42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */,
+				42D93ED8153A01B900E44664 /* Supporting Files */,
+			);
+			path = PlaceList;
+			sourceTree = "<group>";
+		};
+		42D93ED8153A01B900E44664 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42D93ED9153A01B900E44664 /* PlaceList-Info.plist */,
+				42D93EDA153A01B900E44664 /* InfoPlist.strings */,
+				42D93EDD153A01B900E44664 /* main.m */,
+				42D93EDF153A01B900E44664 /* PlaceList-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42D93EFF153A01BA00E44664 /* PlaceListTests */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F05153A01BA00E44664 /* PlaceListTests.h */,
+				42D93F06153A01BA00E44664 /* PlaceListTests.m */,
+				42D93F00153A01BA00E44664 /* Supporting Files */,
+			);
+			path = PlaceListTests;
+			sourceTree = "<group>";
+		};
+		42D93F00153A01BA00E44664 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F01153A01BA00E44664 /* PlaceListTests-Info.plist */,
+				42D93F02153A01BA00E44664 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42D93ECA153A01B900E44664 /* PlaceList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42D93F0A153A01BA00E44664 /* Build configuration list for PBXNativeTarget "PlaceList" */;
+			buildPhases = (
+				42D93EC7153A01B900E44664 /* Sources */,
+				42D93EC8153A01B900E44664 /* Frameworks */,
+				42D93EC9153A01B900E44664 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaceList;
+			productName = PlaceList;
+			productReference = 42D93ECB153A01B900E44664 /* PlaceList.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42D93EF6153A01BA00E44664 /* PlaceListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42D93F0D153A01BA00E44664 /* Build configuration list for PBXNativeTarget "PlaceListTests" */;
+			buildPhases = (
+				42D93EF2153A01BA00E44664 /* Sources */,
+				42D93EF3153A01BA00E44664 /* Frameworks */,
+				42D93EF4153A01BA00E44664 /* Resources */,
+				42D93EF5153A01BA00E44664 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42D93EFE153A01BA00E44664 /* PBXTargetDependency */,
+			);
+			name = PlaceListTests;
+			productName = PlaceListTests;
+			productReference = 42D93EF7153A01BA00E44664 /* PlaceListTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42D93EC2153A01B900E44664 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NT;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Gargoyle Software";
+			};
+			buildConfigurationList = 42D93EC5153A01B900E44664 /* Build configuration list for PBXProject "PlaceList" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 42D93EC0153A01B900E44664;
+			productRefGroup = 42D93ECC153A01B900E44664 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42D93ECA153A01B900E44664 /* PlaceList */,
+				42D93EF6153A01BA00E44664 /* PlaceListTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42D93EC9153A01B900E44664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93EDC153A01B900E44664 /* InfoPlist.strings in Resources */,
+				42D93EEE153A01BA00E44664 /* NTMasterViewController.xib in Resources */,
+				42D93EF1153A01BA00E44664 /* NTDetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42D93EF4153A01BA00E44664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93F04153A01BA00E44664 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42D93EF5153A01BA00E44664 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42D93EC7153A01B900E44664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93EDE153A01B900E44664 /* main.m in Sources */,
+				42D93EE2153A01BA00E44664 /* NTAppDelegate.m in Sources */,
+				42D93EE5153A01BA00E44664 /* PlaceList.xcdatamodeld in Sources */,
+				42D93EE8153A01BA00E44664 /* NTMasterViewController.m in Sources */,
+				42D93EEB153A01BA00E44664 /* NTDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42D93EF2153A01BA00E44664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42D93F07153A01BA00E44664 /* PlaceListTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42D93EFE153A01BA00E44664 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42D93ECA153A01B900E44664 /* PlaceList */;
+			targetProxy = 42D93EFD153A01BA00E44664 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42D93EDA153A01B900E44664 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42D93EDB153A01B900E44664 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42D93EED153A01BA00E44664 /* en */,
+			);
+			name = NTMasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42D93EF0153A01BA00E44664 /* en */,
+			);
+			name = NTDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		42D93F02153A01BA00E44664 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42D93F03153A01BA00E44664 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42D93F08153A01BA00E44664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		42D93F09153A01BA00E44664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42D93F0B153A01BA00E44664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
+				INFOPLIST_FILE = "PlaceList/PlaceList-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		42D93F0C153A01BA00E44664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
+				INFOPLIST_FILE = "PlaceList/PlaceList-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		42D93F0E153A01BA00E44664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PlaceList.app/PlaceList";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
+				INFOPLIST_FILE = "PlaceListTests/PlaceListTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		42D93F0F153A01BA00E44664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PlaceList.app/PlaceList";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaceList/PlaceList-Prefix.pch";
+				INFOPLIST_FILE = "PlaceListTests/PlaceListTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42D93EC5153A01B900E44664 /* Build configuration list for PBXProject "PlaceList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42D93F08153A01BA00E44664 /* Debug */,
+				42D93F09153A01BA00E44664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42D93F0A153A01BA00E44664 /* Build configuration list for PBXNativeTarget "PlaceList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42D93F0B153A01BA00E44664 /* Debug */,
+				42D93F0C153A01BA00E44664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		42D93F0D153A01BA00E44664 /* Build configuration list for PBXNativeTarget "PlaceListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42D93F0E153A01BA00E44664 /* Debug */,
+				42D93F0F153A01BA00E44664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				42D93EE4153A01BA00E44664 /* PlaceList.xcdatamodel */,
+			);
+			currentVersion = 42D93EE4153A01BA00E44664 /* PlaceList.xcdatamodel */;
+			path = PlaceList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 42D93EC2153A01B900E44664 /* Project object */;
+}
