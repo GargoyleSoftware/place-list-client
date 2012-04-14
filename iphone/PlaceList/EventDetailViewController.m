@@ -1,27 +1,44 @@
 //
-//  NTDetailViewController.m
+//  EventDetailViewController.m
 //  PlaceList
 //
 //  Created by David Kay on 4/14/12.
 //  Copyright (c) 2012 Gargoyle Software. All rights reserved.
 //
 
-#import "NTDetailViewController.h"
+#import "EventDetailViewController.h"
 
-@interface NTDetailViewController ()
+#import "SongListViewController.h"
+
+@interface EventDetailViewController ()
 - (void)configureView;
 @end
 
-@implementation NTDetailViewController
+@implementation EventDetailViewController
 
 @synthesize detailItem = _detailItem;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
+
+@synthesize enterButton = _enterButton;
 
 - (void)dealloc
 {
   [_detailItem release];
   [_detailDescriptionLabel release];
-    [super dealloc];
+
+  [_enterButton release];
+
+  [super dealloc];
+}
+
+#pragma mark - UI callbacks
+
+- (IBAction)enterWasPressed:(id)sender
+{
+  SongListViewController *vc = [[SongListViewController alloc] init];
+  [self.navigationController pushViewController: vc
+				      animated: YES];
+  [vc release];
 }
 
 #pragma mark - Managing the detail item
@@ -65,11 +82,14 @@
   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark - Initialization
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-    self.title = NSLocalizedString(@"Detail", @"Detail");
+      //self.title = NSLocalizedString(@"Detail", @"Detail");
+      self.title = @"Party Detail";
     }
     return self;
 }

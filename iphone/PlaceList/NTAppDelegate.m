@@ -8,7 +8,7 @@
 
 #import "NTAppDelegate.h"
 
-#import "NTMasterViewController.h"
+#import "EventListViewController.h"
 
 @implementation NTAppDelegate
 
@@ -33,7 +33,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
 
-  NTMasterViewController *masterViewController = [[[NTMasterViewController alloc] initWithNibName:@"NTMasterViewController" bundle:nil] autorelease];
+  EventListViewController *masterViewController = [[[EventListViewController alloc] initWithNibName:@"EventListViewController" bundle:nil] autorelease];
   self.navigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
   masterViewController.managedObjectContext = self.managedObjectContext;
   self.window.rootViewController = self.navigationController;

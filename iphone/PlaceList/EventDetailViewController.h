@@ -1,5 +1,5 @@
 //
-//  NTDetailViewController.h
+//  EventDetailViewController.h
 //  PlaceList
 //
 //  Created by David Kay on 4/14/12.
@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NTDetailViewController : UIViewController
+@interface EventDetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
 
 @property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UIButton *enterButton;
+
+- (IBAction)enterWasPressed:(id)sender;
 
 @end

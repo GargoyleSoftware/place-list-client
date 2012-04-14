@@ -1,5 +1,5 @@
 //
-//  NTMasterViewController.h
+//  EventListViewController.h
 //  PlaceList
 //
 //  Created by David Kay on 4/14/12.
@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class NTDetailViewController;
+@class EventDetailViewController;
 @class NTWebSocket;
 
 #import <CoreData/CoreData.h>
 
-@interface NTMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface EventListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NTDetailViewController *detailViewController;
+@property (strong, nonatomic) EventDetailViewController *detailViewController;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

@@ -15,10 +15,10 @@
 		42D93EDE153A01B900E44664 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EDD153A01B900E44664 /* main.m */; };
 		42D93EE2153A01BA00E44664 /* NTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE1153A01BA00E44664 /* NTAppDelegate.m */; };
 		42D93EE5153A01BA00E44664 /* PlaceList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */; };
-		42D93EE8153A01BA00E44664 /* NTMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE7153A01BA00E44664 /* NTMasterViewController.m */; };
-		42D93EEB153A01BA00E44664 /* NTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EEA153A01BA00E44664 /* NTDetailViewController.m */; };
-		42D93EEE153A01BA00E44664 /* NTMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */; };
-		42D93EF1153A01BA00E44664 /* NTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */; };
+		42D93EE8153A01BA00E44664 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EE7153A01BA00E44664 /* EventListViewController.m */; };
+		42D93EEB153A01BA00E44664 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93EEA153A01BA00E44664 /* EventDetailViewController.m */; };
+		42D93EEE153A01BA00E44664 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEC153A01BA00E44664 /* EventListViewController.xib */; };
+		42D93EF1153A01BA00E44664 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93EEF153A01BA00E44664 /* EventDetailViewController.xib */; };
 		42D93EF9153A01BA00E44664 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93EF8153A01BA00E44664 /* SenTestingKit.framework */; };
 		42D93EFA153A01BA00E44664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ECF153A01B900E44664 /* UIKit.framework */; };
 		42D93EFB153A01BA00E44664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93ED1153A01B900E44664 /* Foundation.framework */; };
@@ -32,6 +32,8 @@
 		42D93F50153A0AEC00E44664 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F49153A0AEC00E44664 /* base64.c */; };
 		42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */; };
 		42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4F153A0AEC00E44664 /* SRWebSocket.m */; };
+		42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F61153A1F9400E44664 /* SongListViewController.m */; };
+		42D93F64153A1F9400E44664 /* SongListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F62153A1F9400E44664 /* SongListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +59,12 @@
 		42D93EE0153A01BA00E44664 /* NTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTAppDelegate.h; sourceTree = "<group>"; };
 		42D93EE1153A01BA00E44664 /* NTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTAppDelegate.m; sourceTree = "<group>"; };
 		42D93EE4153A01BA00E44664 /* PlaceList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaceList.xcdatamodel; sourceTree = "<group>"; };
-		42D93EE6153A01BA00E44664 /* NTMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTMasterViewController.h; sourceTree = "<group>"; };
-		42D93EE7153A01BA00E44664 /* NTMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTMasterViewController.m; sourceTree = "<group>"; };
-		42D93EE9153A01BA00E44664 /* NTDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTDetailViewController.h; sourceTree = "<group>"; };
-		42D93EEA153A01BA00E44664 /* NTDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTDetailViewController.m; sourceTree = "<group>"; };
-		42D93EED153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NTMasterViewController.xib; sourceTree = "<group>"; };
-		42D93EF0153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NTDetailViewController.xib; sourceTree = "<group>"; };
+		42D93EE6153A01BA00E44664 /* EventListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
+		42D93EE7153A01BA00E44664 /* EventListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
+		42D93EE9153A01BA00E44664 /* EventDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		42D93EEA153A01BA00E44664 /* EventDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
+		42D93EED153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EventListViewController.xib; sourceTree = "<group>"; };
+		42D93EF0153A01BA00E44664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EventDetailViewController.xib; sourceTree = "<group>"; };
 		42D93EF7153A01BA00E44664 /* PlaceListTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaceListTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42D93EF8153A01BA00E44664 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		42D93F01153A01BA00E44664 /* PlaceListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaceListTests-Info.plist"; sourceTree = "<group>"; };
@@ -81,6 +83,9 @@
 		42D93F4D153A0AEC00E44664 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		42D93F4E153A0AEC00E44664 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		42D93F4F153A0AEC00E44664 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		42D93F60153A1F9400E44664 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
+		42D93F61153A1F9400E44664 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
+		42D93F62153A1F9400E44664 /* SongListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,12 +206,15 @@
 		42D93F26153A044200E44664 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				42D93EE6153A01BA00E44664 /* NTMasterViewController.h */,
-				42D93EE7153A01BA00E44664 /* NTMasterViewController.m */,
-				42D93EE9153A01BA00E44664 /* NTDetailViewController.h */,
-				42D93EEA153A01BA00E44664 /* NTDetailViewController.m */,
-				42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */,
-				42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */,
+				42D93EE6153A01BA00E44664 /* EventListViewController.h */,
+				42D93EE7153A01BA00E44664 /* EventListViewController.m */,
+				42D93EE9153A01BA00E44664 /* EventDetailViewController.h */,
+				42D93EEA153A01BA00E44664 /* EventDetailViewController.m */,
+				42D93F60153A1F9400E44664 /* SongListViewController.h */,
+				42D93F61153A1F9400E44664 /* SongListViewController.m */,
+				42D93EEC153A01BA00E44664 /* EventListViewController.xib */,
+				42D93EEF153A01BA00E44664 /* EventDetailViewController.xib */,
+				42D93F62153A1F9400E44664 /* SongListViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -308,8 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D93EDC153A01B900E44664 /* InfoPlist.strings in Resources */,
-				42D93EEE153A01BA00E44664 /* NTMasterViewController.xib in Resources */,
-				42D93EF1153A01BA00E44664 /* NTDetailViewController.xib in Resources */,
+				42D93EEE153A01BA00E44664 /* EventListViewController.xib in Resources */,
+				42D93EF1153A01BA00E44664 /* EventDetailViewController.xib in Resources */,
+				42D93F64153A1F9400E44664 /* SongListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +356,13 @@
 				42D93EDE153A01B900E44664 /* main.m in Sources */,
 				42D93EE2153A01BA00E44664 /* NTAppDelegate.m in Sources */,
 				42D93EE5153A01BA00E44664 /* PlaceList.xcdatamodeld in Sources */,
-				42D93EE8153A01BA00E44664 /* NTMasterViewController.m in Sources */,
-				42D93EEB153A01BA00E44664 /* NTDetailViewController.m in Sources */,
+				42D93EE8153A01BA00E44664 /* EventListViewController.m in Sources */,
+				42D93EEB153A01BA00E44664 /* EventDetailViewController.m in Sources */,
 				42D93F2A153A046200E44664 /* NTWebSocket.m in Sources */,
 				42D93F50153A0AEC00E44664 /* base64.c in Sources */,
 				42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */,
 				42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */,
+				42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,20 +393,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		42D93EEC153A01BA00E44664 /* NTMasterViewController.xib */ = {
+		42D93EEC153A01BA00E44664 /* EventListViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				42D93EED153A01BA00E44664 /* en */,
 			);
-			name = NTMasterViewController.xib;
+			name = EventListViewController.xib;
 			sourceTree = "<group>";
 		};
-		42D93EEF153A01BA00E44664 /* NTDetailViewController.xib */ = {
+		42D93EEF153A01BA00E44664 /* EventDetailViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				42D93EF0153A01BA00E44664 /* en */,
 			);
-			name = NTDetailViewController.xib;
+			name = EventDetailViewController.xib;
 			sourceTree = "<group>";
 		};
 		42D93F02153A01BA00E44664 /* InfoPlist.strings */ = {

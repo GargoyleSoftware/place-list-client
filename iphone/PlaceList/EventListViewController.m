@@ -1,5 +1,5 @@
 //
-//  NTMasterViewController.m
+//  EventListViewController.m
 //  PlaceList
 //
 //  Created by David Kay on 4/14/12.
@@ -10,17 +10,17 @@
 //#import <SocketRocket/SRWebSocket.h>
 #import "SRWebSocket.h"
 
-#import "NTMasterViewController.h"
+#import "EventListViewController.h"
 
-#import "NTDetailViewController.h"
+#import "EventDetailViewController.h"
 #import "NTWebSocket.h"
 
 
-@interface NTMasterViewController ()
+@interface EventListViewController ()
   - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation NTMasterViewController
+@implementation EventListViewController
 
 @synthesize detailViewController = _detailViewController;
 @synthesize fetchedResultsController = __fetchedResultsController;
@@ -34,7 +34,9 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    self.title = NSLocalizedString(@"Master", @"Master");
+    //self.title = NSLocalizedString(@"Master", @"Master");
+    self.title = @"Events";
+    //self.navigationItem.title = @"Song List";
   }
   return self;
 }
@@ -57,8 +59,8 @@
   // Do any additional setup after loading the view, typically from a nib.
   self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-  //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
-  UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];
+  UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
+  //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];
   self.navigationItem.rightBarButtonItem = addButton;
 
 }
@@ -166,7 +168,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (!self.detailViewController) {
-    self.detailViewController = [[[NTDetailViewController alloc] initWithNibName:@"NTDetailViewController" bundle:nil] autorelease];
+    self.detailViewController = [[[EventDetailViewController alloc] initWithNibName:@"EventDetailViewController" bundle:nil] autorelease];
   }
   NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
   self.detailViewController.detailItem = object;
