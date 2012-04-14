@@ -157,6 +157,24 @@ $(document).ready(function() {
   // tabs();
   // Models.application.observe(Models.EVENT.ARGUMENTSCHANGED, tabs);
 
+  console.log("Hello world!");
+  Models.player.observe(Models.EVENT.CHANGE, function(event) {
+    //console.log("Something changed!");
+    //console.log("here's what changed: " + event);
+
+    var totalSeconds = Models.player.position / 1000;
+
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
+    console.log("current playback position: " + minutes + ":" + seconds);
+
+    var track = Models.player.track;
+    console.log("current track: " + track);
+
+    // TODO: Send these to the server
+
+  });
+
   function tabs() {
     var args = Models.application.arguments;
     //console.log("Argument: " + args[0]);
