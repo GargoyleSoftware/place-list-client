@@ -71,11 +71,10 @@
 					</object>
 					<object class="IBUIButton" id="681449975">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{108, 380}, {105, 37}}</string>
+						<int key="NSvFlags">296</int>
+						<string key="NSFrame">{{108, 328}, {105, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

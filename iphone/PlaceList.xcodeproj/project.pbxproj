@@ -34,6 +34,8 @@
 		42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4F153A0AEC00E44664 /* SRWebSocket.m */; };
 		42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F61153A1F9400E44664 /* SongListViewController.m */; };
 		42D93F64153A1F9400E44664 /* SongListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F62153A1F9400E44664 /* SongListViewController.xib */; };
+		42D93F75153A2AC700E44664 /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F74153A2AC700E44664 /* SongCell.m */; };
+		42D93F77153A2AD300E44664 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F76153A2AD300E44664 /* SongCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,9 @@
 		42D93F60153A1F9400E44664 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
 		42D93F61153A1F9400E44664 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
 		42D93F62153A1F9400E44664 /* SongListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongListViewController.xib; sourceTree = "<group>"; };
+		42D93F73153A2AC700E44664 /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
+		42D93F74153A2AC700E44664 /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
+		42D93F76153A2AD300E44664 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,10 +160,11 @@
 		42D93ED7153A01B900E44664 /* PlaceList */ = {
 			isa = PBXGroup;
 			children = (
+				42D93F26153A044200E44664 /* ViewControllers */,
+				42D93F71153A2AA100E44664 /* Views */,
 				42D93F27153A044800E44664 /* WebSockets */,
 				42D93EE0153A01BA00E44664 /* NTAppDelegate.h */,
 				42D93EE1153A01BA00E44664 /* NTAppDelegate.m */,
-				42D93F26153A044200E44664 /* ViewControllers */,
 				42D93EE3153A01BA00E44664 /* PlaceList.xcdatamodeld */,
 				42D93ED8153A01B900E44664 /* Supporting Files */,
 			);
@@ -243,6 +249,16 @@
 			path = Libraries/SocketRocket/SocketRocket;
 			sourceTree = "<group>";
 		};
+		42D93F71153A2AA100E44664 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42D93F73153A2AC700E44664 /* SongCell.h */,
+				42D93F74153A2AC700E44664 /* SongCell.m */,
+				42D93F76153A2AD300E44664 /* SongCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,6 +335,7 @@
 				42D93EEE153A01BA00E44664 /* EventListViewController.xib in Resources */,
 				42D93EF1153A01BA00E44664 /* EventDetailViewController.xib in Resources */,
 				42D93F64153A1F9400E44664 /* SongListViewController.xib in Resources */,
+				42D93F77153A2AD300E44664 /* SongCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +380,7 @@
 				42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */,
 				42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */,
 				42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */,
+				42D93F75153A2AC700E44664 /* SongCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,4 +10,6 @@
 
 @interface SongListViewController : UITableViewController
 
+@property (nonatomic, retain) NSMutableArray *songs;
+
 @end

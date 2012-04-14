@@ -8,11 +8,15 @@
 
 #import "SongListViewController.h"
 
+#import "SongCell.h"
+
 @interface SongListViewController ()
 
 @end
 
 @implementation SongListViewController
+
+@synthesize songs = _songs;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -20,6 +24,10 @@
     if (self) {
       //self.navigationItem.title = @"Song List";
       self.title = @"Song List";
+      self.songs = [NSMutableArray array];
+      [self.songs addObject: @"What is Love"];
+      [self.songs addObject: @"What's my age again"];
+      [self.songs addObject: @"1976"];
     }
     return self;
 }
@@ -51,26 +59,42 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.songs.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 64;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    
-    return cell;
+  static NSString *CellIdentifier = @"SongCell";
+  SongCell *cell = (SongCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+  if (cell == nil) {
+    //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    //cell = [[[SongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    //cell = [SongCell cellFromNib];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SongCell" owner:self options:nil];
+    cell = (SongCell *)[nib objectAtIndex:0];
+  }
+  
+  // Configure the cell...
+
+  NSUInteger row = indexPath.row;
+  //cell.textLabel.text = @"Hello";
+  //cell.textLabel.text = [self.songs objectAtIndex: row];
+  
+  cell.songLabel.text = [self.songs objectAtIndex: row];
+
+  return cell;
 }
 
 /*
