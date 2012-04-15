@@ -17,20 +17,6 @@
 	"BundleIdentifier": "coca",
 	"BundleType": "Application",
 	"BundleVersion": "0.1",
-	"DefaultTabs": [
-		{
-			"arguments": "index",
-			"title": {
-				"en": "Home"
-			}
-		},
-		{
-			"arguments": "vote",
-			"title": {
-				"en": "Voting"
-			}
-        }
-	],
 	"RequiredInterface": 1,
 	"RequiredPermissions": [
 	    "http://api.twitter.com",
