@@ -424,6 +424,11 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
-
+	$("#add-song").click(function () {
+		$("#event-search").fadeIn("fast");
+	});
+		$("#finsihed-adding").click(function () {
+			$("#event-search").fadeOut("fast");
+	});
 
 });

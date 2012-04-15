@@ -80,9 +80,16 @@ header h1 a, header h1 a:hover{
 	width:280px;
 }
 #event-search{
-	
+	background-image:url('../img/dots.png');
+	border-radius:8px;
+	top:0; bottom: 0; left:0;
+	padding:10px;
+	position: fixed;
+	margin:55px 0 10px 10px;
+	width:280px;
+	z-index: 20;
 }
-#event-content{
+#event-content, #search-content{
 	background-color:#fff;
 	border-radius:4px;
 	box-shadow:0 1px 1px rgba(0,0,0,0.3);
