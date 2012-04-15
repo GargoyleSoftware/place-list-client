@@ -13,7 +13,8 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $eventList = $("#list-events");
   var $trackList = $("#tracks");
-  var $searchList = $("#search-content");
+  var $searchContent = $("#search-content");
+  var $searchList = $("#search-list");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
@@ -93,13 +94,14 @@ $(document).ready(function() {
   };
 
   var doSearch = function (searchQuery) {
+    $searchList.empty();
+
     var search = new Models.Search(searchQuery);
 
     search.localResults = Models.LOCALSEARCHRESULTS.APPEND;
     search.observe(Models.EVENT.CHANGE, function() {
       $('div#event-content').hide();
-      $searchList.show();
-      $searchList.clear();
+      $searchContent.show();
 
       search.tracks.forEach(function(track) {
         console.log(track.name);
