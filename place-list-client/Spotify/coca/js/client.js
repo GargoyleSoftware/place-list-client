@@ -5,12 +5,22 @@ $(document).ready(function() {
   var Models = Spotify.require("sp://import/scripts/api/models");
   var trackTemplate = $("#track-template").html();
   var scores = {};
-  
+
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
+
+  conn.onopen = function(event) {
+    console.log({"open": event});
+    conn.send(JSON.stringify({
+      "cmd": "login",
+      "params": {
+        "user_id": Models.session.anonymousUserID
+      }
+    }));
+  };
 
   conn.onclose = function(event) {
     console.log({"close": event});
@@ -122,7 +132,7 @@ $(document).ready(function() {
   var reorderList = function(item){
     var items = $('.track span').get();
     //sort list
-    items.sort(function(a,b){ 
+    items.sort(function(a,b){
       var keyA = parseInt($(a).text());
       var keyB = parseInt($(b).text());
 
@@ -148,7 +158,7 @@ $(document).ready(function() {
         }
         else{
           $('.song_list li:nth-child('+i+')').after(element);
-        }         
+        }
         return false;
       }
     });
