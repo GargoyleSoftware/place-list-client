@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define IS_NULL(x) (x == nil || [(x) isKindOfClass:[NSNull class]])
+#define NOT_NULL(x) ((x) && ![(x) isKindOfClass:[NSNull class]])
+#define SET_IF_NOT_NULL(y, z) {if (NOT_NULL(z)) { y = z; } }
+
+
 //RGB color macro
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

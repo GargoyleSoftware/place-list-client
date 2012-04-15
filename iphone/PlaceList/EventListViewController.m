@@ -6,20 +6,16 @@
 //  Copyright (c) 2012 Gargoyle Software. All rights reserved.
 //
 
-//#import <SocketRocket/SRSocketRocket.h>
-//#import <SocketRocket/SRWebSocket.h>
-#import "SRWebSocket.h"
-
 #import "EventListViewController.h"
 
 #import "EventDetailViewController.h"
 #import "Macros.h"
 #import "NTWebSocket.h"
 #import "NTAppDelegate.h"
+#import "NetworkManager.h"
 
 
 @interface EventListViewController ()
-  - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation EventListViewController
@@ -28,7 +24,6 @@
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
-@synthesize webSocket = _webSocket;
 @synthesize events = _events;
 
 #pragma mark - Initialization
@@ -64,16 +59,19 @@
   //self.navigationItem.leftBarButtonItem = self.editButtonItem;
   //self.navigationItem.leftBarButtonItem = backButton;
 
-  UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
+  //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
   //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];
   //self.navigationItem.rightBarButtonItem = addButton;
 
+  // Just in case
+  [[NetworkManager sharedInstance] getFacebookId];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
   [self getAllAttendingEvents];
+  [[NetworkManager sharedInstance] closeSocketConnection];
 
 }
 
@@ -172,13 +170,6 @@
   [self.navigationController popViewControllerAnimated: YES];
 }
 
-- (void)openSocketConnection:(id)sender
-{
-  NTWebSocket* webSocket = [[NTWebSocket alloc] init];
-  [webSocket startWebSocket];
-  self.webSocket = webSocket;
-}
-
 - (void)insertNewObject:(id)sender
 {
   NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
@@ -239,11 +230,14 @@
   if (!self.detailViewController) {
     self.detailViewController = [[[EventDetailViewController alloc] initWithNibName:@"EventDetailViewController" bundle:nil] autorelease];
   }
-  NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-  self.detailViewController.detailItem = object;
+
+  NSDictionary *event = [self.events objectAtIndex: indexPath.row];
+
+  [[NetworkManager sharedInstance] openSocketConnectionWithEvent: [event objectForKey: @"id"]];
+
+  self.detailViewController.detailItem = event;
   [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
-
 
 
 @end

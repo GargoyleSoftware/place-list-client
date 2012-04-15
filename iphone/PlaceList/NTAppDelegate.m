@@ -10,6 +10,7 @@
 
 #import "EventListViewController.h"
 #import "Macros.h"
+#import "NetworkManager.h"
 
 @interface NTAppDelegate ()
 
@@ -233,6 +234,8 @@
     [defaults setObject:[_facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[_facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+
+    [[NetworkManager sharedInstance] getFacebookId];
 }
 
 - (void)fbDidLogout {

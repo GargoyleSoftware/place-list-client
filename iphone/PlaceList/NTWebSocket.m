@@ -10,9 +10,10 @@
 
 #import "NTWebSocket.h"
 
+#import "Macros.h"
 #import "SongModel.h"
 
-#define SOCKET_URL @"ws://localhost:8080/socket" 
+#define SOCKET_URL @"ws://jordanorelli.com:8080/socket" 
 
 @interface NTWebSocket ()
 
@@ -31,26 +32,13 @@
   self = [super init];
   if (self) 
   {
-    NSURLRequest *req = [NSURLRequest requestWithURL: 
-      [NSURL URLWithString: SOCKET_URL]
-    ];
-    NSLog(@"Opening socket with URL: %@", [req URL]);
-    self.ws = [[SRWebSocket alloc] initWithURLRequest: req];
-    self.ws.delegate = self;
+     
   }
   return self;
 
 }
 
 #pragma mark - DEMO Methods
-
-- (void) startWebSocket
-{
-  [self open];
-
-  ////continue processing other stuff
-  //[self send: @"Hello World"];
-}
 
 #pragma mark - Public Methods
 
@@ -61,6 +49,13 @@
 
 - (void)open
 {
+  NSURLRequest *req = [NSURLRequest requestWithURL: 
+                       [NSURL URLWithString: SOCKET_URL]
+                       ];
+  NSLog(@"Opening socket with URL: %@", [req URL]);
+
+  self.ws = [[SRWebSocket alloc] initWithURLRequest: req];
+  self.ws.delegate = self;
   [self.ws open];
 }
 
@@ -76,17 +71,21 @@
 
   //Hooray! I got a message to print.
   NSLog(@"Did receive message: %@", message);
+  NSString *example = @"{\"cmd\":\"event_info\",\"params\":{\"event_id\":\"365778960128138\",\"user_id\":\"1332960041\",\"upcoming\":null,\"history\":null}}";
   
-  NSDictionary *json = [message JSONValue];
+  //NSDictionary *json = [message JSONValue];
+  NSDictionary *json = [example JSONValue];
   NSString *command = [json objectForKey: @"cmd"];
-  NSString *rawParams = [json objectForKey: @"params"];
-  NSDictionary *params = [rawParams JSONValue];
+  NSDictionary *params = [json objectForKey: @"params"];
 
+  
   if ([command isEqualToString: @"event_info"]) {
     NSDictionary *upcoming = [params objectForKey: @"upcoming"];
-    for (NSString *trackId in upcoming) {
+    if (NOT_NULL(upcoming)) {
+    for (NSString *trackId in [upcoming allKeys]) {
       NSInteger points = [[upcoming objectForKey: trackId] length];
       [[SongModel sharedInstance] addTrackId: trackId points: points];
+    }
     }
   } else if ([command isEqualToString: @"add_track"]) {
     NSString *trackId = [params objectForKey: @"track_id"];

@@ -29,9 +29,6 @@
 		42D93F2C153A066500E44664 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F2B153A066500E44664 /* CFNetwork.framework */; };
 		42D93F2E153A066B00E44664 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F2D153A066B00E44664 /* Security.framework */; };
 		42D93F43153A097800E44664 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D93F42153A097800E44664 /* libicucore.dylib */; };
-		42D93F50153A0AEC00E44664 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F49153A0AEC00E44664 /* base64.c */; };
-		42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */; };
-		42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F4F153A0AEC00E44664 /* SRWebSocket.m */; };
 		42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F61153A1F9400E44664 /* SongListViewController.m */; };
 		42D93F64153A1F9400E44664 /* SongListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F62153A1F9400E44664 /* SongListViewController.xib */; };
 		42D93F75153A2AC700E44664 /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F74153A2AC700E44664 /* SongCell.m */; };
@@ -70,6 +67,11 @@
 		42FE6CE3153A8815000244FC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6CA6153A8814000244FC /* SBJsonParser.m */; };
 		42FE6CE4153A8815000244FC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6CA8153A8814000244FC /* SBJsonWriter.m */; };
 		42FE6D06153AB16F000244FC /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D05153AB16F000244FC /* SongModel.m */; };
+		42FE6D09153AB90F000244FC /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D08153AB90F000244FC /* NetworkManager.m */; };
+		42FE6D0C153ABB7C000244FC /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D0B153ABB7B000244FC /* UserHelper.m */; };
+		42FE6D22153AC330000244FC /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D1B153AC330000244FC /* base64.c */; };
+		42FE6D23153AC330000244FC /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D1E153AC330000244FC /* NSData+SRB64Additions.m */; };
+		42FE6D24153AC330000244FC /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D21153AC330000244FC /* SRWebSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,13 +121,6 @@
 		42D93F2B153A066500E44664 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		42D93F2D153A066B00E44664 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		42D93F42153A097800E44664 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		42D93F49153A0AEC00E44664 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
-		42D93F4A153A0AEC00E44664 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		42D93F4B153A0AEC00E44664 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
-		42D93F4D153A0AEC00E44664 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		42D93F4E153A0AEC00E44664 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		42D93F4F153A0AEC00E44664 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		42D93F60153A1F9400E44664 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
 		42D93F61153A1F9400E44664 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
 		42D93F62153A1F9400E44664 /* SongListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongListViewController.xib; sourceTree = "<group>"; };
@@ -194,6 +189,17 @@
 		42FE6CA8153A8814000244FC /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		42FE6D04153AB16F000244FC /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
 		42FE6D05153AB16F000244FC /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
+		42FE6D07153AB90F000244FC /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		42FE6D08153AB90F000244FC /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		42FE6D0A153ABB7B000244FC /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
+		42FE6D0B153ABB7B000244FC /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
+		42FE6D1B153AC330000244FC /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		42FE6D1C153AC330000244FC /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		42FE6D1D153AC330000244FC /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		42FE6D1E153AC330000244FC /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		42FE6D1F153AC330000244FC /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		42FE6D20153AC330000244FC /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		42FE6D21153AC330000244FC /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,9 +316,9 @@
 		42D93F18153A036A00E44664 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				42FE6D1A153AC330000244FC /* SocketRocket */,
 				42FE6C62153A8814000244FC /* Facebook */,
 				42D93F78153A307100E44664 /* AFNetworking */,
-				42D93F48153A0AEC00E44664 /* SocketRocket */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -340,21 +346,6 @@
 				42D93F29153A046200E44664 /* NTWebSocket.m */,
 			);
 			name = WebSockets;
-			sourceTree = "<group>";
-		};
-		42D93F48153A0AEC00E44664 /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				42D93F49153A0AEC00E44664 /* base64.c */,
-				42D93F4A153A0AEC00E44664 /* base64.h */,
-				42D93F4B153A0AEC00E44664 /* NSData+SRB64Additions.h */,
-				42D93F4C153A0AEC00E44664 /* NSData+SRB64Additions.m */,
-				42D93F4D153A0AEC00E44664 /* SocketRocket-Prefix.pch */,
-				42D93F4E153A0AEC00E44664 /* SRWebSocket.h */,
-				42D93F4F153A0AEC00E44664 /* SRWebSocket.m */,
-			);
-			name = SocketRocket;
-			path = Libraries/SocketRocket/SocketRocket;
 			sourceTree = "<group>";
 		};
 		42D93F71153A2AA100E44664 /* Views */ = {
@@ -425,7 +416,11 @@
 		42FE6C55153A776E000244FC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				42FE6D0A153ABB7B000244FC /* UserHelper.h */,
+				42FE6D0B153ABB7B000244FC /* UserHelper.m */,
 				42FE6C57153A777E000244FC /* Macros.h */,
+				42FE6D07153AB90F000244FC /* NetworkManager.h */,
+				42FE6D08153AB90F000244FC /* NetworkManager.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -496,6 +491,21 @@
 				42FE6D05153AB16F000244FC /* SongModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		42FE6D1A153AC330000244FC /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				42FE6D1B153AC330000244FC /* base64.c */,
+				42FE6D1C153AC330000244FC /* base64.h */,
+				42FE6D1D153AC330000244FC /* NSData+SRB64Additions.h */,
+				42FE6D1E153AC330000244FC /* NSData+SRB64Additions.m */,
+				42FE6D1F153AC330000244FC /* SocketRocket-Prefix.pch */,
+				42FE6D20153AC330000244FC /* SRWebSocket.h */,
+				42FE6D21153AC330000244FC /* SRWebSocket.m */,
+			);
+			name = SocketRocket;
+			path = Libraries/SocketRocket/SocketRocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,9 +653,6 @@
 				42D93EE8153A01BA00E44664 /* EventListViewController.m in Sources */,
 				42D93EEB153A01BA00E44664 /* EventDetailViewController.m in Sources */,
 				42D93F2A153A046200E44664 /* NTWebSocket.m in Sources */,
-				42D93F50153A0AEC00E44664 /* base64.c in Sources */,
-				42D93F51153A0AEC00E44664 /* NSData+SRB64Additions.m in Sources */,
-				42D93F52153A0AEC00E44664 /* SRWebSocket.m in Sources */,
 				42D93F63153A1F9400E44664 /* SongListViewController.m in Sources */,
 				42D93F75153A2AC700E44664 /* SongCell.m in Sources */,
 				42D93F8E153A307100E44664 /* AFHTTPClient.m in Sources */,
@@ -670,6 +677,10 @@
 				42FE6CE3153A8815000244FC /* SBJsonParser.m in Sources */,
 				42FE6CE4153A8815000244FC /* SBJsonWriter.m in Sources */,
 				42FE6D06153AB16F000244FC /* SongModel.m in Sources */,
+				42FE6D09153AB90F000244FC /* NetworkManager.m in Sources */,
+				42FE6D22153AC330000244FC /* base64.c in Sources */,
+				42FE6D23153AC330000244FC /* NSData+SRB64Additions.m in Sources */,
+				42FE6D24153AC330000244FC /* SRWebSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D93F07153A01BA00E44664 /* PlaceListTests.m in Sources */,
+				42FE6D0C153ABB7C000244FC /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
