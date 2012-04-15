@@ -44,6 +44,11 @@
   }
 }
 
+- (void)toggleSelected:(UIButton *)sender
+{
+  sender.selected = ! sender.selected;
+}
+
 #pragma mark - UI Callbacks
 
 - (IBAction)downVoteWasPressed:(id)sender
@@ -53,7 +58,13 @@
 
 - (IBAction)upVoteWasPressed:(id)sender
 {
-  [self voteWasPressed: YES];
+  UIButton *button = (UIButton *)sender;
+  [self toggleSelected: button];
+  if (button.selected) {
+    [self voteWasPressed: YES];
+  } else {
+    [self voteWasPressed: NO];
+  }
 }
 
 

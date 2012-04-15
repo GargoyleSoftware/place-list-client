@@ -5,19 +5,31 @@ $(document).ready(function() {
   var Models = Spotify.require("sp://import/scripts/api/models");
   var trackTemplate = $("#track-template").html();
   var scores = {};
-
+  var eventId = 1;
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
 
+  var LIKE_POWER = {
+    "neutral": 0,
+    "like": 1,
+    "love": 2
+  };
+
+  var EVENT_ID = "0";
+
+  var getUserId = function() {
+    return Models.session.anonymousUserID;
+  }
+
   conn.onopen = function(event) {
     console.log({"open": event});
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
-        "user_id": Models.session.anonymousUserID
+        "user_id": getUserId()
       }
     }));
   };
@@ -30,7 +42,7 @@ $(document).ready(function() {
     console.log(event);
     var obj = JSON.parse(event.data);
     console.log(obj);
-    addTrack(obj.params.trackname);
+    addTrack(obj["track_id"]);
   };
 
   // Given an input element and a button element, disables the button if the
@@ -47,7 +59,7 @@ $(document).ready(function() {
 
   var notifyNewTrack = function(track) {
     conn.send(JSON.stringify({
-      "cmd": "new_track",
+      "cmd": "start_track",
       "params": {
         "track": track
       }
@@ -56,7 +68,7 @@ $(document).ready(function() {
 
   var notifyNewPosition = function(position) {
     conn.send(JSON.stringify({
-      "cmd": "new_track",
+      "cmd": "new_position",
       "params": {
         "track": track,
         "position": position
@@ -64,33 +76,23 @@ $(document).ready(function() {
     }));
   }
 
-  var upvote = function(id) {
+  var upvote = function(id, power) {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
-        "track_id": id
+        "event_id": EVENT_ID,
+        "track_id": id,
+        "user_id": getUserId(),
+        "power": power
       }
     }));
   };
-
-  var downvote = function(id) {
-    conn.send(JSON.stringify({
-      "cmd": "downvote_track",
-      "params": {
-        "track_ud": id
-      }
-    }));
-  }
 
   var mkUpvoteHandler = function(id) {
+    console.log("Making upvote handler");
     return function(event) {
       console.log("Upvote " + id);
-    };
-  };
-
-  var mkDownvoteHandler = function(id) {
-    return function(event) {
-      console.log("Downvote " + id);
+      upvote(id, LIKE_POWER.like);
     };
   };
 
@@ -100,7 +102,6 @@ $(document).ready(function() {
     var id = stripTrackId(track.data.uri);
     $trackList.append(renderTrack(track));
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
-    $("#downvote-track-" + id).click(mkDownvoteHandler(id));
     console.log(track);
   }
 
@@ -126,7 +127,8 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "add_track",
       "params": {
-        "trackname": trackName
+        "track_id": trackName,
+        "user_id": "0"
       }
     }));
   });

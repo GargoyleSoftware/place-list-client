@@ -13,6 +13,7 @@
 #import "EventListViewController.h"
 
 #import "EventDetailViewController.h"
+#import "Macros.h"
 #import "NTWebSocket.h"
 
 
@@ -57,7 +58,9 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
-  self.navigationItem.leftBarButtonItem = self.editButtonItem;
+  //UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-default"] style:UIBarButtonItemStylePlain target:self action:@selector(popViewController:)];
+  //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+  //self.navigationItem.leftBarButtonItem = backButton;
 
   UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
   //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];
@@ -79,6 +82,11 @@
 #pragma mark - Public Methods
 
 #pragma mark - UI Callbacks
+
+- (void)popViewController:(id)sender
+{
+  [self.navigationController popViewControllerAnimated: YES];
+}
 
 - (void)openSocketConnection:(id)sender
 {
