@@ -223,6 +223,7 @@ $(document).ready(function() {
       console.log(track);
       sortTracks();
     });
+  };
 
   // given a spotify track ID (not uri), gets the dom element for that track,
   // if it exists.
