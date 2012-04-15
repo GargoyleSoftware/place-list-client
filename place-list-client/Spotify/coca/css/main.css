@@ -134,7 +134,7 @@ box-shadow:0 1px 0 #fff;
 height: 50px;
 width:50px;
 }
-/*#playlist li:nth-child(3){
+#playlist li #current-play{
 	background: #bad3e3;
 	background: -moz-linear-gradient(top,  #bad3e3 0%, #a7becc 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bad3e3), color-stop(100%,#a7becc));
@@ -146,9 +146,11 @@ width:50px;
 	border: 1px solid #7697AB;
 	box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 2px rgba(0,0,0,0.6);
 }
+/*
 #playlist li:nth-child(1), #playlist li:nth-child(2){
 	opacity:0.3;
-}*/
+}
+*/
 #playlist .art{
 	margin:0 10px 0 0;
 	vertical-align: top;
