@@ -26,15 +26,9 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-      //self.navigationItem.title = @"Song List";
       self.title = @"Song List";
 
       self.model = [SongModel sharedInstance];
-
-      //self.songs = [NSMutableArray array];
-      //[self.songs addObject: @"What is Love"];
-      //[self.songs addObject: @"What's my age again"];
-      //[self.songs addObject: @"1976"];
     }
     return self;
 }
@@ -43,9 +37,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
     UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWasPressed:)] autorelease];
     self.navigationItem.rightBarButtonItem = addButton;
     
@@ -106,12 +97,9 @@
   // Configure the cell...
 
   NSUInteger row = indexPath.row;
-  //cell.textLabel.text = @"Hello";
-  //cell.textLabel.text = [self.songs objectAtIndex: row];
     
   NSString *songId = [[self.model sortedKeys] objectAtIndex: row];
   
-  //cell.songLabel.text = [self.songs objectAtIndex: row];
   cell.songLabel.text = songId;
   cell.songImageView.image = [UIImage imageNamed: @"music-note"];
 

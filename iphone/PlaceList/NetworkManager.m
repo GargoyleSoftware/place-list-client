@@ -52,7 +52,7 @@ static NetworkManager * gNetworkManager;
  * Called just before the request is sent to the server.
  */
 - (void)requestLoading:(FBRequest *)request {
-  
+
   NSLog(@"requestLoading");
 
 }
@@ -113,13 +113,13 @@ static NetworkManager * gNetworkManager;
 
 - (NSString *)loadUserId
 {
-  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; 
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   return [userDefaults objectForKey: @"username"];
 }
 
 - (void)saveUserId:(NSString *)userId
 {
-  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults]; 
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   [userDefaults setObject: userId forKey: @"username"];
   [userDefaults synchronize];
 }
@@ -138,13 +138,13 @@ static NetworkManager * gNetworkManager;
     return NO;
   } else {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-      facebookId , @"user_id"  , 
-      eventId    , @"event_id" , 
+      facebookId , @"user_id"  ,
+      eventId    , @"event_id" ,
     nil];
 
     NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
-      @"login" , @"cmd"    , 
-      params   , @"params" , 
+      @"login" , @"cmd"    ,
+      params   , @"params" ,
       nil];
 
     while (self.webSocket.ws.readyState != SR_OPEN) {
@@ -163,26 +163,17 @@ static NetworkManager * gNetworkManager;
 - (void)upvoteTrack:(NSString *)trackId
 	     remove:(BOOL)remove
 {
-  //{
-  //  "cmd": "upvote_track",
-  //    "params": {
-  //      "event_id": self.eventId,
-  //      "track_id": id,
-  //      "user_id": getUserId(),
-  //      "remove": true
-  //    }
-  //}
 
   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-    [self loadUserId]                 , @"user_id"  , 
-    self.eventId                      , @"event_id" , 
-    trackId                           , @"track_id" , 
-    [NSNumber numberWithBool: remove] , @"remove"   , 
+    [self loadUserId]                 , @"user_id"  ,
+    self.eventId                      , @"event_id" ,
+    trackId                           , @"track_id" ,
+    [NSNumber numberWithBool: remove] , @"remove"   ,
     nil];
 
   NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
-    @"upvote_track" , @"cmd"    , 
-    params   , @"params" , 
+    @"upvote_track" , @"cmd"    ,
+    params   , @"params" ,
     nil];
 
   [self.webSocket send: [jsonDict JSONRepresentation]];
