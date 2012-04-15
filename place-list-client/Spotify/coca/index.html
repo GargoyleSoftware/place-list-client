@@ -21,11 +21,14 @@
       <img src="{{track.album.cover}}" class="art"/>
       <div class="playlist-detail">
         <span class="artist">
-          {{#track.artists}}
-          <a href="">{{name}}</a>
-          {{/track.artists}}
+			{{track.name}}
         </span>
-        <span class="album"><a href="">{{track.album.name}}</a> {{track.name}}</span>
+		<span class="album">
+			{{#track.artists}}
+			<a href="">{{name}}</a>
+			{{/track.artists}} - 
+			<a href="">{{track.album.name}}</a>
+		</span>
       </div><!--/playlist-detail-->
       <div class="vote">
 		<span class="count">XX</span>
