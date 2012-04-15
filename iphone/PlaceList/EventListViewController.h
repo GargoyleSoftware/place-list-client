@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "FBConnect.h"
 
 @class EventDetailViewController;
 @class NTWebSocket;
 
-#import <CoreData/CoreData.h>
 
-@interface EventListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface EventListViewController : UITableViewController <NSFetchedResultsControllerDelegate, FBRequestDelegate>
 
 @property (strong, nonatomic) EventDetailViewController *detailViewController;
 
@@ -21,5 +22,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) NTWebSocket *webSocket;
+
+@property (strong, nonatomic) NSArray *events;
 
 @end

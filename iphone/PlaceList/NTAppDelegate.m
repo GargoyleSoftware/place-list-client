@@ -196,7 +196,11 @@
   }
 
   if (![_facebook isSessionValid]) {
-    [_facebook authorize:nil];
+    NSArray *permissions = [[NSArray alloc] initWithObjects:
+                            @"user_events",
+                            nil];
+    [_facebook authorize:permissions];
+    [permissions release];
   }
 }
 
