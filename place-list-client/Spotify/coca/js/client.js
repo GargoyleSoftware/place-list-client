@@ -83,15 +83,30 @@ $(document).ready(function() {
   }
 
   var upvote = function(id, power) {
-    conn.send(JSON.stringify({
-      "cmd": "upvote_track",
-      "params": {
-        "event_id": eventId,
-        "track_id": id,
-        "user_id": getUserId(),
-        "power": power
-      }
-    }));
+    var $hand = $("#upvote-track-" + id);
+    if($hand.hasClass("like")){
+      $hand.removeClass("like");
+      conn.send(JSON.stringify({
+        "cmd": "upvote_track",
+        "params": {
+          "event_id": eventId,
+          "track_id": id,
+          "user_id": getUserId(),
+          "remove": true
+        }
+      }));
+    } else {
+      $hand.addClass("like");
+      conn.send(JSON.stringify({
+        "cmd": "upvote_track",
+        "params": {
+          "event_id": eventId,
+          "track_id": id,
+          "user_id": getUserId(),
+          "remove": false
+        }
+      }));
+    }
   };
 
   var mkUpvoteHandler = function(id) {
