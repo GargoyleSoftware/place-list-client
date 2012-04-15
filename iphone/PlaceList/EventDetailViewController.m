@@ -45,13 +45,13 @@
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
-        [_detailItem release];
-        _detailItem = [newDetailItem retain];
+  if (_detailItem != newDetailItem) {
+    [_detailItem release];
+    _detailItem = [newDetailItem retain];
 
-        // Update the view.
-        [self configureView];
-    }
+    // Update the view.
+    [self configureView];
+  }
 }
 
 - (void)configureView

@@ -15,7 +15,10 @@
 
 @property (nonatomic, readonly, retain) SRWebSocket* ws;
 
-- (void) startWebSocket;
+- (void)send:(id)data;
+- (void)open;
+- (void)close;
+
 
 @end
 

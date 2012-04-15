@@ -11,7 +11,7 @@
 #import "FBConnect.h"
 
 @class EventDetailViewController;
-@class NTWebSocket;
+//@class NTWebSocket;
 
 
 @interface EventListViewController : UITableViewController <NSFetchedResultsControllerDelegate, FBRequestDelegate>
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (strong, nonatomic) NTWebSocket *webSocket;
+//@property (strong, nonatomic) NTWebSocket *webSocket;
 
 @property (strong, nonatomic) NSArray *events;
 

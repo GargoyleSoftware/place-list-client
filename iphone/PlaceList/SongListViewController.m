@@ -39,8 +39,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWasPressed:)] autorelease];
+    self.navigationItem.rightBarButtonItem = addButton;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -55,6 +55,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view data source
+
+- (void)addWasPressed:(id)sender
+{
+  
+
 }
 
 #pragma mark - Table view data source
