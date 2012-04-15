@@ -223,6 +223,7 @@ $(document).ready(function() {
       {
       "track": track.data, 
       "name": track.name, 
+      "artists": track.artists,
       "id": stripTrackId(track.data.uri)
       });
     return raw;
