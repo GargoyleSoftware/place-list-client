@@ -74,6 +74,23 @@ $(document).ready(function() {
         }
         sortTracks();
         break;
+      case "start_track":
+        console.log("Host started a new track");
+        console.log(obj);
+        if(fbEvent.id == obj.params.event_id) {
+          console.log("It's in our room!");
+          var $track = getTrackElem(obj.params.track_id);
+          console.log($track);
+          if(!!$track) {
+            console.log("adding track because it's not on the list but the host played it anyway.");
+            addTrack("spotify:track:" + obj.params.track_id, new Array(99));
+          }
+          sortTracks();
+          // getTrackElem(obj.params.track_id).addClass("current-play");
+        } else {
+          console.log("Different room.  Your room: " + fbEvent.id + " track event :" + obj.params.event_id);
+        }
+        break;
       default:
         console.log("I don't know what to do.");
         console.log(obj);
@@ -191,6 +208,12 @@ $(document).ready(function() {
       console.log("Upvote " + id);
       upvote(id, LIKE_POWER.like);
     };
+  };
+
+  // given a spotify track ID (not uri), gets the dom element for that track,
+  // if it exists.
+  var getTrackElem = function(trackId) {
+    return $trackList.find("#" + trackId);
   };
 
   var addTrack = function(uri, upvoters) {
