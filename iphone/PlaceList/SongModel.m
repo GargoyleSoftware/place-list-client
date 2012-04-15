@@ -74,9 +74,6 @@ static SongModel * gSongModel;
 
 - (NSArray *)sortedKeys
 {
-  //[self.songs keysSortedByValueUsingSelector: @selector(compareKeys)];
-  //[self.songs keysSortedByValueUsingComparator:
-
   NSArray *sortedArray = [self.songs keysSortedByValueUsingComparator:^(id obj1, id obj2) {
     NSArray *votes1 = [self.songs objectForKey: obj1];
     NSArray *votes2 = [self.songs objectForKey: obj2];
