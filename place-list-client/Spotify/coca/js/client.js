@@ -18,6 +18,7 @@ $(document).ready(function() {
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
+  var fbUser = null;
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
 
@@ -55,6 +56,7 @@ $(document).ready(function() {
         });
         break;
       case "add_track":
+        console.log("Adding track...");
         console.log(obj);
         addTrack("spotify:track:" + obj.params.track_id, obj.params.upvoters);
         break;
@@ -167,7 +169,6 @@ $(document).ready(function() {
     return function(event) {
       event.preventDefault();
       console.log("track picked for next song " + id);
-
       notifyAddTrack(id);
     };
   };
@@ -182,16 +183,18 @@ $(document).ready(function() {
 
   var addTrack = function(uri, upvoters) {
     console.log("inside addTrack" + uri);
-    var track = Models.Track.fromURI(uri);
-    var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track, upvoters.length));
-    if($.inArray(getUserId(), upvoters) !== -1) {
-      console.log(getUserId(), " : ", upvoters);
-      $("#upvote-track-" + id).addClass("like");
-    }
-    $("#upvote-track-" + id).click(mkUpvoteHandler(id));
-    console.log(track);
-    sortTracks();
+    Models.Track.fromURI(uri, function(track) {
+      console.log(track);
+      var id = stripTrackId(track.data.uri);
+      $trackList.append(renderTrack(track, upvoters.length));
+      if($.inArray(getUserId(), upvoters) !== -1) {
+        console.log(getUserId(), " : ", upvoters);
+        $("#upvote-track-" + id).addClass("like");
+      }
+      $("#upvote-track-" + id).click(mkUpvoteHandler(id));
+      console.log(track);
+      sortTracks();
+    });
   }
 
   // given a spotify uri, strips the track id (for use in css-selectors)
@@ -261,7 +264,7 @@ $(document).ready(function() {
               $.each(result.data, function(i, event) {
                 $eventList.append(renderEvent(event));
                 $("#event-" + event.id + "-link").click(function() {
-                  login(event.id);
+                  login(event.id, event.name);
                   $eventContainer.fadeOut(function() {
                     $mainContainer.fadeIn();
                   });
@@ -272,6 +275,23 @@ $(document).ready(function() {
           },
           error: function(result) {
             console.log("error: " + result);
+          }
+        });
+
+        $.ajax({
+          type: "GET",
+          url: "https://graph.facebook.com/me?access_token=" + accessToken,
+          async: true,
+          dataType: 'json',
+          cache: false,
+          success: function(data) {
+            console.log("Got user's fb details #################");
+            console.log(data);
+            fbUser = data;
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Failed to get user's fb details ----------------");
+            console.log([XMLHttpRequest, textStatus, errorThrown]);
           }
         });
       },
@@ -350,8 +370,13 @@ $(document).ready(function() {
     });
   }
 
-  var login = function(id){
+  var login = function(id, name){
     eventId = id;
+    if(typeof name !== "undefined") {
+      $("#event-name").html(name);
+    } else {
+      $("#event-name").html(id);
+    }
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
@@ -423,7 +448,4 @@ $(document).ready(function() {
     $('.section').hide();
     $('#'+args[0]).show();
   }
-
-
-
 });
