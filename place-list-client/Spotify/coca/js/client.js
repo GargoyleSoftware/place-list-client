@@ -137,6 +137,8 @@ $(document).ready(function() {
 
 			onSuccess : function(accessToken, ttl) {
 				console.log("Success! Here's the access token: " + accessToken);
+				var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
+
 			},
 
 			onFailure : function(error) {
