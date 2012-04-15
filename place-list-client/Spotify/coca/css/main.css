@@ -40,7 +40,7 @@ header h1{
 	margin: 90px auto 50px;
 }
 #event-container{
-	
+	margin: 80px 20px 0;
 }
 #main-container{
 	margin:0 20px;
@@ -48,16 +48,14 @@ header h1{
 /* ========================================================= Login ===*/
 #login-container h2{
 	text-align:center;
-	font-family: 'Museo700', sans-serif;
-	font-weight: 700;
 	font-size:46px;
 	margin:130px 0 0 ;
 }
 #login-container p{
+	color:#515966;
 	text-align:center;
-	font-family: 'Museo300', sans-serif;
-	font-weight: 300;
 	font-size:22px;
+	margin:0 0 20px;
 }
 #add-facebook-btn{
 	display:block;
@@ -105,12 +103,12 @@ header h1{
 	position: relative;
 	bottom: 15px;
 }
-#playlist ul{
+#playlist ul, #list-events{
 	list-style:none;
 	margin:0;
 	padding:0;
 }
-#playlist li{
+#playlist li, #list-events li{
 	background-color:#f2f1ed;
 	border:1px solid #c9c9c5;
 	border-radius:4px;
@@ -161,7 +159,7 @@ header h1{
 #playlist .album{
 	font-size:14px;
 }
-#playlist .album a{
+#playlist .album a, #list-events li a{
 	color:#515966;
 }
 #playlist .count{

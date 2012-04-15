@@ -7,6 +7,7 @@ $(document).ready(function() {
   var scores = {};
   var eventId = 1;
   var $loginContainer = $("#login-container");
+  var $eventContainer = $("#event-container");
   var $mainContainer = $("#main-container");
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
@@ -176,12 +177,16 @@ $(document).ready(function() {
             console.log("beforeSend");
           },
           success: function(result) {
-            var parties = result.data;
-            for (i in parties) {
-              var party = parties[i];
-              var name = party.name; 
-              $('ul#list-events').append('<li>' + name + '</li>');
-            }
+            
+			$loginContainer.fadeOut(function() {
+		        $eventContainer.fadeIn();
+				var parties = result.data;
+	            for (i in parties) {
+	              var party = parties[i];
+	              var name = party.name; 
+				$('ul#list-events').append('<li><a href="">' + name + '</a></li>');
+	            }
+		      });
           },
           error: function(result) {
             console.log("error: " + result);
