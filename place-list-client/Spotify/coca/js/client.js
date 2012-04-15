@@ -38,7 +38,7 @@ $(document).ready(function() {
     console.log(event);
     var obj = JSON.parse(event.data);
     console.log(obj);
-    addTrack(obj["track_id"]);
+    addTrack("spotify:track:" + obj["track_id"]);
   };
 
   // Given an input element and a button element, disables the button if the
