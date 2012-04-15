@@ -12,12 +12,24 @@ $(document).ready(function() {
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
 
+  var LIKE_POWER = {
+    "neutral": 0,
+    "like": 1,
+    "love": 2
+  };
+
+  var EVENT_ID = "0";
+
+  var getUserId = function() {
+    return Models.session.anonymousUserID;
+  }
+
   conn.onopen = function(event) {
     console.log({"open": event});
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
-        "user_id": Models.session.anonymousUserID
+        "user_id": getUserId()
       }
     }));
   };
@@ -64,19 +76,23 @@ $(document).ready(function() {
     }));
   }
 
-  var upvote = function(id) {
+  var upvote = function(id, power) {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
-        "event_id": eventId,
-        "track_id": id
+        "event_id": EVENT_ID,
+        "track_id": id,
+        "user_id": getUserId(),
+        "power": power
       }
     }));
   };
 
   var mkUpvoteHandler = function(id) {
+    console.log("Making upvote handler");
     return function(event) {
       console.log("Upvote " + id);
+      upvote(id, LIKE_POWER.like);
     };
   };
 
