@@ -34,7 +34,11 @@ $(document).ready(function() {
   };
 
   conn.onclose = function(event) {
+    alert("socket closed");
     console.log({"close": event});
+    setTimeout(function() {
+      conn = new WebSocket("ws://jordanorelli.com:8080/socket")
+    }, 2000);
   };
 
   conn.onmessage = function(event) {
@@ -54,7 +58,12 @@ $(document).ready(function() {
         break;
       case "upvote":
         console.log("Upvote!");
-        $("#track-" + obj.params.track_id + "-points").html(obj.params.upvoters.length);
+        console.log(obj);
+        if($.isArray(obj.params.upvoters)) {
+          $("#track-" + obj.params.track_id + "-points").html(obj.params.upvoters.length);
+        } else {
+          $("#track-" + obj.params.track_id + "-points").html(1);
+        }
         break;
       default:
         console.log("I don't know what to do.");
@@ -161,10 +170,10 @@ $(document).ready(function() {
     return Mustache.to_html(eventTemplate, event)
   };
 
-  $addEventButton.click(function(event) {
+  var joinEvent = function(event) {
     event.preventDefault();
     eventId = $('div#login-container input:text[name="event_id"]').val();
-    console.debug("event ID: " + eventId);
+    console.log("event ID: " + eventId);
     if (eventId.length == 0 || eventId === '') {
       console.error("event ID: " + eventId);
       alert("Invalid event ID!");
@@ -174,7 +183,9 @@ $(document).ready(function() {
         $mainContainer.fadeIn();
       });
     }
-  });
+  };
+
+  $addEventButton.click(joinEvent);
 
   $addFacebookButton.click(function(event) {
     event.preventDefault();
@@ -282,12 +293,13 @@ $(document).ready(function() {
     });
   }
 
-  var login = function(eventId){
+  var login = function(id){
+    eventId = id;
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
         "user_id": getUserId(),
-        "event_id": eventId,
+        "event_id": id,
       }
     }));
   }
