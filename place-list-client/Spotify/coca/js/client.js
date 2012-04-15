@@ -66,6 +66,7 @@ $(document).ready(function() {
         } else {
           $("#track-" + obj.params.track_id + "-points").html(1);
         }
+        sortTracks();
         break;
       default:
         console.log("I don't know what to do.");
@@ -190,6 +191,7 @@ $(document).ready(function() {
     }
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
     console.log(track);
+    sortTracks();
   }
 
   // given a spotify uri, strips the track id (for use in css-selectors)
@@ -358,6 +360,24 @@ $(document).ready(function() {
       }
     }));
   }
+
+  var sortTracks = function() {
+    console.log("sorting...");
+    var tracks = $trackList.children('li').get();
+    tracks.sort(function(a, b) {
+      var aScore = $(a).find(".count").html();
+      var bScore = $(b).find(".count").html();
+      return aScore < bScore ? 1 : aScore > bScore ? -1 : 0;
+    });
+    $trackList.html('');
+    $.each(tracks, function(i, elem) {
+      $trackList.append(elem);
+      var id = $(elem).attr('id');
+      $hand = $("#upvote-track-" + id);
+      console.log({"id": id, "$hand": $hand});
+      $hand.click(mkUpvoteHandler(id));
+    });
+  };
 
   // tabs();
   // Models.application.observe(Models.EVENT.ARGUMENTSCHANGED, tabs);
