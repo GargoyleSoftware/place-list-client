@@ -176,7 +176,7 @@ $(document).ready(function() {
 	            for (i in parties) {
 	              var party = parties[i];
 	              var name = party.name; 
-				$('ul#list-events').append('<li>' + name + '</li>');
+				$('ul#list-events').append('<li><a href="">' + name + '</a></li>');
 	            }
 		      });
           },
