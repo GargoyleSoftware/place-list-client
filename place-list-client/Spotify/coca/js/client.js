@@ -94,6 +94,7 @@ $(document).ready(function() {
     search.observe(Models.EVENT.CHANGE, function() {
       $('div#event-content').hide();
       $searchList.show();
+      $searchList.clear();
 
       search.tracks.forEach(function(track) {
         console.log(track.name);
