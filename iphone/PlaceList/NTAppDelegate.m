@@ -34,7 +34,7 @@
   [__managedObjectModel release];
   [__persistentStoreCoordinator release];
   [_navigationController release];
-    [super dealloc];
+  [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -230,7 +230,6 @@
     [defaults setObject:[_facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
 }
-
 
 - (void)fbDidLogout {
   
