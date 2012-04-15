@@ -16,6 +16,7 @@
 @implementation NetworkManager
 
 @synthesize webSocket = _webSocket;
+@synthesize eventId = _eventId;
 
 static NetworkManager * gNetworkManager;
 + (NetworkManager *)sharedInstance {
@@ -153,8 +154,38 @@ static NetworkManager * gNetworkManager;
 
     [self.webSocket send: [jsonDict JSONRepresentation]];
 
+    self.eventId = eventId;
+
     return YES;
   }
+}
+
+- (void)upvoteTrack:(NSString *)trackId
+	     remove:(BOOL)remove
+{
+  //{
+  //  "cmd": "upvote_track",
+  //    "params": {
+  //      "event_id": self.eventId,
+  //      "track_id": id,
+  //      "user_id": getUserId(),
+  //      "remove": true
+  //    }
+  //}
+
+  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+    [self loadUserId]                 , @"user_id"  , 
+    self.eventId                      , @"event_id" , 
+    trackId                           , @"track_id" , 
+    [NSNumber numberWithBool: remove] , @"remove"   , 
+    nil];
+
+  NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
+    @"upvote_track" , @"cmd"    , 
+    params   , @"params" , 
+    nil];
+
+  [self.webSocket send: [jsonDict JSONRepresentation]];
 }
 
 - (void)closeSocketConnection

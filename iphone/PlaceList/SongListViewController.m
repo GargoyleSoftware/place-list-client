@@ -11,6 +11,8 @@
 #import "SongCell.h"
 #import "SongModel.h"
 
+#import "NetworkManager.h"
+
 @interface SongListViewController ()
 
 @end
@@ -174,15 +176,21 @@
 
 #pragma mark - SongCellDelegate
 
-- (void)cellDidVote:(NSInteger)cellTag upVote:(BOOL)upVote
+- (void)cellDidVote:(NSInteger)cellTag remove:(BOOL)remove
 {
   //id song = [self.songs objectAtIndex: cellTag];
-  id song = [[self.model sortedKeys] objectAtIndex: cellTag];
+  //NSDictionary *song = [[self.model sortedKeys] objectAtIndex: cellTag];
 
-  if (upVote) {
-    NSLog(@"Song was UPVoted: %@", [song description]);
+  NSString *trackId = [[self.model sortedKeys] objectAtIndex: cellTag];
+  if (!remove) {
+    [[NetworkManager sharedInstance] upvoteTrack: trackId
+					  remove: remove];
+
+    NSLog(@"Song was UPVoted: %@", [trackId description]);
   } else {
-    NSLog(@"Song was DOWNvoted: %@", [song description]);
+    [[NetworkManager sharedInstance] upvoteTrack: trackId
+					  remove: remove];
+    NSLog(@"Song was DOWNvoted: %@", [trackId description]);
   }
 
 }

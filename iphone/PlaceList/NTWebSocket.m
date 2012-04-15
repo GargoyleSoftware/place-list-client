@@ -75,7 +75,6 @@
   NSDictionary *json = [message JSONValue];
   NSString *command = [json objectForKey: @"cmd"];
   NSDictionary *params = [json objectForKey: @"params"];
-
   
   if ([command isEqualToString: @"event_info"]) {
     NSDictionary *upcoming = [params objectForKey: @"upcoming"];
