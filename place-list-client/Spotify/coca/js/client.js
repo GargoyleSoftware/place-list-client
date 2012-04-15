@@ -57,10 +57,10 @@ $(document).ready(function() {
   var notifyNewPosition = function(position) {
     conn.send(JSON.stringify({
       "cmd": "new_track",
-        "params": {
-          "track": track,
-          "position": position
-        }
+      "params": {
+        "track": track,
+        "position": position
+      }
     }));
   }
 
