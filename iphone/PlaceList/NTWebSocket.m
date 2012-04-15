@@ -8,6 +8,8 @@
 
 #import "NTWebSocket.h"
 
+#import "UserHelper.h"
+
 #define SOCKET_URL @"ws://localhost:8080/socket" 
 
 @interface NTWebSocket ()
@@ -65,6 +67,24 @@
   [self.ws close];
 }
 
+#pragma mark - Login Methods
+
+- (void)login 
+{
+
+  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+    [UserHelper getUsername], @"user_id",
+  nil];
+  
+  NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
+    @"login", @"cmd",
+    params, @"params",
+  nil];
+
+  [self send: jsonDict];
+
+}
+
 #pragma mark - SRWebSocketDelegate Methods
 
 
@@ -79,6 +99,7 @@
 
   NSLog(@"Socket is open for business.");
 
+  [self login];
 }
 
 
