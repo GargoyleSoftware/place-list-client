@@ -79,6 +79,23 @@ $(document).ready(function() {
         }
         sortTracks();
         break;
+      case "start_track":
+        console.log("Host started a new track");
+        console.log(obj);
+        if(fbEvent.id == obj.params.event_id) {
+          console.log("It's in our room!");
+          var $track = getTrackElem(obj.params.track_id);
+          console.log($track);
+          if(!!$track) {
+            console.log("adding track because it's not on the list but the host played it anyway.");
+            addTrack("spotify:track:" + obj.params.track_id, new Array(99));
+          }
+          sortTracks();
+          // getTrackElem(obj.params.track_id).addClass("current-play");
+        } else {
+          console.log("Different room.  Your room: " + fbEvent.id + " track event :" + obj.params.event_id);
+        }
+        break;
       default:
         console.log("I don't know what to do.");
         console.log(obj);
@@ -130,12 +147,18 @@ $(document).ready(function() {
   }
 
   var notifyNewTrack = function(track) {
-    conn.send(JSON.stringify({
-      "cmd": "start_track",
-      "params": {
-        "track": track
-      }
-    }));
+    if(isHost) {
+      console.log("Starting track play!  Track is...");
+      console.log(track);
+      conn.send(JSON.stringify({
+        "cmd": "start_track",
+        "params": {
+          "track_id": stripTrackId(track.data.uri),
+          "user_id": getUserId(),
+          "event_id": fbEvent.id
+        }
+      }));
+    }
   }
 
   var notifyNewPosition = function(position) {
@@ -200,6 +223,11 @@ $(document).ready(function() {
       console.log(track);
       sortTracks();
     });
+
+  // given a spotify track ID (not uri), gets the dom element for that track,
+  // if it exists.
+  var getTrackElem = function(trackId) {
+    return $trackList.find("#" + trackId);
   };
 
   var addTrack = function(uri, upvoters) {
@@ -499,13 +527,17 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
-  // Event Page: Toggle for adding songs and seeing details
-  $("#add-song").click(function () {
-    $("#event-search").fadeIn("fast");
-  });
-  $("#finsihed-adding").click(function () {
-    $("#event-search").fadeOut("fast");
-  });
+
+	// Event Page: Toggle for adding songs and seeing details
+	$("#add-song").click(function () {
+		$("#event-search").fadeIn("fast");
+	});
+		$("#finsihed-adding").click(function () {
+			$("#event-search").fadeOut("fast");
+	});
+	
+	// focus on search input
+	$("add-track").focus();
 
 
   /*
