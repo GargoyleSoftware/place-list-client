@@ -66,7 +66,7 @@
 
   UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
   //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];
-  self.navigationItem.rightBarButtonItem = addButton;
+  //self.navigationItem.rightBarButtonItem = addButton;
 
 }
 

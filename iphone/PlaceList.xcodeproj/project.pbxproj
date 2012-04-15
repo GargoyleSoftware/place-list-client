@@ -69,6 +69,7 @@
 		42FE6CE2153A8815000244FC /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6CA4153A8814000244FC /* SBJsonBase.m */; };
 		42FE6CE3153A8815000244FC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6CA6153A8814000244FC /* SBJsonParser.m */; };
 		42FE6CE4153A8815000244FC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6CA8153A8814000244FC /* SBJsonWriter.m */; };
+		42FE6D06153AB16F000244FC /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6D05153AB16F000244FC /* SongModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,8 @@
 		42FE6CA6153A8814000244FC /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		42FE6CA7153A8814000244FC /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		42FE6CA8153A8814000244FC /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		42FE6D04153AB16F000244FC /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
+		42FE6D05153AB16F000244FC /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +264,7 @@
 		42D93ED7153A01B900E44664 /* PlaceList */ = {
 			isa = PBXGroup;
 			children = (
+				42FE6D03153AB15F000244FC /* Model */,
 				42FE6C55153A776E000244FC /* Helpers */,
 				42D93F26153A044200E44664 /* ViewControllers */,
 				42D93F71153A2AA100E44664 /* Views */,
@@ -485,6 +489,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		42FE6D03153AB15F000244FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42FE6D04153AB16F000244FC /* SongModel.h */,
+				42FE6D05153AB16F000244FC /* SongModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -656,6 +669,7 @@
 				42FE6CE2153A8815000244FC /* SBJsonBase.m in Sources */,
 				42FE6CE3153A8815000244FC /* SBJsonParser.m in Sources */,
 				42FE6CE4153A8815000244FC /* SBJsonWriter.m in Sources */,
+				42FE6D06153AB16F000244FC /* SongModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

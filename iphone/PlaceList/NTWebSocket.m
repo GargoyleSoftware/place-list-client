@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 Gargoyle Software. All rights reserved.
 //
 
+#import "JSON.h"
+
 #import "NTWebSocket.h"
+
+#import "SongModel.h"
 
 #define SOCKET_URL @"ws://localhost:8080/socket" 
 
@@ -72,6 +76,24 @@
 
   //Hooray! I got a message to print.
   NSLog(@"Did receive message: %@", message);
+  
+  NSDictionary *json = [message JSONValue];
+  NSString *command = [json objectForKey: @"cmd"];
+  NSString *rawParams = [json objectForKey: @"params"];
+  NSDictionary *params = [rawParams JSONValue];
+
+  if ([command isEqualToString: @"event_info"]) {
+    NSDictionary *upcoming = [params objectForKey: @"upcoming"];
+    for (NSString *trackId in upcoming) {
+      NSInteger points = [[upcoming objectForKey: trackId] length];
+      [[SongModel sharedInstance] addTrackId: trackId points: points];
+    }
+  } else if ([command isEqualToString: @"add_track"]) {
+    NSString *trackId = [params objectForKey: @"track_id"];
+    [[SongModel sharedInstance] addTrackId: trackId];
+  } else {
+    NSLog(@"I don't know what to do. Command: %@", command);
+  }
 
 }
 
