@@ -64,6 +64,11 @@ $(document).ready(function() {
         console.log(obj);
         addTrack("spotify:track:" + obj.params.track_id, obj.params.upvoters);
         break;
+      case "start_track":
+        console.log("Starting track...");
+        console.log(obj);
+        removeTrack("spotify:track:" + obj.params.track_id);
+        break;
       case "upvote":
         console.log("Upvote!");
         console.log(obj);
@@ -185,6 +190,16 @@ $(document).ready(function() {
       console.log("Upvote " + id);
       upvote(id, LIKE_POWER.like);
     };
+  };
+
+  var removeTrack = function(uri) {
+    Models.Track.fromURI(uri, function(track) {
+      console.log(track);
+      var id = stripTrackId(track.data.uri);
+      $("#" + id).remove();
+      console.log(track);
+      sortTracks();
+    });
   };
 
   var addTrack = function(uri, upvoters) {
