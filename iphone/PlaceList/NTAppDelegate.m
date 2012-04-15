@@ -33,10 +33,15 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
 
-  EventListViewController *masterViewController = [[[EventListViewController alloc] initWithNibName:@"EventListViewController" bundle:nil] autorelease];
-  self.navigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
-  masterViewController.managedObjectContext = self.managedObjectContext;
-  self.window.rootViewController = self.navigationController;
+    EventListViewController *masterViewController = [[[EventListViewController alloc] initWithNibName:@"EventListViewController" bundle:nil] autorelease];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
+    UINavigationBar *navBar = [[self navigationController] navigationBar];
+    UIImage *backgroundImage = [UIImage imageNamed:@"navbar"];
+    [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+
+    masterViewController.managedObjectContext = self.managedObjectContext;
+
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }
