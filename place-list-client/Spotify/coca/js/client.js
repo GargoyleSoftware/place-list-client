@@ -4,12 +4,14 @@ $(document).ready(function() {
   var Auth = Spotify.require('sp://import/scripts/api/auth');
   var Models = Spotify.require("sp://import/scripts/api/models");
   var trackTemplate = $("#track-template").html();
+  var eventTemplate = $("#event-template").html();
   var scores = {};
   var eventId = 1;
   var $loginContainer = $("#login-container");
   var $eventContainer = $("#event-container");
   var $mainContainer = $("#main-container");
   var $trackList = $("#tracks");
+  var $eventList = $("#list-events");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
 
@@ -148,6 +150,12 @@ $(document).ready(function() {
     return raw;
   };
 
+  var renderEvent = function(event) {
+    console.log("render event ------------------------------------------------------------");
+    console.log(event);
+    return Mustache.to_html(eventTemplate, event)
+  };
+
   $('#add-event-btn').click(function(event) {
     event.preventDefault();
     eventId = $('div#login-container input:text[name="event_id"]').val();
@@ -177,16 +185,19 @@ $(document).ready(function() {
             console.log("beforeSend");
           },
           success: function(result) {
-            
-			$loginContainer.fadeOut(function() {
-		        $eventContainer.fadeIn();
-				var parties = result.data;
-	            for (i in parties) {
-	              var party = parties[i];
-	              var name = party.name; 
-				$('ul#list-events').append('<li><a href="">' + name + '</a></li>');
-	            }
-		      });
+            console.log(result);
+            $loginContainer.fadeOut(function() {
+              $.each(result.data, function(i, event) {
+                $eventList.append(renderEvent(event));
+                $("#event-" + event.id + "-link").click(function() {
+                  login(event.id);
+                  $eventContainer.fadeOut(function() {
+                    $mainContainer.fadeIn();
+                  });
+                });
+              });
+              $eventContainer.fadeIn();
+            });
           },
           error: function(result) {
             console.log("error: " + result);
