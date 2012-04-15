@@ -138,7 +138,7 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "add_track",
       "params": {
-        "track_id": trackName,
+        "track_id": stripTrackId(trackName),
         "user_id": "0"
       }
     }));
