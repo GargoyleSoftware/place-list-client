@@ -29,7 +29,7 @@ header h1{
 	color:#fff;
 	font-family: 'Museo300', sans-serif;
 	font-weight: 300;
-	font-size:22px;
+	font-size:36px;
 	line-height: 1;
 	margin:0;
 	text-align:center;
@@ -37,10 +37,33 @@ header h1{
 }
 /* ========================================================= Structure ===*/
 #login-container{
-	margin: 90px auto 0;
+	margin: 90px auto 50px;
+}
+#event-container{
+	
 }
 #main-container{
 	margin:0 20px;
+}
+/* ========================================================= Login ===*/
+#login-container h2{
+	text-align:center;
+	font-family: 'Museo700', sans-serif;
+	font-weight: 700;
+	font-size:46px;
+	margin:130px 0 0 ;
+}
+#login-container p{
+	text-align:center;
+	font-family: 'Museo300', sans-serif;
+	font-weight: 300;
+	font-size:22px;
+}
+#add-facebook-btn{
+	display:block;
+	margin:0 auto;
+	padding: 10px 15px;
+	width:180px;
 }
 /* ========================================================= Event ===*/
 #event-info{
