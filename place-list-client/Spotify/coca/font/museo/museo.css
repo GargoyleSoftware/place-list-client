@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Museo300';
+    src: url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo300-Regular-webfont.eot');
+    src: url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo300-Regular-webfont.eot?iefix') format('eot'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo300-Regular-webfont.woff') format('woff'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo300-Regular-webfont.ttf') format('truetype'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo300-Regular-webfont.svg#webfontBsA9EFUC') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Museo700';
+    src: url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo700-Regular-webfont.eot');
+    src: url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo700-Regular-webfont.eot?iefix') format('eot'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo700-Regular-webfont.woff') format('woff'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo700-Regular-webfont.ttf') format('truetype'),
+         url('https://s3.amazonaws.com/toolkit.mshanken.com/font/museo/Museo700-Regular-webfont.svg#webfontNpXBDqia') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
