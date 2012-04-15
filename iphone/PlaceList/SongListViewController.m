@@ -9,6 +9,7 @@
 #import "SongListViewController.h"
 
 #import "SongCell.h"
+#import "SongModel.h"
 
 @interface SongListViewController ()
 
@@ -16,7 +17,8 @@
 
 @implementation SongListViewController
 
-@synthesize songs = _songs;
+//@synthesize songs = _songs;
+@synthesize model = _model;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,10 +26,13 @@
     if (self) {
       //self.navigationItem.title = @"Song List";
       self.title = @"Song List";
-      self.songs = [NSMutableArray array];
-      [self.songs addObject: @"What is Love"];
-      [self.songs addObject: @"What's my age again"];
-      [self.songs addObject: @"1976"];
+
+      self.model = [SongModel sharedInstance];
+
+      //self.songs = [NSMutableArray array];
+      //[self.songs addObject: @"What is Love"];
+      //[self.songs addObject: @"What's my age again"];
+      //[self.songs addObject: @"1976"];
     }
     return self;
 }
@@ -76,7 +81,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.songs.count;
+    //return self.model.count;
+    return [self.model sortedKeys].count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,8 +106,11 @@
   NSUInteger row = indexPath.row;
   //cell.textLabel.text = @"Hello";
   //cell.textLabel.text = [self.songs objectAtIndex: row];
+    
+  NSString *songId = [[self.model sortedKeys] objectAtIndex: row];
   
-  cell.songLabel.text = [self.songs objectAtIndex: row];
+  //cell.songLabel.text = [self.songs objectAtIndex: row];
+  cell.songLabel.text = songId;
   cell.songImageView.image = [UIImage imageNamed: @"music-note"];
 
   cell.tag = row;
@@ -167,7 +176,8 @@
 
 - (void)cellDidVote:(NSInteger)cellTag upVote:(BOOL)upVote
 {
-  id song = [self.songs objectAtIndex: cellTag];
+  //id song = [self.songs objectAtIndex: cellTag];
+  id song = [[self.model sortedKeys] objectAtIndex: cellTag];
 
   if (upVote) {
     NSLog(@"Song was UPVoted: %@", [song description]);

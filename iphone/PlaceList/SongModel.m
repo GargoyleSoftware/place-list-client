@@ -35,7 +35,13 @@ static SongModel * gSongModel;
   return self;
 }
 
-#pragma mark - 
+#pragma mark - Public Methods
+
+- (void)updateTrackId:(NSString *)trackId withPoints:(NSInteger)points
+{
+  [self.songs setObject: [NSNumber numberWithInteger: points]
+		 forKey: trackId];
+}
 
 - (void)addTrackId:(NSString *)trackId points:(NSInteger)points
 {
@@ -54,6 +60,32 @@ static SongModel * gSongModel;
 - (void)addTrackId:(NSString *)trackId
 {
   [self addTrackId: trackId points: LIKE_POINTS];
+}
+
+- (void)clear
+{
+  self.songs = [NSMutableDictionary dictionary];
+}
+
+- (NSUInteger)count
+{
+  return self.songs.count;
+}
+
+- (NSArray *)sortedKeys
+{
+  //[self.songs keysSortedByValueUsingSelector: @selector(compareKeys)];
+  //[self.songs keysSortedByValueUsingComparator:
+
+  NSArray *sortedArray = [self.songs keysSortedByValueUsingComparator:^(id obj1, id obj2) {
+    NSArray *votes1 = [self.songs objectForKey: obj1];
+    NSArray *votes2 = [self.songs objectForKey: obj2];
+    NSNumber *points1 = [NSNumber numberWithInteger: votes1.count];
+    NSNumber *points2 = [NSNumber numberWithInteger: votes2.count];
+    return [points1 compare:points2];
+  }];
+
+  return sortedArray;
 }
 
 @end
