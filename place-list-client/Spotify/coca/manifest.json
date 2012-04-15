@@ -3,7 +3,13 @@
 		"en": "A tutorial app for Spotify Apps API"
 	},
 	"AppIcon": {
-		"36x18": "tutorial.png"
+		"18x18": "18x18.png"
+	},
+	"AppIcon": {
+		"64x64": "64x64.png"
+	},
+	"AppIcon": {
+		"128x128": "128x128.png"
 	},
 	"AppName": {
 		"en": "SpotifyCocaCola"
