@@ -91,8 +91,11 @@ header h1 a, header h1 a:hover{
 }
 #search-list{
 	list-style:none;
-	margin:0;
+	margin:0 0 10px;
 	padding:0;
+	overflow-y: scroll;
+	height: 93%;
+	position: relative;
 }
 #search-list li{
 	background-color:#f8f8f8;
@@ -157,7 +160,7 @@ box-shadow:0 1px 0 #fff;
 height: 50px;
 width:50px;
 }
-#playlist li #current-play{
+#playlist .current-play{
 	background: #bad3e3;
 	background: -moz-linear-gradient(top,  #bad3e3 0%, #a7becc 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bad3e3), color-stop(100%,#a7becc));

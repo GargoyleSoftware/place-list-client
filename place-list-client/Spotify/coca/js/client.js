@@ -487,8 +487,9 @@ $(document).ready(function() {
 		$("#finsihed-adding").click(function () {
 			$("#event-search").fadeOut("fast");
 	});
-
-
+	
+	// focus on search input
+	$("add-track").focus();
 
   /*
    * If we were started with an event ID or song ID, let's jump to it.
