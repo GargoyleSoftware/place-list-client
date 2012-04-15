@@ -45,6 +45,25 @@ $(document).ready(function() {
     }
   };
 
+  var notifyNewTrack = function(track) {
+    conn.send(JSON.stringify({
+      "cmd": "new_track",
+      "params": {
+        "track": track
+      }
+    }));
+  }
+
+  var notifyNewPosition = function(position) {
+    conn.send(JSON.stringify({
+      "cmd": "new_track",
+        "params": {
+          "track": track,
+          "position": position
+        }
+    }));
+  }
+
   var upvote = function(id) {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
@@ -172,16 +191,33 @@ $(document).ready(function() {
     //console.log("Something changed!");
     //console.log("here's what changed: " + event);
 
-    var totalSeconds = Models.player.position / 1000;
+    if(event.data.contextclear) {
+      // ???
+    } else if(event.data.curcontext) {
+      // ???
+    } else if(event.data.curtrack) {
+      // New track
+      var track = Models.player.track;
+      console.log("NEW track: " + track);
+      notifyNewTrack(track);
+    } else if(event.data.playstate) {
+      // Play / pause
+    } else if(event.data.repeat) {
+      // NOP
+    } else if(event.data.shuffle) {
+      // NOP
+    } else if(event.data.volume) {
+      // NOP
+    } else {
+      // Must have been ffwd/rewind
+      var totalSeconds = Models.player.position / 1000;
 
-    var minutes = Math.floor(totalSeconds / 60);
-    var seconds = totalSeconds % 60;
-    console.log("current playback position: " + minutes + ":" + seconds);
+      var minutes = Math.floor(totalSeconds / 60);
+      var seconds = totalSeconds % 60;
 
-    var track = Models.player.track;
-    console.log("current track: " + track);
-
-    // TODO: Send these to the server
+      console.log("current playback position: " + minutes + ":" + seconds);
+      notifyNewPosition(Models.player.position);
+    }
 
   });
 
