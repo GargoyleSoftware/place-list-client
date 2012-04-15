@@ -97,10 +97,22 @@ $(document).ready(function() {
       search.tracks.forEach(function(track) {
         console.log(track.name);
         $searchList.append(renderSearchTrack(track));
+        var id = stripTrackId(track.data.uri);
+        $("#track-search-" + id + "-link").click(mkSearchTrackHandler(id));
       });
     });
 
     search.appendNext();
+  }
+  
+  var notifyAddTrack = function(trackId) {
+    conn.send(JSON.stringify({
+      "cmd": "add_track",
+      "params": {
+        "track_id": trackId,
+        "user_id": getUserId()
+      }
+    }));
   }
 
   var notifyNewTrack = function(track) {
@@ -148,6 +160,16 @@ $(document).ready(function() {
       }));
     }
   };
+  
+  var mkSearchTrackHandler = function(id) {
+    console.log("Making search track handler");
+    return function(event) {
+      event.preventDefault();
+      console.log("track picked for next song " + id);
+
+      notifyAddTrack(id);
+    };
+  };
 
   var mkUpvoteHandler = function(id) {
     console.log("Making upvote handler");
@@ -186,7 +208,12 @@ $(document).ready(function() {
   // given a raw track response from the spotify api, render it to an html
   // string for injection
   var renderSearchTrack = function(track) {
-    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri)});
+    var raw = Mustache.to_html(trackSearchTemplate, 
+      {
+      "track": track.data, 
+      "name": track.name, 
+      "id": stripTrackId(track.data.uri)
+      });
     return raw;
   };
 

@@ -18,7 +18,10 @@
     <script src="sp://coca/js/client.js"></script>
     <script id="track-search-template" type="text/plain">
       <li class="track-search" id="event-{{id}}">
-        <a href="javascript:void(0)" id="track-search-{{id}}-link">{{name}}</a>
+          <a href="javascript:void(0)" id="track-search-{{id}}-link">
+            {{name}}
+            <img src="{{track.album.cover}}" class="art"/>
+          </a>
       </li>
     </script>
     <script id="event-template" type="text/plain">
