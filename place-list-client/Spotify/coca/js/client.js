@@ -252,6 +252,7 @@ $(document).ready(function() {
       {
       "track": track.data, 
       "name": track.name, 
+      "artists": track.artists,
       "id": stripTrackId(track.data.uri)
       });
     return raw;
@@ -262,10 +263,8 @@ $(document).ready(function() {
     console.log(event);
     return Mustache.to_html(eventTemplate, event)
   };
-
-  var joinEvent = function(event) {
-    event.preventDefault();
-    eventId = $('div#login-container input:text[name="event_id"]').val();
+  
+  var joinEventWithId = function(eventId) {
     console.log("event ID: " + eventId);
     if (eventId.length == 0 || eventId === '') {
       console.error("event ID: " + eventId);
@@ -276,6 +275,12 @@ $(document).ready(function() {
         $mainContainer.fadeIn();
       });
     }
+  }
+
+  var joinEvent = function(event) {
+    event.preventDefault();
+    eventId = $('div#login-container input:text[name="event_id"]').val();
+    joinEventWithId(eventId);
   };
 
   $addEventButton.click(joinEvent);
@@ -508,6 +513,7 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
+
 	// Event Page: Toggle for adding songs and seeing details
 	$("#add-song").click(function () {
 		$("#event-search").fadeIn("fast");
@@ -515,20 +521,36 @@ $(document).ready(function() {
 		$("#finsihed-adding").click(function () {
 			$("#event-search").fadeOut("fast");
 	});
-
+	
+	// focus on search input
+	$("add-track").focus();
 
 
   /*
    * If we were started with an event ID or song ID, let's jump to it.
+   * URI Scheme: spotify:app:name:arg1:val1:arg2:val2:...:argN:valN.
    */
-  //var parseStartArguments = function() {
-  //  Application
-  //      spotify:app:name:arg1:val1:arg2:val2:...:argN:valN.
-  //}
+  var parseStartArguments = function() {
+    var app = Models.application;
+    var args = app.arguments;
+    for (var i = 0; i < args.length; i+= 2) {
+      var key = args[i];
+      var value = args[i+1];
 
-  //parseStartArguments();
+      console.log("Key: " + key);
+      console.log("Value: " + value);
+
+      if (key === 'event_id') {
+        joinEventWithId(value);
+      }
+    }
+  };
 
 
+  Models.application.observe(Models.EVENT.ACTIVATE, function() {
+    console.log("Application activated!");
+    parseStartArguments();
+  });
 
 
 });
