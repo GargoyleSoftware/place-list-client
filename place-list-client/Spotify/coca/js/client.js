@@ -59,7 +59,7 @@ $(document).ready(function() {
 
   var notifyNewTrack = function(track) {
     conn.send(JSON.stringify({
-      "cmd": "new_track",
+      "cmd": "start_track",
       "params": {
         "track": track
       }
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
   var notifyNewPosition = function(position) {
     conn.send(JSON.stringify({
-      "cmd": "new_track",
+      "cmd": "new_position",
       "params": {
         "track": track,
         "position": position
