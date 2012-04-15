@@ -479,6 +479,15 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
+	// Event Page: Toggle for adding songs and seeing details
+	$("#add-song").click(function () {
+		$("#event-search").fadeIn("fast");
+	});
+		$("#finsihed-adding").click(function () {
+			$("#event-search").fadeOut("fast");
+	});
+
+
 
   /*
    * If we were started with an event ID or song ID, let's jump to it.
@@ -491,11 +500,6 @@ $(document).ready(function() {
   //parseStartArguments();
 
 
-  $("#add-song").click(function () {
-    $("#event-search").fadeIn("fast");
-  });
-  $("#finsihed-adding").click(function () {
-    $("#event-search").fadeOut("fast");
-  });
+
 
 });
