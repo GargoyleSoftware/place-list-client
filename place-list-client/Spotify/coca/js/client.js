@@ -35,8 +35,20 @@ $(document).ready(function() {
   conn.onmessage = function(event) {
     console.log(event);
     var obj = JSON.parse(event.data);
-    console.log(obj);
-    addTrack("spotify:track:" + obj["track_id"]);
+    switch (obj.cmd) {
+      case "event_info":
+        $.each(obj.params.upcoming, function(k, v) {
+          addTrack("spotify:track:" + k, v.length);
+        });
+        break;
+      case "add_track":
+        addTrack("spotify:track:" + obj.params.track_id);
+        break;
+      default:
+        console.log("I don't know what to do.");
+        console.log(obj);
+        break;
+    }
   };
 
   // Given an input element and a button element, disables the button if the
@@ -90,11 +102,11 @@ $(document).ready(function() {
     };
   };
 
-  var addTrack = function(uri) {
+  var addTrack = function(uri, points) {
     console.log("inside addTrack" + uri);
     var track = Models.Track.fromURI(uri);
     var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track));
+    $trackList.append(renderTrack(track, points));
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
     console.log(track);
   }
@@ -107,9 +119,8 @@ $(document).ready(function() {
 
   // given a raw track response from the spotify api, render it to an html
   // string for injection
-  var renderTrack = function(track) {
-    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri)});
-    console.log(raw);
+  var renderTrack = function(track, points) {
+    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri), "points": points});
     return raw;
   };
 
