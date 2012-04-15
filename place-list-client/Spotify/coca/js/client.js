@@ -20,8 +20,6 @@ $(document).ready(function() {
     "love": 2
   };
 
-  var EVENT_ID = "0";
-
   var getUserId = function() {
     return Models.session.anonymousUserID;
   }
@@ -37,8 +35,20 @@ $(document).ready(function() {
   conn.onmessage = function(event) {
     console.log(event);
     var obj = JSON.parse(event.data);
-    console.log(obj);
-    addTrack("spotify:track:" + obj["track_id"]);
+    switch (obj.cmd) {
+      case "event_info":
+        $.each(obj.params.upcoming, function(k, v) {
+          addTrack("spotify:track:" + k, v.length);
+        });
+        break;
+      case "add_track":
+        addTrack("spotify:track:" + obj.params.track_id);
+        break;
+      default:
+        console.log("I don't know what to do.");
+        console.log(obj);
+        break;
+    }
   };
 
   // Given an input element and a button element, disables the button if the
@@ -76,7 +86,7 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
-        "event_id": EVENT_ID,
+        "event_id": eventId,
         "track_id": id,
         "user_id": getUserId(),
         "power": power
@@ -92,11 +102,11 @@ $(document).ready(function() {
     };
   };
 
-  var addTrack = function(uri) {
+  var addTrack = function(uri, points) {
     console.log("inside addTrack" + uri);
     var track = Models.Track.fromURI(uri);
     var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track));
+    $trackList.append(renderTrack(track, points));
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
     console.log(track);
   }
@@ -109,15 +119,14 @@ $(document).ready(function() {
 
   // given a raw track response from the spotify api, render it to an html
   // string for injection
-  var renderTrack = function(track) {
-    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri)});
-    console.log(raw);
+  var renderTrack = function(track, points) {
+    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri), "points": points});
     return raw;
   };
 
   $('#add-event-btn').click(function(event) {
     event.preventDefault();
-    var eventId = $('div#login-container input:text[name="event_id"]').val();
+    eventId = $('div#login-container input:text[name="event_id"]').val();
     console.debug("event ID: " + eventId);
     if (eventId.length == 0 || eventId === '') {
       console.error("event ID: " + eventId);
@@ -172,7 +181,7 @@ $(document).ready(function() {
       "cmd": "add_track",
       "params": {
         "track_id": stripTrackId(trackName),
-        "user_id": "0"
+        "user_id": getUserId()
       }
     }));
   });
