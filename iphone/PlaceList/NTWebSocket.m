@@ -71,10 +71,8 @@
 
   //Hooray! I got a message to print.
   NSLog(@"Did receive message: %@", message);
-  NSString *example = @"{\"cmd\":\"event_info\",\"params\":{\"event_id\":\"365778960128138\",\"user_id\":\"1332960041\",\"upcoming\":null,\"history\":null}}";
   
   NSDictionary *json = [message JSONValue];
-  //NSDictionary *json = [example JSONValue];
   NSString *command = [json objectForKey: @"cmd"];
   NSDictionary *params = [json objectForKey: @"params"];
 
