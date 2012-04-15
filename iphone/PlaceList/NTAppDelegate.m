@@ -9,6 +9,7 @@
 #import "NTAppDelegate.h"
 
 #import "EventListViewController.h"
+#import "Macros.h"
 
 @implementation NTAppDelegate
 
@@ -38,6 +39,8 @@
     UINavigationBar *navBar = [[self navigationController] navigationBar];
     UIImage *backgroundImage = [UIImage imageNamed:@"navbar"];
     [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+    //navBar.tintColor = UIColorFromRGB(0xFF0000);
+    navBar.tintColor = UIColorFromRGB(0xCF0425);
 
     masterViewController.managedObjectContext = self.managedObjectContext;
 

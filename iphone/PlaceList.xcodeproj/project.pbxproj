@@ -47,7 +47,6 @@
 		42D93F96153A307100E44664 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F8B153A307100E44664 /* AFXMLRequestOperation.m */; };
 		42D93F97153A307100E44664 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D93F8D153A307100E44664 /* UIImageView+AFNetworking.m */; };
 		42D93F9B153A30C600E44664 /* music-note.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D93F9A153A30C600E44664 /* music-note.png */; };
-		42FE6C2B153A56D2000244FC /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE6C2A153A56D2000244FC /* UserHelper.m */; };
 		42FE6C42153A6AAB000244FC /* add-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FE6C38153A6AAB000244FC /* add-default.png */; };
 		42FE6C43153A6AAB000244FC /* add-press.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FE6C39153A6AAB000244FC /* add-press.png */; };
 		42FE6C44153A6AAB000244FC /* back-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FE6C3A153A6AAB000244FC /* back-default.png */; };
@@ -135,8 +134,6 @@
 		42D93F8C153A307100E44664 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		42D93F8D153A307100E44664 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		42D93F9A153A30C600E44664 /* music-note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-note.png"; sourceTree = "<group>"; };
-		42FE6C29153A56D2000244FC /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
-		42FE6C2A153A56D2000244FC /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
 		42FE6C38153A6AAB000244FC /* add-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-default.png"; sourceTree = "<group>"; };
 		42FE6C39153A6AAB000244FC /* add-press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-press.png"; sourceTree = "<group>"; };
 		42FE6C3A153A6AAB000244FC /* back-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-default.png"; sourceTree = "<group>"; };
@@ -147,6 +144,7 @@
 		42FE6C3F153A6AAB000244FC /* navbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar.png; sourceTree = "<group>"; };
 		42FE6C40153A6AAB000244FC /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		42FE6C41153A6AAB000244FC /* title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title@2x.png"; sourceTree = "<group>"; };
+		42FE6C57153A777E000244FC /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +215,7 @@
 		42D93ED7153A01B900E44664 /* PlaceList */ = {
 			isa = PBXGroup;
 			children = (
+				42FE6C55153A776E000244FC /* Helpers */,
 				42D93F26153A044200E44664 /* ViewControllers */,
 				42D93F71153A2AA100E44664 /* Views */,
 				42D93F27153A044800E44664 /* WebSockets */,
@@ -370,6 +369,14 @@
 				42D93F9A153A30C600E44664 /* music-note.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		42FE6C55153A776E000244FC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				42FE6C57153A777E000244FC /* Macros.h */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
