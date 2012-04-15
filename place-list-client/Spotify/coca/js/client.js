@@ -13,7 +13,7 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $eventList = $("#list-events");
   var $trackList = $("#tracks");
-  var $searchList = $("#search-content");
+  var $searchList = $("#search-list");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
@@ -423,7 +423,8 @@ $(document).ready(function() {
     $('.section').hide();
     $('#'+args[0]).show();
   }
-
+	
+	// Event Page: Toggle for adding songs and seeing details
 	$("#add-song").click(function () {
 		$("#event-search").fadeIn("fast");
 	});

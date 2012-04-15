@@ -19,8 +19,8 @@
     <script id="track-search-template" type="text/plain">
       <li class="track-search" id="event-{{id}}">
           <a href="javascript:void(0)" id="track-search-{{id}}-link">
+			<!-- <img src="{{track.album.cover}}" class="art"/> -->
             {{name}}
-            <img src="{{track.album.cover}}" class="art"/>
           </a>
       </li>
     </script>
@@ -92,6 +92,7 @@
 			<div id="search-content">
 			<input type="text" id="add-track" />
 	          <input type="submit" id="add-track-btn" value="add track" name="add track" />
+				<ul id="search-list"></ul>
 		</div><!--/search-content-->
 		
 		</div><!--/event-search-->
