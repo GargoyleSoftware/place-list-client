@@ -6,7 +6,7 @@ p{
 	margin:0 0 20px;
 }
 h2{
-	color:#463034;
+	color:#30353d;
 }
 header{
 	background: #f0042a;
@@ -17,9 +17,9 @@ header{
 	background: -ms-linear-gradient(top,  #f0042a 0%,#c40424 100%);
 	background: linear-gradient(top,  #f0042a 0%,#c40424 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0042a', endColorstr='#c40424',GradientType=0 );
-	box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 2px rgba(0,0,0,0.6);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 1px 2px rgba(0,0,0,0.6);
 	border-bottom:1px solid #5c2012;
-	padding:10px 0;
+	padding:12px 0 8px;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -30,11 +30,15 @@ header h1{
 	font-family: 'Museo300', sans-serif;
 	font-weight: 300;
 	font-size:22px;
+	line-height: 1;
 	margin:0;
 	text-align:center;
 	text-shadow:0 1px 1px rgba(0,0,0,0.3);
 }
 /* ========================================================= Structure ===*/
+#login-container{
+	margin: 90px auto 0;
+}
 #main-container{
 	margin:0 20px;
 }
@@ -45,7 +49,7 @@ header h1{
 	top:0; bottom: 0; left:0;
 	padding:10px;
 	position: fixed;
-	margin:65px 0 10px 10px;
+	margin:55px 0 10px 10px;
 	width:280px;
 }
 #event-content{
@@ -58,7 +62,7 @@ header h1{
 	top:62px; right:10px; bottom:10px; left:10px;
 }
 #event-content h2{
-	margin:0 0 10px;
+	margin:5px 0 5px;
 }
 #event-content img{
 	border-radius:4px;
@@ -74,7 +78,7 @@ header h1{
 -- Playlist --
 ----------- */
 #playlist{
-	margin:85px 0 0 310px;
+	margin:75px 0 0 310px;
 	position: relative;
 	bottom: 15px;
 }
@@ -100,7 +104,7 @@ header h1{
 	width:50px;
     max-width: 100%;
 }
-#playlist li:nth-child(3){
+/*#playlist li:nth-child(3){
 	background: #bad3e3;
 	background: -moz-linear-gradient(top,  #bad3e3 0%, #a7becc 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bad3e3), color-stop(100%,#a7becc));
@@ -114,7 +118,7 @@ header h1{
 }
 #playlist li:nth-child(1), #playlist li:nth-child(2){
 	opacity:0.3;
-}
+}*/
 #playlist .art{
 	margin:0 10px 0 0;
 	vertical-align: top;
@@ -137,6 +141,17 @@ header h1{
 #playlist .album a{
 	color:#515966;
 }
+#playlist .count{
+	background-color:#e0dfdc;
+	border:1px solid #cccbc8;
+	border-radius:4px;
+	color: #999;
+	display: inline-block;
+	font-size: 12px;
+	margin:5px 10px 0 0;
+	padding:1px 5px;
+	vertical-align: text-bottom;
+}
 #playlist .vote{
 	float:right;
 	margin:14px 5px 0;
@@ -144,7 +159,7 @@ header h1{
 #playlist .vote-up{
 	background-image: url('../img/facebook.png');
 	background-position: top;
-	display: block;
+	display: inline-block;
 	height: 26px;
 	width: 26px;
 	-webkit-transition: none;
@@ -152,6 +167,7 @@ header h1{
 	-ms-transition: none;
 	-o-transition: none;
 	transition: none;
+	vertical-align: top;
 }
 #playlist .vote-up:hover,#playlist .like{
 	background-position: bottom;

@@ -38,7 +38,7 @@ $(document).ready(function() {
     console.log(event);
     var obj = JSON.parse(event.data);
     console.log(obj);
-    addTrack(obj["track_id"]);
+    addTrack("spotify:track:" + obj["track_id"]);
   };
 
   // Given an input element and a button element, disables the button if the
@@ -130,6 +130,25 @@ $(document).ready(function() {
     }
   });
 
+	$('#add-facebook-btn').click(function(event) {
+		event.preventDefault();
+	
+		Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
+
+			onSuccess : function(accessToken, ttl) {
+				console.log("Success! Here's the access token: " + accessToken);
+				var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
+
+			},
+
+			onFailure : function(error) {
+				console.log("Authentication failed with error: " + error);
+			},
+
+			onComplete : function() { }
+		});
+	});
+
   $addTrackButton.click(function(event) {
     var trackName = $.trim($addTrackField.val());
     console.log("add track " + trackName);
@@ -138,7 +157,7 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "add_track",
       "params": {
-        "track_id": trackName,
+        "track_id": stripTrackId(trackName),
         "user_id": "0"
       }
     }));
@@ -250,4 +269,7 @@ $(document).ready(function() {
     $('.section').hide();
     $('#'+args[0]).show();
   }
+
+	
+
 });
