@@ -20,8 +20,6 @@ $(document).ready(function() {
     "love": 2
   };
 
-  var EVENT_ID = "0";
-
   var getUserId = function() {
     return Models.session.anonymousUserID;
   }
@@ -76,7 +74,7 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
-        "event_id": EVENT_ID,
+        "event_id": eventId,
         "track_id": id,
         "user_id": getUserId(),
         "power": power
@@ -117,7 +115,7 @@ $(document).ready(function() {
 
   $('#add-event-btn').click(function(event) {
     event.preventDefault();
-    var eventId = $('div#login-container input:text[name="event_id"]').val();
+    eventId = $('div#login-container input:text[name="event_id"]').val();
     console.debug("event ID: " + eventId);
     if (eventId.length == 0 || eventId === '') {
       console.error("event ID: " + eventId);
@@ -139,7 +137,7 @@ $(document).ready(function() {
       "cmd": "add_track",
       "params": {
         "track_id": stripTrackId(trackName),
-        "user_id": "0"
+        "user_id": getUserId()
       }
     }));
   });
