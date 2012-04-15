@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <style>
       @import url('sp://import/css/eve.css');
       @import url('sp://import/css/player.css');
       @import url('sp://import/css/ui.css');
-      @import url('sp://coca/css/main.css');
+      @import url('sp://coca/css/reset.css');
+	  @import url('sp://coca/css/main.css');
       @import url('sp://coca/css/github.css');
       h1, ul {margin:0 0 30px;}
       a:hover {color:#83be20;}
@@ -15,34 +16,48 @@
     <script src="sp://coca/js/mustache.js"></script>
     <script src="sp://coca/js/client.js"></script>
     <script id="track-template" type="text/plain">
-      <li class="track">
-      <input id="upvote-track-{{id}}" name="+" value="+" type="submit"></input>
-      <input id="downvote-track-{{id}}" name="-" value="-" type="submit"></input>
-      <img src="{{track.album.cover}}" width=100 height=100 /> 
-      <span class="track-name">{{track.name}}</span>
-      <span class="album-name">{{track.album.name}}</span>
-      <ul class="artists">
-        {{#track.artists}}
-        <li>{{name}}</li>
-        {{/track.artists}}
-      </ul>
-      </li>
+      	<li class="track">
+			<img src="{{track.album.cover}}" class="art"/>
+			<div class="playlist-detail">
+				<span class="artist">
+					{{#track.artists}}
+					<a href="">{{name}}</a>
+					{{/track.artists}}
+				</span>
+				<span class="album"><a href="">{{track.album.name}}</a> {{track.name}}</span>
+			</div><!--/playlist-detail-->
+			<div class="vote">
+				<a href="javascript:void(0)" class="vote-up" id="upvote-track-{{id}}"></a>
+			</div><!--/vote-->
+		</li>
+
+		
     </script>
   </head>
   <body>
-    <input type="text" id="add-track" />
-    <input type="submit" id="add-track-btn" value="add track" name="add track" />
-    <ul id="tracks"> </ul>
-    <div id="wrapper">
-      <div id="index" class="section">
 
-        <!--<img src="sp://coca/img/spotify-char.png" class="right" />-->
-      </div><!-- /index -->
-      <div id="vote" class="section">
-        <ul class="breadcrumb">
-          <!--<li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>-->
-        </ul>
-      </div><!-- /voting -->
-    </div><!-- /wrapper -->
+	<header>
+		<h1>Placelist</h1>
+	</header>
+
+	<div id="container">
+
+		<div id="event-info">
+				<a href="" class="btn">+ Add Song</a>
+			<div id="event-content">
+				<img src="img/500x300.png"/>
+				<h2>HackerDen</h2>
+				<p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<input type="text" id="add-track" />
+			    <input type="submit" id="add-track-btn" value="add track" name="add track" />    
+			</div><!--/event-content-->
+		</div><!--/event-info-->
+
+		<div id="playlist">
+			<ul id="tracks"></ul>
+
+		</div><!--/playlist-->
+	</div><!--/container-->
+
   </body>
 </html>
