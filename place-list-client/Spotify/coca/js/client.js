@@ -12,6 +12,8 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $trackList = $("#tracks");
   var $eventList = $("#list-events");
+  var $addEventButton = $("#add-event-btn");
+  var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
 
@@ -40,12 +42,15 @@ $(document).ready(function() {
     var obj = JSON.parse(event.data);
     switch (obj.cmd) {
       case "event_info":
+        console.log("event_info");
+        console.log(obj);
         $.each(obj.params.upcoming, function(k, v) {
           addTrack("spotify:track:" + k, v);
         });
         break;
       case "add_track":
-        addTrack("spotify:track:" + obj.params.track_id);
+        console.log(obj);
+        addTrack("spotify:track:" + obj.params.track_id, obj.params.upvoters);
         break;
       case "upvote":
         console.log("Upvote!");
@@ -156,7 +161,7 @@ $(document).ready(function() {
     return Mustache.to_html(eventTemplate, event)
   };
 
-  $('#add-event-btn').click(function(event) {
+  $addEventButton.click(function(event) {
     event.preventDefault();
     eventId = $('div#login-container input:text[name="event_id"]').val();
     console.debug("event ID: " + eventId);
@@ -171,7 +176,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#add-facebook-btn').click(function(event) {
+  $addFacebookButton.click(function(event) {
     event.preventDefault();
     Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
       onSuccess : function(accessToken, ttl) {

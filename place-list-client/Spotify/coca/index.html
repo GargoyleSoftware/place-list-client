@@ -23,14 +23,14 @@
     </script>
     <script id="track-template" type="text/plain">
     <li class="track" id="track-{{id}}">
-      <img src="{{track.album.cover}}" class="art"/>
+    <a href="{{track.album.uri}}"><img src="{{track.album.cover}}" class="art"/></a>
       <div class="playlist-detail">
         <span class="artist">
-          {{track.name}}
+          <a href="{{track.uri}}">{{track.name}}</a>
         </span>
         <span class="album">
           {{#track.artists}}
-            <a href="">{{name}}</a>
+            <a href="{{uri}}">{{name}}</a>
         {{/track.artists}}
         </span>
       </div>
