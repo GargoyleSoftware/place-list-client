@@ -1,6 +1,3 @@
 [submodule "iphone/Libraries/AFNetworking"]
 	path = iphone/Libraries/AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
-[submodule "iphone/Libraries/SocketRocket"]
-	path = iphone/Libraries/SocketRocket
-	url = https://github.com/GargoyleSoftware/SocketRocket.git
