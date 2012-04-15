@@ -35,6 +35,9 @@ header h1{
 	text-shadow:0 1px 1px rgba(0,0,0,0.3);
 }
 /* ========================================================= Structure ===*/
+#login-container{
+	margin: 90px auto 0;
+}
 #main-container{
 	margin:0 20px;
 }
@@ -100,7 +103,7 @@ header h1{
 	width:50px;
     max-width: 100%;
 }
-#playlist li:nth-child(3){
+/*#playlist li:nth-child(3){
 	background: #bad3e3;
 	background: -moz-linear-gradient(top,  #bad3e3 0%, #a7becc 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bad3e3), color-stop(100%,#a7becc));
@@ -114,7 +117,7 @@ header h1{
 }
 #playlist li:nth-child(1), #playlist li:nth-child(2){
 	opacity:0.3;
-}
+}*/
 #playlist .art{
 	margin:0 10px 0 0;
 	vertical-align: top;
@@ -137,6 +140,11 @@ header h1{
 #playlist .album a{
 	color:#515966;
 }
+#playlist .count{
+	background-color:#e0dfdc;
+	border:1px solid #cccbc8;
+	display: inline;
+}
 #playlist .vote{
 	float:right;
 	margin:14px 5px 0;
@@ -144,7 +152,7 @@ header h1{
 #playlist .vote-up{
 	background-image: url('../img/facebook.png');
 	background-position: top;
-	display: block;
+	display: inline-block;
 	height: 26px;
 	width: 26px;
 	-webkit-transition: none;
