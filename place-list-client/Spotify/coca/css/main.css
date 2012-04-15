@@ -40,7 +40,7 @@ header h1{
 	margin: 90px auto 50px;
 }
 #event-container{
-	
+	margin: 90px 0 0;
 }
 #main-container{
 	margin:0 20px;
@@ -58,6 +58,7 @@ header h1{
 	font-family: 'Museo300', sans-serif;
 	font-weight: 300;
 	font-size:22px;
+	margin:0 0 20px;
 }
 #add-facebook-btn{
 	display:block;
