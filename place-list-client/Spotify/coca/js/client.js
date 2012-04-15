@@ -13,11 +13,15 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $eventList = $("#list-events");
   var $trackList = $("#tracks");
-  var $searchList = $("#event-search");
+  var $searchList = $("#search-content");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
+  var fbUser = null;
+  var fbToken = null;
+  var fbEvent = null;
+  var isHost = false;
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
 
@@ -55,6 +59,7 @@ $(document).ready(function() {
         });
         break;
       case "add_track":
+        console.log("Adding track...");
         console.log(obj);
         addTrack("spotify:track:" + obj.params.track_id, obj.params.upvoters);
         break;
@@ -168,7 +173,6 @@ $(document).ready(function() {
     return function(event) {
       event.preventDefault();
       console.log("track picked for next song " + id);
-
       notifyAddTrack(id);
     };
   };
@@ -183,16 +187,18 @@ $(document).ready(function() {
 
   var addTrack = function(uri, upvoters) {
     console.log("inside addTrack" + uri);
-    var track = Models.Track.fromURI(uri);
-    var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track, upvoters.length));
-    if($.inArray(getUserId(), upvoters) !== -1) {
-      console.log(getUserId(), " : ", upvoters);
-      $("#upvote-track-" + id).addClass("like");
-    }
-    $("#upvote-track-" + id).click(mkUpvoteHandler(id));
-    console.log(track);
-    sortTracks();
+    Models.Track.fromURI(uri, function(track) {
+      console.log(track);
+      var id = stripTrackId(track.data.uri);
+      $trackList.append(renderTrack(track, upvoters.length));
+      if($.inArray(getUserId(), upvoters) !== -1) {
+        console.log(getUserId(), " : ", upvoters);
+        $("#upvote-track-" + id).addClass("like");
+      }
+      $("#upvote-track-" + id).click(mkUpvoteHandler(id));
+      console.log(track);
+      sortTracks();
+    });
   }
 
   // given a spotify uri, strips the track id (for use in css-selectors)
@@ -247,6 +253,7 @@ $(document).ready(function() {
     event.preventDefault();
     Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
       onSuccess : function(accessToken, ttl) {
+        fbToken = accessToken;
         console.log("Success! Here's the access token: " + accessToken);
         var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
 
@@ -262,7 +269,7 @@ $(document).ready(function() {
               $.each(result.data, function(i, event) {
                 $eventList.append(renderEvent(event));
                 $("#event-" + event.id + "-link").click(function() {
-                  login(event.id);
+                  login(event.id, event.name);
                   $eventContainer.fadeOut(function() {
                     $mainContainer.fadeIn();
                   });
@@ -273,6 +280,23 @@ $(document).ready(function() {
           },
           error: function(result) {
             console.log("error: " + result);
+          }
+        });
+
+        $.ajax({
+          type: "GET",
+          url: "https://graph.facebook.com/me?access_token=" + accessToken,
+          async: true,
+          dataType: 'json',
+          cache: false,
+          success: function(data) {
+            console.log("Got user's fb details #################");
+            console.log(data);
+            fbUser = data;
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Failed to get user's fb details ----------------");
+            console.log([XMLHttpRequest, textStatus, errorThrown]);
           }
         });
       },
@@ -351,8 +375,36 @@ $(document).ready(function() {
     });
   }
 
-  var login = function(id){
+  var login = function(id, name){
     eventId = id;
+    if(typeof name !== "undefined") {
+      $("#event-name").html(name);
+    } else {
+      $("#event-name").html(id);
+    }
+    $.ajax({
+      type:"GET",
+      url: "https://graph.facebook.com/" + id + "?access_token=" + fbToken,
+      async: true,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        console.log("Got event details");
+        console.log(data);
+        fbEvent = data;
+        if(fbEvent.owner.id == fbUser.id) {
+          console.log("You are the host!!!");
+          isHost = true;
+          $("#event-name").append("(host)");
+        } else {
+          console.log("You are not the host.  You are " + fbUser.id + " and the host is " + fbEvent.owner.id);
+        };
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("Failed to get event details");
+        console.log([XMLHttpRequest, textStatus, errorThrown]);
+      }
+    });
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
@@ -437,5 +489,11 @@ $(document).ready(function() {
   //parseStartArguments();
 
 
+  $("#add-song").click(function () {
+    $("#event-search").fadeIn("fast");
+  });
+  $("#finsihed-adding").click(function () {
+    $("#event-search").fadeOut("fast");
+  });
 
 });
