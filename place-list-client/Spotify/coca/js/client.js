@@ -6,12 +6,21 @@ $(document).ready(function() {
   var trackTemplate = $("#track-template").html();
   var scores = {};
   var eventId = 1;
-  
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
+
+  conn.onopen = function(event) {
+    console.log({"open": event});
+    conn.send(JSON.stringify({
+      "cmd": "login",
+      "params": {
+        "user_id": Models.session.anonymousUserID
+      }
+    }));
+  };
 
   conn.onclose = function(event) {
     console.log({"close": event});
@@ -36,7 +45,26 @@ $(document).ready(function() {
     }
   };
 
-  var upvote = function(eventId, id) {
+  var notifyNewTrack = function(track) {
+    conn.send(JSON.stringify({
+      "cmd": "new_track",
+      "params": {
+        "track": track
+      }
+    }));
+  }
+
+  var notifyNewPosition = function(position) {
+    conn.send(JSON.stringify({
+      "cmd": "new_track",
+      "params": {
+        "track": track,
+        "position": position
+      }
+    }));
+  }
+
+  var upvote = function(id) {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
@@ -109,7 +137,7 @@ $(document).ready(function() {
   var reorderList = function(item){
     var items = $('.track span').get();
     //sort list
-    items.sort(function(a,b){ 
+    items.sort(function(a,b){
       var keyA = parseInt($(a).text());
       var keyB = parseInt($(b).text());
 
@@ -135,7 +163,7 @@ $(document).ready(function() {
         }
         else{
           $('.song_list li:nth-child('+i+')').after(element);
-        }         
+        }
         return false;
       }
     });
@@ -143,6 +171,41 @@ $(document).ready(function() {
 
   // tabs();
   // Models.application.observe(Models.EVENT.ARGUMENTSCHANGED, tabs);
+
+  console.log("Hello world!");
+  Models.player.observe(Models.EVENT.CHANGE, function(event) {
+    //console.log("Something changed!");
+    //console.log("here's what changed: " + event);
+
+    if(event.data.contextclear) {
+      // ???
+    } else if(event.data.curcontext) {
+      // ???
+    } else if(event.data.curtrack) {
+      // New track
+      var track = Models.player.track;
+      console.log("NEW track: " + track);
+      notifyNewTrack(track);
+    } else if(event.data.playstate) {
+      // Play / pause
+    } else if(event.data.repeat) {
+      // NOP
+    } else if(event.data.shuffle) {
+      // NOP
+    } else if(event.data.volume) {
+      // NOP
+    } else {
+      // Must have been ffwd/rewind
+      var totalSeconds = Models.player.position / 1000;
+
+      var minutes = Math.floor(totalSeconds / 60);
+      var seconds = totalSeconds % 60;
+
+      console.log("current playback position: " + minutes + ":" + seconds);
+      notifyNewPosition(Models.player.position);
+    }
+
+  });
 
   function tabs() {
     var args = Models.application.arguments;
