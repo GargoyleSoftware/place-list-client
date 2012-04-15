@@ -13,7 +13,7 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $eventList = $("#list-events");
   var $trackList = $("#tracks");
-  var $searchList = $("#event-search");
+  var $searchList = $("#search-content");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
