@@ -136,21 +136,35 @@ $(document).ready(function() {
       onSuccess : function(accessToken, ttl) {
         console.log("Success! Here's the access token: " + accessToken);
         var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
-        
-        $.ajax(fullUrl,
-        {
+
+        $.ajax(fullUrl, {
           cache: false,
+          dataType: 'json',
           beforeSend: function(result) {
             console.log("beforeSend");
           },
           success: function(result) {
-            console.log("success");
+            console.log("success: " + result);
           },
           error: function(result) {
             console.log("error: " + result);
           }
         });
-
+        //$.ajax({
+        //  type: "GET",
+        //  url: "https://graph.facebook.com/search",
+        //  dataType: 'json',
+        //  success: function(data) {
+        //    console.log("Called facebook succesfully");
+        //    console.log(data);
+        //  },
+        //  error: function(XMLHttpRequest, textStatus, errorThrown) {
+        //    console.log("Failed to call Facebook");
+        //    console.log(XMLHttpRequest);
+        //    console.log(textStatus);
+        //    console.log(errorThrown);
+        //  }
+        //});
       },
       onFailure : function(error) {
         console.log("Authentication failed with error: " + error);
@@ -280,6 +294,6 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
-	
+
 
 });
