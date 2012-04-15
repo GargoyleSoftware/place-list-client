@@ -7,6 +7,7 @@ $(document).ready(function() {
   var scores = {};
   var eventId = 1;
   var $loginContainer = $("#login-container");
+  var $eventContainer = $("#event-container");
   var $mainContainer = $("#main-container");
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
@@ -38,11 +39,15 @@ $(document).ready(function() {
     switch (obj.cmd) {
       case "event_info":
         $.each(obj.params.upcoming, function(k, v) {
-          addTrack("spotify:track:" + k, v.length);
+          addTrack("spotify:track:" + k, v);
         });
         break;
       case "add_track":
         addTrack("spotify:track:" + obj.params.track_id);
+        break;
+      case "upvote":
+        console.log("Upvote!");
+        $("#track-" + obj.params.track_id + "-points").html(obj.params.upvoters.length);
         break;
       default:
         console.log("I don't know what to do.");
@@ -83,15 +88,30 @@ $(document).ready(function() {
   }
 
   var upvote = function(id, power) {
-    conn.send(JSON.stringify({
-      "cmd": "upvote_track",
-      "params": {
-        "event_id": eventId,
-        "track_id": id,
-        "user_id": getUserId(),
-        "power": power
-      }
-    }));
+    var $hand = $("#upvote-track-" + id);
+    if($hand.hasClass("like")){
+      $hand.removeClass("like");
+      conn.send(JSON.stringify({
+        "cmd": "upvote_track",
+        "params": {
+          "event_id": eventId,
+          "track_id": id,
+          "user_id": getUserId(),
+          "remove": true
+        }
+      }));
+    } else {
+      $hand.addClass("like");
+      conn.send(JSON.stringify({
+        "cmd": "upvote_track",
+        "params": {
+          "event_id": eventId,
+          "track_id": id,
+          "user_id": getUserId(),
+          "remove": false
+        }
+      }));
+    }
   };
 
   var mkUpvoteHandler = function(id) {
@@ -102,11 +122,15 @@ $(document).ready(function() {
     };
   };
 
-  var addTrack = function(uri, points) {
+  var addTrack = function(uri, upvoters) {
     console.log("inside addTrack" + uri);
     var track = Models.Track.fromURI(uri);
     var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track, points));
+    $trackList.append(renderTrack(track, upvoters.length));
+    if($.inArray(getUserId(), upvoters) !== -1) {
+      console.log(getUserId(), " : ", upvoters);
+      $("#upvote-track-" + id).addClass("like");
+    }
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
     console.log(track);
   }
@@ -153,12 +177,16 @@ $(document).ready(function() {
             console.log("beforeSend");
           },
           success: function(result) {
-            var parties = result.data;
-            for (i in parties) {
-              var party = parties[i];
-              var name = party.name; 
-              $('ul#list-events').append('<li>' + name + '</li>');
-            }
+            
+			$loginContainer.fadeOut(function() {
+		        $eventContainer.fadeIn();
+				var parties = result.data;
+	            for (i in parties) {
+	              var party = parties[i];
+	              var name = party.name; 
+				$('ul#list-events').append('<li><a href="">' + name + '</a></li>');
+	            }
+		      });
           },
           error: function(result) {
             console.log("error: " + result);
