@@ -143,7 +143,13 @@ header h1{
 #playlist .count{
 	background-color:#e0dfdc;
 	border:1px solid #cccbc8;
-	display: inline;
+	border-radius:4px;
+	color: #999;
+	display: inline-block;
+	font-size: 12px;
+	margin:5px 10px 0 0;
+	padding:1px 5px;
+	vertical-align: text-bottom;
 }
 #playlist .vote{
 	float:right;
@@ -160,6 +166,7 @@ header h1{
 	-ms-transition: none;
 	-o-transition: none;
 	transition: none;
+	vertical-align: top;
 }
 #playlist .vote-up:hover,#playlist .like{
 	background-position: bottom;
