@@ -5,6 +5,7 @@ $(document).ready(function() {
   var Models = Spotify.require("sp://import/scripts/api/models");
   var trackTemplate = $("#track-template").html();
   var scores = {};
+  var eventId = 1;
   
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
@@ -20,7 +21,7 @@ $(document).ready(function() {
     console.log(event);
     var obj = JSON.parse(event.data);
     console.log(obj);
-    addTrack(obj.params.trackname);
+    addTrack(obj["track_id"]);
   };
 
   // Given an input element and a button element, disables the button if the
@@ -35,33 +36,19 @@ $(document).ready(function() {
     }
   };
 
-  var upvote = function(id) {
+  var upvote = function(eventId, id) {
     conn.send(JSON.stringify({
       "cmd": "upvote_track",
       "params": {
+        "event_id": eventId,
         "track_id": id
       }
     }));
   };
 
-  var downvote = function(id) {
-    conn.send(JSON.stringify({
-      "cmd": "downvote_track",
-      "params": {
-        "track_ud": id
-      }
-    }));
-  }
-
   var mkUpvoteHandler = function(id) {
     return function(event) {
       console.log("Upvote " + id);
-    };
-  };
-
-  var mkDownvoteHandler = function(id) {
-    return function(event) {
-      console.log("Downvote " + id);
     };
   };
 
@@ -71,7 +58,6 @@ $(document).ready(function() {
     var id = stripTrackId(track.data.uri);
     $trackList.append(renderTrack(track));
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
-    $("#downvote-track-" + id).click(mkDownvoteHandler(id));
     console.log(track);
   }
 
@@ -97,7 +83,8 @@ $(document).ready(function() {
     conn.send(JSON.stringify({
       "cmd": "add_track",
       "params": {
-        "trackname": trackName
+        "track_id": trackName,
+        "user_id": "0"
       }
     }));
   });
