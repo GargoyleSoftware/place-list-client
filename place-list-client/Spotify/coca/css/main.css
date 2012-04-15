@@ -3,10 +3,14 @@ html, body{
 	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 p{
+	color:#515966;
+	font-size:16px;
 	margin:0 0 20px;
 }
 h2{
 	color:#30353d;
+	font-size:30px;
+	margin:0 0 10px;
 }
 header{
 	background: #f0042a;
@@ -43,7 +47,7 @@ header h1 a, header h1 a:hover{
 	margin: 90px auto 50px;
 }
 #event-container{
-	margin: 80px 20px 0;
+	margin: 58px 20px 0;
 }
 #main-container{
 	margin:0 20px;
@@ -55,7 +59,6 @@ header h1 a, header h1 a:hover{
 	margin:130px 0 0 ;
 }
 #login-container p{
-	color:#515966;
 	text-align:center;
 	font-size:22px;
 	margin:0 0 20px;
