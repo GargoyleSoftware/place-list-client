@@ -130,24 +130,34 @@ $(document).ready(function() {
     }
   });
 
-	$('#add-facebook-btn').click(function(event) {
-		event.preventDefault();
-	
-		Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
+  $('#add-facebook-btn').click(function(event) {
+    event.preventDefault();
+    Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
+      onSuccess : function(accessToken, ttl) {
+        console.log("Success! Here's the access token: " + accessToken);
+        var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
+        
+        $.ajax(fullUrl,
+        {
+          cache: false,
+          beforeSend: function(result) {
+            console.log("beforeSend");
+          },
+          success: function(result) {
+            console.log("success");
+          },
+          error: function(result) {
+            console.log("error: " + result);
+          }
+        });
 
-			onSuccess : function(accessToken, ttl) {
-				console.log("Success! Here's the access token: " + accessToken);
-				var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
-
-			},
-
-			onFailure : function(error) {
-				console.log("Authentication failed with error: " + error);
-			},
-
-			onComplete : function() { }
-		});
-	});
+      },
+      onFailure : function(error) {
+        console.log("Authentication failed with error: " + error);
+      },
+      onComplete : function() { }
+    });
+  });
 
   $addTrackButton.click(function(event) {
     var trackName = $.trim($addTrackField.val());
