@@ -122,12 +122,18 @@ $(document).ready(function() {
   }
 
   var notifyNewTrack = function(track) {
-    conn.send(JSON.stringify({
-      "cmd": "start_track",
-      "params": {
-        "track": track
-      }
-    }));
+    if(isHost) {
+      console.log("Starting track play!  Track is...");
+      console.log(track);
+      conn.send(JSON.stringify({
+        "cmd": "start_track",
+        "params": {
+          "track_id": stripTrackId(track.data.uri),
+          "user_id": getUserId(),
+          "event_id": fbEvent.id
+        }
+      }));
+    }
   }
 
   var notifyNewPosition = function(position) {
