@@ -11,6 +11,12 @@
 #import "EventListViewController.h"
 #import "Macros.h"
 
+@interface NTAppDelegate ()
+
+- (void)initFacebook;
+
+@end
+
 @implementation NTAppDelegate
 
 @synthesize window = _window;
@@ -18,6 +24,8 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize navigationController = _navigationController;
+
+@synthesize facebook = _facebook;
 
 - (void)dealloc
 {
@@ -33,6 +41,8 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+
+    [self initFacebook];
 
     EventListViewController *masterViewController = [[[EventListViewController alloc] initWithNibName:@"EventListViewController" bundle:nil] autorelease];
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
@@ -171,5 +181,81 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+#pragma mark - Facebook
+
+- (void)initFacebook
+{
+
+  self.facebook = [[[Facebook alloc] initWithAppId:@"322455194489117" andDelegate:self] autorelease];
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBAccessTokenKey"] 
+      && [defaults objectForKey:@"FBExpirationDateKey"]) {
+    _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+    _facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+  }
+
+  if (![_facebook isSessionValid]) {
+    [_facebook authorize:nil];
+  }
+}
+
+#pragma mark - FBSessionDelegate
+
+- (void)fbDidNotLogin:(BOOL)cancelled 
+{
+
+  NSLog(@"fbDidNotLogin");
+
+}
+
+/**
+ * Called after the access token was extended. If your application has any
+ * references to the previous access token (for example, if your application
+ * stores the previous access token in persistent storage), your application
+ * should overwrite the old access token with the new one in this method.
+ * See extendAccessToken for more details.
+ */
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt
+{
+
+  NSLog(@"fbDidExtendToken");
+
+}
+
+- (void)fbDidLogin {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[_facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[_facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
+
+- (void)fbDidLogout {
+  
+  NSLog(@"fbDidLogout");
+
+}
+
+- (void)fbSessionInvalidated {
+
+  NSLog(@"fbSessionInvalidated");
+
+}
+
+#pragma mark - URL HAndling
+
+// Pre iOS 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [_facebook handleOpenURL:url]; 
+}
+
+// For iOS 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [_facebook handleOpenURL:url]; 
+}
+
 
 @end
