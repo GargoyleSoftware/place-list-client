@@ -144,27 +144,17 @@ $(document).ready(function() {
             console.log("beforeSend");
           },
           success: function(result) {
-            console.log("success: " + result);
+            var parties = result.data;
+            for (i in parties) {
+              var party = parties[i];
+              var name = party.name; 
+              $('ul#list-events').append('<li>' + name + '</li>');
+            }
           },
           error: function(result) {
             console.log("error: " + result);
           }
         });
-        //$.ajax({
-        //  type: "GET",
-        //  url: "https://graph.facebook.com/search",
-        //  dataType: 'json',
-        //  success: function(data) {
-        //    console.log("Called facebook succesfully");
-        //    console.log(data);
-        //  },
-        //  error: function(XMLHttpRequest, textStatus, errorThrown) {
-        //    console.log("Failed to call Facebook");
-        //    console.log(XMLHttpRequest);
-        //    console.log(textStatus);
-        //    console.log(errorThrown);
-        //  }
-        //});
       },
       onFailure : function(error) {
         console.log("Authentication failed with error: " + error);
