@@ -4,3 +4,6 @@
 [submodule "iphone/Libraries/SocketRocket"]
 	path = iphone/Libraries/SocketRocket
 	url = https://github.com/GargoyleSoftware/SocketRocket.git
+[submodule "iphone/Libraries/Facebook"]
+	path = iphone/Libraries/Facebook
+	url = https://github.com/facebook/facebook-ios-sdk.git

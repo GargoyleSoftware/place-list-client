@@ -139,6 +139,39 @@ $(document).ready(function() {
     }
   });
 
+  $('#add-facebook-btn').click(function(event) {
+    event.preventDefault();
+    Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
+      onSuccess : function(accessToken, ttl) {
+        console.log("Success! Here's the access token: " + accessToken);
+        var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
+
+        $.ajax(fullUrl, {
+          cache: false,
+          dataType: 'json',
+          beforeSend: function(result) {
+            console.log("beforeSend");
+          },
+          success: function(result) {
+            var parties = result.data;
+            for (i in parties) {
+              var party = parties[i];
+              var name = party.name; 
+              $('ul#list-events').append('<li>' + name + '</li>');
+            }
+          },
+          error: function(result) {
+            console.log("error: " + result);
+          }
+        });
+      },
+      onFailure : function(error) {
+        console.log("Authentication failed with error: " + error);
+      },
+      onComplete : function() { }
+    });
+  });
+
   $addTrackButton.click(function(event) {
     var trackName = $.trim($addTrackField.val());
     console.log("add track " + trackName);
@@ -259,4 +292,7 @@ $(document).ready(function() {
     $('.section').hide();
     $('#'+args[0]).show();
   }
+
+
+
 });

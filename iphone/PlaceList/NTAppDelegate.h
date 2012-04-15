@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NTAppDelegate : UIResponder <UIApplicationDelegate>
+#import "FBConnect.h"
+
+@interface NTAppDelegate : UIResponder <UIApplicationDelegate, FBSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -20,5 +22,7 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
+
+@property (nonatomic, retain) Facebook *facebook;
 
 @end

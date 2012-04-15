@@ -81,9 +81,6 @@
   SongCell *cell = (SongCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
   if (cell == nil) {
-    //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    //cell = [[[SongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    //cell = [SongCell cellFromNib];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SongCell" owner:self options:nil];
     cell = (SongCell *)[nib objectAtIndex:0];
   }
