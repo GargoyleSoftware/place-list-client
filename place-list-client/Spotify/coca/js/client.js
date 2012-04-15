@@ -38,11 +38,15 @@ $(document).ready(function() {
     switch (obj.cmd) {
       case "event_info":
         $.each(obj.params.upcoming, function(k, v) {
-          addTrack("spotify:track:" + k, v.length);
+          addTrack("spotify:track:" + k, v);
         });
         break;
       case "add_track":
         addTrack("spotify:track:" + obj.params.track_id);
+        break;
+      case "upvote":
+        console.log("Upvote!");
+        $("#track-" + obj.params.track_id + "-points").html(obj.params.upvoters.length);
         break;
       default:
         console.log("I don't know what to do.");
@@ -117,11 +121,15 @@ $(document).ready(function() {
     };
   };
 
-  var addTrack = function(uri, points) {
+  var addTrack = function(uri, upvoters) {
     console.log("inside addTrack" + uri);
     var track = Models.Track.fromURI(uri);
     var id = stripTrackId(track.data.uri);
-    $trackList.append(renderTrack(track, points));
+    $trackList.append(renderTrack(track, upvoters.length));
+    if($.inArray(getUserId(), upvoters) !== -1) {
+      console.log(getUserId(), " : ", upvoters);
+      $("#upvote-track-" + id).addClass("like");
+    }
     $("#upvote-track-" + id).click(mkUpvoteHandler(id));
     console.log(track);
   }

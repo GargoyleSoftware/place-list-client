@@ -18,20 +18,20 @@
     <script src="sp://coca/js/client.js"></script>
     <script id="track-template" type="text/plain">
 
-    <li class="track">
+    <li class="track" id="track-{{id}}">
       <img src="{{track.album.cover}}" class="art"/>
       <div class="playlist-detail">
         <span class="artist">
-			{{track.name}}
+          {{track.name}}
         </span>
-		<span class="album">
-			{{#track.artists}}
-			<a href="">{{name}}</a>
-			{{/track.artists}}
-		</span>
+        <span class="album">
+          {{#track.artists}}
+            <a href="">{{name}}</a>
+        {{/track.artists}}
+        </span>
       </div>
       <div class="vote">
-      <span class="count">{{points}}</span>
+      <span class="count" id="track-{{id}}-points">{{points}}</span>
         <a href="javascript:void(0)" class="vote-up" id="upvote-track-{{id}}"></a>
       </div>
     </li>
