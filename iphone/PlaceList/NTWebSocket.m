@@ -71,25 +71,28 @@
 
   //Hooray! I got a message to print.
   NSLog(@"Did receive message: %@", message);
-  NSString *example = @"{\"cmd\":\"event_info\",\"params\":{\"event_id\":\"365778960128138\",\"user_id\":\"1332960041\",\"upcoming\":null,\"history\":null}}";
   
-  //NSDictionary *json = [message JSONValue];
-  NSDictionary *json = [example JSONValue];
+  NSDictionary *json = [message JSONValue];
   NSString *command = [json objectForKey: @"cmd"];
   NSDictionary *params = [json objectForKey: @"params"];
-
   
   if ([command isEqualToString: @"event_info"]) {
     NSDictionary *upcoming = [params objectForKey: @"upcoming"];
     if (NOT_NULL(upcoming)) {
-    for (NSString *trackId in [upcoming allKeys]) {
-      NSInteger points = [[upcoming objectForKey: trackId] length];
-      [[SongModel sharedInstance] addTrackId: trackId points: points];
-    }
+      for (NSString *trackId in [upcoming allKeys]) {
+	NSInteger points = [[upcoming objectForKey: trackId] count];
+	[[SongModel sharedInstance] addTrackId: trackId points: points];
+      }
     }
   } else if ([command isEqualToString: @"add_track"]) {
     NSString *trackId = [params objectForKey: @"track_id"];
     [[SongModel sharedInstance] addTrackId: trackId];
+  } else if ([command isEqualToString: @"upvote"]) {
+    NSString *trackId = [params objectForKey: @"track_id"];
+    
+    NSDictionary *upvoters = [params objectForKey: @"upvoters"];
+    NSInteger points = [upvoters count];
+    [[SongModel sharedInstance] updateTrackId: trackId withPoints: points];
   } else {
     NSLog(@"I don't know what to do. Command: %@", command);
   }
