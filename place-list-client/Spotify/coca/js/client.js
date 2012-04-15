@@ -5,13 +5,15 @@ $(document).ready(function() {
   var Models = Spotify.require("sp://import/scripts/api/models");
   var trackTemplate = $("#track-template").html();
   var eventTemplate = $("#event-template").html();
+  var trackSearchTemplate = $("#track-search-template").html();
   var scores = {};
   var eventId = 1;
   var $loginContainer = $("#login-container");
   var $eventContainer = $("#event-container");
   var $mainContainer = $("#main-container");
-  var $trackList = $("#tracks");
   var $eventList = $("#list-events");
+  var $trackList = $("#tracks");
+  var $searchList = $("#event-search");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
@@ -83,6 +85,23 @@ $(document).ready(function() {
       $submitButton.attr("disabled", "disabled");
     }
   };
+
+  var doSearch = function (searchQuery) {
+    var search = new Models.Search(searchQuery);
+
+    search.localResults = Models.LOCALSEARCHRESULTS.APPEND;
+    search.observe(Models.EVENT.CHANGE, function() {
+      $('div#event-content').hide();
+      $searchList.show();
+
+      search.tracks.forEach(function(track) {
+        console.log(track.name);
+        $searchList.append(renderSearchTrack(track));
+      });
+    });
+
+    search.appendNext();
+  }
 
   var notifyNewTrack = function(track) {
     conn.send(JSON.stringify({
@@ -164,6 +183,13 @@ $(document).ready(function() {
     return raw;
   };
 
+  // given a raw track response from the spotify api, render it to an html
+  // string for injection
+  var renderSearchTrack = function(track) {
+    var raw = Mustache.to_html(trackTemplate, {"track": track.data, "id": stripTrackId(track.data.uri)});
+    return raw;
+  };
+
   var renderEvent = function(event) {
     console.log("render event ------------------------------------------------------------");
     console.log(event);
@@ -229,16 +255,18 @@ $(document).ready(function() {
 
   $addTrackButton.click(function(event) {
     var trackName = $.trim($addTrackField.val());
-    console.log("add track " + trackName);
-    $(this).attr("disabled", "disabled");
-    $addTrackField.val("");
-    conn.send(JSON.stringify({
-      "cmd": "add_track",
-      "params": {
-        "track_id": stripTrackId(trackName),
-        "user_id": getUserId()
-      }
-    }));
+    doSearch(trackName);
+    //var trackName = $.trim($addTrackField.val());
+    //console.log("add track " + trackName);
+    //$(this).attr("disabled", "disabled");
+    //$addTrackField.val("");
+    //conn.send(JSON.stringify({
+    //  "cmd": "add_track",
+    //  "params": {
+    //    "track_id": stripTrackId(trackName),
+    //    "user_id": getUserId()
+    //  }
+    //}));
   });
 
   $addTrackField.keydown(function(event) {
