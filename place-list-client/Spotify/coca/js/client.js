@@ -426,5 +426,16 @@ $(document).ready(function() {
   }
 
 
+  /*
+   * If we were started with an event ID or song ID, let's jump to it.
+   */
+  //var parseStartArguments = function() {
+  //  Application
+  //      spotify:app:name:arg1:val1:arg2:val2:...:argN:valN.
+  //}
+
+  //parseStartArguments();
+
+
 
 });
