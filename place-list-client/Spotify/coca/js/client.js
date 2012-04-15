@@ -19,6 +19,9 @@ $(document).ready(function() {
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
   var fbUser = null;
+  var fbToken = null;
+  var fbEvent = null;
+  var isHost = false;
 
   var conn = new WebSocket("ws://jordanorelli.com:8080/socket");
 
@@ -249,6 +252,7 @@ $(document).ready(function() {
     event.preventDefault();
     Auth.authenticateWithFacebook('322455194489117', ['user_events', 'user_checkins'], {
       onSuccess : function(accessToken, ttl) {
+        fbToken = accessToken;
         console.log("Success! Here's the access token: " + accessToken);
         var fullUrl = "https://graph.facebook.com/me/events/attending?access_token=" + accessToken;
 
@@ -377,6 +381,29 @@ $(document).ready(function() {
     } else {
       $("#event-name").html(id);
     }
+    $.ajax({
+      type:"GET",
+      url: "https://graph.facebook.com/" + id + "?access_token=" + fbToken,
+      async: true,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        console.log("Got event details");
+        console.log(data);
+        fbEvent = data;
+        if(fbEvent.owner.id == fbUser.id) {
+          console.log("You are the host!!!");
+          isHost = true;
+          $("#event-name").append("(host)");
+        } else {
+          console.log("You are not the host.  You are " + fbUser.id + " and the host is " + fbEvent.owner.id);
+        };
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("Failed to get event details");
+        console.log([XMLHttpRequest, textStatus, errorThrown]);
+      }
+    });
     conn.send(JSON.stringify({
       "cmd": "login",
       "params": {
