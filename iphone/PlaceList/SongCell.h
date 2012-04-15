@@ -12,7 +12,7 @@
 
 @protocol SongCellDelegate
 
-- (void)cellDidVote:(NSInteger)cellTag upVote:(BOOL)upVote;
+- (void)cellDidVote:(NSInteger)cellTag remove:(BOOL)remove;
 
 @end
 

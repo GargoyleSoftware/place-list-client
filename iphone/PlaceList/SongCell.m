@@ -35,12 +35,11 @@
 
 #pragma mark - Private Methods
 
-- (void)voteWasPressed:(BOOL)upVote
+- (void)voteWasPressed:(BOOL)remove
 {
   NSLog(@"voteWasPressed");
   if (self.delegate) {
-    [self.delegate cellDidVote: self.tag
-			upVote: upVote];
+    [self.delegate cellDidVote: self.tag remove: remove];
   }
 }
 
@@ -53,18 +52,15 @@
 
 - (IBAction)downVoteWasPressed:(id)sender
 {
-  [self voteWasPressed: NO];
+  [self voteWasPressed: YES];
 }
 
 - (IBAction)upVoteWasPressed:(id)sender
 {
   UIButton *button = (UIButton *)sender;
   [self toggleSelected: button];
-  if (button.selected) {
-    [self voteWasPressed: YES];
-  } else {
-    [self voteWasPressed: NO];
-  }
+
+  [self voteWasPressed: !button.selected];
 }
 
 

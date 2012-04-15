@@ -10,8 +10,11 @@
 
 #import "SongCell.h"
 
+@class SongModel;
+
 @interface SongListViewController : UITableViewController <SongCellDelegate>
 
-@property (nonatomic, retain) NSMutableArray *songs;
+//@property (nonatomic, retain) NSMutableArray *songs;
+@property (nonatomic, retain) SongModel *model;
 
 @end

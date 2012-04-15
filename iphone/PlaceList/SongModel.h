@@ -14,7 +14,12 @@
 
 + (SongModel *)sharedInstance;
 
+- (void)updateTrackId:(NSString *)trackId withPoints:(NSInteger)points;
 - (void)addTrackId:(NSString *)trackId;
 - (void)addTrackId:(NSString *)trackId points:(NSInteger)points;
+- (void)clear;
+
+- (NSUInteger)count;
+- (NSArray *)sortedKeys;
 
 @end

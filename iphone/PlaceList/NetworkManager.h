@@ -17,10 +17,13 @@
 + (NetworkManager *)sharedInstance;
 
 @property (nonatomic, retain) NTWebSocket *webSocket;
+@property (nonatomic, retain) NSString *eventId;
 
 - (BOOL)openSocketConnectionWithEvent:(NSString *)eventId;
 - (void)closeSocketConnection;
 
 - (void)getFacebookId;
+
+- (void)upvoteTrack:(NSString *)trackId remove:(BOOL)remove;
 
 @end
