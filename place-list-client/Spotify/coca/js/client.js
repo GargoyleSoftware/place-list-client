@@ -6,6 +6,8 @@ $(document).ready(function() {
   var trackTemplate = $("#track-template").html();
   var scores = {};
   var eventId = 1;
+  var $loginContainer = $("#login-container");
+  var $mainContainer = $("#main-container");
   var $trackList = $("#tracks");
   var $addTrackField = $("#add-track");
   var $addTrackButton = $("#add-track-btn");
@@ -26,12 +28,6 @@ $(document).ready(function() {
 
   conn.onopen = function(event) {
     console.log({"open": event});
-    conn.send(JSON.stringify({
-      "cmd": "login",
-      "params": {
-        "user_id": getUserId()
-      }
-    }));
   };
 
   conn.onclose = function(event) {
@@ -119,6 +115,21 @@ $(document).ready(function() {
     return raw;
   };
 
+  $('#add-event-btn').click(function(event) {
+    event.preventDefault();
+    var eventId = $('div#login-container input:text[name="event_id"]').val();
+    console.debug("event ID: " + eventId);
+    if (eventId.length == 0 || eventId === '') {
+      console.error("event ID: " + eventId);
+      alert("Invalid event ID!");
+    } else {
+      login(eventId);
+      $loginContainer.fadeOut(function() {
+        $mainContainer.fadeIn();
+      });
+    }
+  });
+
   $addTrackButton.click(function(event) {
     var trackName = $.trim($addTrackField.val());
     console.log("add track " + trackName);
@@ -183,6 +194,16 @@ $(document).ready(function() {
         return false;
       }
     });
+  }
+
+  var login = function(eventId){
+    conn.send(JSON.stringify({
+      "cmd": "login",
+      "params": {
+        "user_id": getUserId(),
+        "event_id": eventId,
+      }
+    }));
   }
 
   // tabs();

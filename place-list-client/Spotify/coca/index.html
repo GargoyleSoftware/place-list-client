@@ -17,7 +17,7 @@
     <script id="track-template" type="text/plain">
       <li class="track">
       <input id="upvote-track-{{id}}" name="+" value="+" type="submit"></input>
-      <img src="{{track.album.cover}}" width=100 height=100 /> 
+      <img src="{{track.album.cover}}" width=100 height=100 />
       <span class="track-name">{{track.name}}</span>
       <span class="album-name">{{track.album.name}}</span>
       <ul class="artists">
@@ -29,19 +29,29 @@
     </script>
   </head>
   <body>
-    <input type="text" id="add-track" />
-    <input type="submit" id="add-track-btn" value="add track" name="add track" />
-    <ul id="tracks"> </ul>
-    <div id="wrapper">
-      <div id="index" class="section">
+    <div id="content">
+      <div id="login-container">
+        <form name="input" action="#" method="post">
+          Event ID: <input type="text" name="event_id" />
+          <input type="submit" id="add-event-btn" value="add event" name="add event" />
+        </form>
+      </div>
+      <div id="main-container" style="display: none;">
+        <input type="text" id="add-track" />
+        <input type="submit" id="add-track-btn" value="add track" name="add track" />
+        <ul id="tracks"> </ul>
+        <div id="wrapper">
+          <div id="index" class="section">
 
-        <!--<img src="sp://coca/img/spotify-char.png" class="right" />-->
-      </div><!-- /index -->
-      <div id="vote" class="section">
-        <ul class="breadcrumb">
-          <!--<li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>-->
-        </ul>
-      </div><!-- /voting -->
-    </div><!-- /wrapper -->
+            <!--<img src="sp://coca/img/spotify-char.png" class="right" />-->
+          </div><!-- /index -->
+          <div id="vote" class="section">
+            <ul class="breadcrumb">
+              <!--<li><a href="spotify:app:coca:index">&laquo; Back to main page</a></li>-->
+            </ul>
+          </div><!-- /voting -->
+        </div><!-- /wrapper -->
+      </div> <!-- /chat-container -->
+    </div><!-- /content -->
   </body>
 </html>
