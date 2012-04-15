@@ -217,7 +217,6 @@
 		42D93ED7153A01B900E44664 /* PlaceList */ = {
 			isa = PBXGroup;
 			children = (
-				42FE6C27153A56C1000244FC /* Helpers */,
 				42D93F26153A044200E44664 /* ViewControllers */,
 				42D93F71153A2AA100E44664 /* Views */,
 				42D93F27153A044800E44664 /* WebSockets */,
@@ -373,15 +372,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		42FE6C27153A56C1000244FC /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				42FE6C29153A56D2000244FC /* UserHelper.h */,
-				42FE6C2A153A56D2000244FC /* UserHelper.m */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -525,7 +515,6 @@
 				42D93F95153A307100E44664 /* AFURLConnectionOperation.m in Sources */,
 				42D93F96153A307100E44664 /* AFXMLRequestOperation.m in Sources */,
 				42D93F97153A307100E44664 /* UIImageView+AFNetworking.m in Sources */,
-				42FE6C2B153A56D2000244FC /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

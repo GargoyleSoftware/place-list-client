@@ -57,12 +57,7 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
-  //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-  UIBarButtonItem *connectButton = [[[UIBarButtonItem alloc] initWithTitle: @"Connect"
-								     style: UIBarButtonItemStyleBordered
-								    target: self 
-								    action: @selector(openSocketConnection:)] autorelease];
-  self.navigationItem.leftBarButtonItem = connectButton;
+  self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
   UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
   //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openSocketConnection:)] autorelease];

@@ -3,4 +3,4 @@
 	url = https://github.com/AFNetworking/AFNetworking.git
 [submodule "iphone/Libraries/SocketRocket"]
 	path = iphone/Libraries/SocketRocket
-	url = git@github.com:GargoyleSoftware/SocketRocket.git
+	url = https://github.com/GargoyleSoftware/SocketRocket.git
