@@ -89,6 +89,22 @@ header h1 a, header h1 a:hover{
 	width:280px;
 	z-index: 20;
 }
+#search-list{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#search-list li{
+	background-color:#f8f8f8;
+	font-size:12px;
+	padding:5px;
+}
+#search-list li:nth-child(odd){
+	background-color:#ececec;
+}
+#search-list a{
+	color:#4d4d4d;
+}
 #event-content, #search-content{
 	background-color:#fff;
 	border-radius:4px;
@@ -133,7 +149,7 @@ header h1 a, header h1 a:hover{
 	padding:10px;
 	margin:0 0 10px 0;
 }
-#playlist li img{
+#playlist li img, #search-list img{
 background-color: #DBDAD7;
 border-radius:4px;
 border:1px solid #82827f;

@@ -13,7 +13,8 @@ $(document).ready(function() {
   var $mainContainer = $("#main-container");
   var $eventList = $("#list-events");
   var $trackList = $("#tracks");
-  var $searchList = $("#search-content");
+  var $searchContent = $("#search-content");
+  var $searchList = $("#search-list");
   var $addEventButton = $("#add-event-btn");
   var $addFacebookButton = $("#add-facebook-btn");
   var $addTrackField = $("#add-track");
@@ -93,12 +94,14 @@ $(document).ready(function() {
   };
 
   var doSearch = function (searchQuery) {
+    $searchList.empty();
+
     var search = new Models.Search(searchQuery);
 
     search.localResults = Models.LOCALSEARCHRESULTS.APPEND;
     search.observe(Models.EVENT.CHANGE, function() {
       $('div#event-content').hide();
-      $searchList.show();
+      $searchContent.show();
 
       search.tracks.forEach(function(track) {
         console.log(track.name);
@@ -482,11 +485,27 @@ $(document).ready(function() {
     $('#'+args[0]).show();
   }
 
+	// Event Page: Toggle for adding songs and seeing details
 	$("#add-song").click(function () {
 		$("#event-search").fadeIn("fast");
 	});
 		$("#finsihed-adding").click(function () {
 			$("#event-search").fadeOut("fast");
 	});
+
+
+
+  /*
+   * If we were started with an event ID or song ID, let's jump to it.
+   */
+  //var parseStartArguments = function() {
+  //  Application
+  //      spotify:app:name:arg1:val1:arg2:val2:...:argN:valN.
+  //}
+
+  //parseStartArguments();
+
+
+
 
 });
